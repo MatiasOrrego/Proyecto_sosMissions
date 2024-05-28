@@ -1,8 +1,27 @@
 .navbar {
-    background-color: #3cd3a9;
+    background-color:#b1fcb3;
     border-bottom: 1px solid #1a1717;
 }
 footer{
-    background-color: #3cd3a9;
+    background-color: #89fcb3;
     color: #1a1717;
+}
+body{
+    background-color: #d8fcb3;
+}
+.nav-item:hover {
+    background-color:  rgb(132, 219, 125);
+    width: fit-content;
+}
+.btn:hover{
+background-color: rgb(132, 219, 125);
+width: fit-content;
+}
+.card{
+    border-radius: 30px;
+    background-color: #e9fccf;
+    transition: transform 0.3s ease;
+}
+.card:hover{
+    transform: scale(1.07);
 }
