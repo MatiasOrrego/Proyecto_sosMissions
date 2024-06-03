@@ -38,9 +38,18 @@ body{
     background-color:  rgb(132, 219, 125);
     width: fit-content;
 }
+#loginBtn a {
+    text-decoration: none;
+    color: black;
+}
 #loginBtn:hover{
 background-color: rgb(132, 219, 125);
 width: fit-content;
+}
+
+#resgisterBtn a {
+    text-decoration: none;
+    color: black;
 }
 
 #resgisterBtn:hover {
