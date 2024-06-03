@@ -4,7 +4,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    max-width: 500px;
+    max-width: 700px;
     width: 100%;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -19,8 +19,33 @@
     padding-top: 20px;
 }
 
-.btn {
+#btn-reg {
     margin-top: 30px;
     margin-bottom: 10px;
     width: 100px;
+}
+
+.navbar {
+    background-color:#b1fcb3;
+    border-bottom: 1px solid #1a1717;
+}
+footer{
+    background-color: #89fcb3;
+    color: #1a1717;
+}
+body{
+    background-color: #d8fcb3;
+}
+.nav-item:hover {
+    background-color:  rgb(132, 219, 125);
+    width: fit-content;
+}
+#loginBtn:hover{
+background-color: rgb(132, 219, 125);
+width: fit-content;
+}
+
+#resgisterBtn:hover {
+    background-color: rgb(132, 219, 125);
+    width: fit-content;
 }
