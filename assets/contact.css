@@ -1,0 +1,24 @@
+.navbar {
+    background-color:#b1fcb3;
+    border-bottom: 1px solid #1a1717;
+}
+footer{
+    background-color: #89fcb3;
+    color: #1a1717;
+}
+body{
+    background-color: #d8fcb3;
+}
+
+.formulario {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+}
