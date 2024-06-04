@@ -1,11 +1,3 @@
-.navbar {
-    background-color:#b1fcb3;
-    border-bottom: 1px solid #1a1717;
-}
-footer{
-    background-color: #89fcb3;
-    color: #1a1717;
-}
 body{
     background-color: #d8fcb3;
 }
@@ -41,10 +33,27 @@ input{
 .correo{
     width: 250px;
 }
-.contenedorDeTexto{
-    display: flex;
-    justify-content: flex-start;
+
+
+.contenedorDeAsunto{
+    width: 100%;
+    height: 50px;
     margin-top: 5px;
-    width: 250px;
-    height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+.contenedorDeTexto {
+    width: 100%;
+    height: 235px;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none; /* Evita que los usuarios redimensionen el área de texto */
 }
