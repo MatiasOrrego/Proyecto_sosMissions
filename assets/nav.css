@@ -1,4 +1,5 @@
 .navbar {
     background-color:#b1fcb3;
     border-bottom: 1px solid #1a1717;
+    position: sticky;
 }
