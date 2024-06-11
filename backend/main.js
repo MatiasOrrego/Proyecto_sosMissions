@@ -28,7 +28,6 @@ app.get('/cuenta/:id_cuenta', async (req, res) => {
     connection.end()
 })
 
-//Crear un nuevo libro
 app.post('/cuenta', async (req, res) => {
 
     const connection = await newConnection()
@@ -42,7 +41,6 @@ app.post('/cuenta', async (req, res) => {
     connection.end()
 })
 
-// Actualizar un libro
 app.patch('/cuenta/:id_cuenta', async (req, res) => {
     const connection = await newConnection();
     const id = req.params.id_cuenta;
@@ -72,11 +70,7 @@ app.patch('/cuenta/:id_cuenta', async (req, res) => {
 });
 
 
-
-
-
-//Eliminar un libro
-app.delete('/books/:id_cuenta', async (req, res) => {
+app.delete('/cuenta/:id_cuenta', async (req, res) => {
     const connection = await newConnection()
     const id = req.params.id_cuenta
 
@@ -87,5 +81,11 @@ app.delete('/books/:id_cuenta', async (req, res) => {
     connection.end()
 })
 
-app.listen(3000);
-console.log("servidor iniciado");
+// app.get('/', (req, res) => {
+//     res.sendFile('registro.html', { root: '../' })
+// });
+
+app.listen(3000, () => {
+    console.log("Servidor iniciado");
+})
+
