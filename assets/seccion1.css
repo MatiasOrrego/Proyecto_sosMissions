@@ -1,3 +1,18 @@
 body{
     background-color: #d8fcb3;
 }
+
+section{
+    border: black solid 2px;
+    width: 700px;
+    height: auto;
+    overflow:auto;
+    margin: 10px;
+}
+
+div{
+    margin: 10px;
+}
+dd{
+    margin: 5px;
+}
