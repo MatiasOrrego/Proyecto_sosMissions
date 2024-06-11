@@ -17,6 +17,20 @@ body{
 background-color: rgb(132, 219, 125);
 width: fit-content;
 }
+
+.site-grid{
+    height: 80vh;
+
+    background: url(https://superiorcads.edu.ar/imgd/primeros-auxilios-docentes-escuela-comunidad-educativa-2.jpg);
+    display: flex;
+    justify-content: center;
+}
+
+.titulo1{
+    color: #194239;
+    font-size: 40px;
+}
+
 .card{
     border-radius: 30px;
     background-color: #e9fccf;
@@ -34,9 +48,10 @@ width: fit-content;
 
 .card-publi{
     border-radius: 30px;
-    background-color: #e9fccf;
+    background-color: #b1fcb3;
     transition: transform 0.3s ease;
     max-width:400px;
+    box-shadow: 0 0 22px 10px rgba(0,0,0,0.5);
 }
 
 .card-publi:hover {
