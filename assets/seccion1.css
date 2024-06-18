@@ -16,3 +16,7 @@ div{
 dd{
     margin: 5px;
 }
+
+ol{
+    font-weight: bold;
+}
