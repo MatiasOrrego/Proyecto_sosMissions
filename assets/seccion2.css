@@ -17,6 +17,7 @@ section{
     height: auto;
     overflow:auto;
     margin: 10px;
+
 }
 
 div{
@@ -28,4 +29,5 @@ dd{
 
 ol{
     font-weight: bold;
+    font-style: normal;
 }
