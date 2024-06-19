@@ -3,12 +3,12 @@ const form = document.getElementById('form');
 const login = async (e) => {
     e.preventDefault();
 
-    const usuario = document.getElementById('username').value;
+    const username = document.getElementById('username').value;
     const contrasenia = document.getElementById('password').value;
     
     const peticion = await fetch('http://localhost:3000/login', {
         method: 'POST',
-        body: JSON.stringify({usuario, contrasenia}),
+        body: JSON.stringify({username, contrasenia}),
         headers: {
             'Content-type': 'application/json'
         }

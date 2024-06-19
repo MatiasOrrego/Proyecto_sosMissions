@@ -3,7 +3,7 @@ const { newConnection } = require('../database/db');
 
 const validarJWT = async (token) => {
     try {
-        const {id_usuario } = jwt.verify(token, 'mysecret');
+        const { id_usuario } = jwt.verify(token, 'mysecret');
 
         const connection = await newConnection();
 
