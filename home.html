@@ -150,31 +150,53 @@
       <div class="Titulo-categorias">
         <h3 class="Titulo2 text-center">CATEGORIAS</h3>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card-categoria">
-            <img src="assets/img/img_maniobraEmergencia.jpg" class="card-img-top" alt="Descripción de la imagen 1">
-            <div class="card-body">
-              <h5 class="card-title">Título de la tarjeta 1</h5>
+      <div id="carouselTarjetas" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-categoria">
+                  <img src="assets/img/img_primerosAuxilios.jpg" class="card-img-top" alt="Imagen 1">
+                  <div class="card-body">
+                    <h5 class="card-title">Título de la tarjeta 1</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-categoria">
+                  <img src="assets/img/img_prevencionAccidente.jpg" class="card-img-top" alt="Imagen 2">
+                  <div class="card-body">
+                    <h5 class="card-title">Título de la tarjeta 2</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-categoria">
+                  <img src= "https://mejorconsalud.as.com/wp-content/uploads/2018/02/shutterstock_2136879473.png" class="card-img-top" alt="Imagen 3">
+                  <div class="card-body">
+                    <h5 class="card-title">Título de la tarjeta 3</h5>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card-categoria">
-            <img src="assets/img/img_prevencionAccidente.jpg" class="card-img-top" alt="Descripción de la imagen 2">
-            <div class="card-body">
-              <h5 class="card-title">Título de la tarjeta 2</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-categoria">
-            <img src="assets/img/img_primerosAuxilios.jpg" class="card-img-top" alt="Descripción de la imagen 3">
-            <div class="card-body">
-              <h5 class="card-title">Título de la tarjeta 3</h5>
-            </div>
-          </div>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTarjetas" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselTarjetas" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
       </div>
         <div aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
