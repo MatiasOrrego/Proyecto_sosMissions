@@ -7,7 +7,9 @@ footer{
     color: #1a1717;
 }
 body{
+    font-family: 'Arial', sans-serif;
     background-color: #d8fcb3;
+    color: #333;
 }
 .nav-item:hover {
     background-color:  rgb(132, 219, 125);
@@ -16,4 +18,133 @@ body{
 .btn:hover{
 background-color: rgb(132, 219, 125);
 width: fit-content;
+}
+
+
+.container {
+    max-width: 1200px;
+}
+
+/* Título principal */
+h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #2b6340;
+}
+
+/* Miembros del equipo */
+.team-member {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+    margin: 0 auto 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 5px solid #2b6340;
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-member:hover img {
+    transform: scale(1.1);
+}
+
+.team-member h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.team-member p:first-of-type {
+    color: #2b6340;
+    font-weight: bold;
+}
+
+/* Sección de misión */
+.mission {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 50px 0;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.mission h2 {
+    color: #3498db;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .team-member {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .mission {
+        padding: 30px 15px;
+    }
+}
+
+.team-member {
+    margin-bottom: 30px;
+}
+.team-member img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
