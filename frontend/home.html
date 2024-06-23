@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Proyecto SOS Misions</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/frontend/css/home.css" />
+    <script
+      src="https://kit.fontawesome.com/368cdab837.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">SOSMissions</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/frontend/home.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/frontend/aboutus.html"
+                  >Sobre Nosotros</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/frontend/contact.html"
+                  >Contactos</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categorías
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Maniobras de emergencias</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Prevencion en accidentes</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#"> Primeros auxilios </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+              <button class="btn btn-outline" type="submit">Buscar</button>
+            </form>
+            <div class="btn-login" id="btn-lr">
+              <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
+              <button class="btn" id="resgisterBtn"><a href="/frontend/registro.html">Registrarse</a></button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div >
+        <div class="row mt-1">
+          <img class="main-img" src="https://heartsaversinc.com/wp-content/themes/heartsavers/images/newbannercontact.jpg" alt="">
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="Titulo-publi">
+        <h3 class="titulo1 text-center">Ultimas Publicaciones</h3>
+      </div>
+      <div class="card-group row mx-auto">
+        <div class="card-publi">
+          <img
+            src="/assets/img/asfixia_recien_nacidos.avif"
+            class="card-img-top row mx-auto cardImg"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title-publi">ASFIXIA EN RECIEN NACIDOS</h5>
+            <p class="card-text-publi">
+              Es una complicación que afecta al feto durante el nacimiento en la que por diversas causas no recibe una adecuada oxigenación e irrigación de sus órganos vitales.
+            </p>
+            <a href="#" class="card-link">Leer mas</a>
+          </div>
+        </div>
+        <div class="card-publi">
+          <img
+            src="/assets/img/img_accidente.jpg"
+            class="card-img-top cardImg"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title-publi">QUE HACER EN UN ACCIDENTE</h5>
+            <p class="card-text-publi">
+              Los accidentes de tránsito son eventos lamentables que pueden ocurrir en cualquier momento y lugar. Desde pequeñas colisiones hasta siniestros viales más graves.
+            </p>
+            <a href="#" class="card-link">Leer mas</a>
+          </div>
+        </div>
+        <div class="card-publi">
+          <img src="/assets/img/img_enfermera.jpg" class="card-img-top cardImg" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title-publi">CUIDADOS PARA ADULTOS MAYORES</h5>
+            <p class="card-text-publi">
+              Los adultos mayores pueden requerir ayuda para realizar actividades básicas debido al deterioro físico asociado al envejecimiento y las enfermedades propias de esta etapa.
+            </p>
+            <a href="#" class="card-link">Leer mas</a>
+          </div>
+        </div>
+      </div>
+      <div class="Titulo-categorias">
+        <h3 class="Titulo2 text-center">CATEGORIAS</h3>
+      </div>
+      <div id="miCarrusel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/img/imh-maniobras-emergencia.png" class="d-block w-100" alt="Imagen 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>MANIOBRAS DE EMERGENCIA</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/img/prevencionaccidentes.jpg" class="d-block w-100" alt="Imagen 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>PREVENCION DE ACCIDENTES</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/img/img-primeros-auxilios.jpg" class="d-block w-100" alt="Imagen 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>PRIMEROS AUXILIOS</h5>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#miCarrusel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#miCarrusel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+    </main>
+    <footer class="text-center">
+      <!-- Grid container -->
+      <div class="container pt-2">
+        <!-- Section: Social media -->
+        <section class="mb-2">
+          <!-- Facebook -->
+          <a
+            data-mdb-ripple-init
+            class="btn btn-link btn-floating btn-lg text-body m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Google -->
+          <a
+            data-mdb-ripple-init
+            class="btn btn-link btn-floating btn-lg text-body m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-google"></i
+          ></a>
+
+          <!-- Instagram -->
+          <a
+            data-mdb-ripple-init
+            class="btn btn-link btn-floating btn-lg text-body m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2024 Copyright: SOSMissions.com
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/frontend/js/home.js"></script>
+  </body>
+</html>

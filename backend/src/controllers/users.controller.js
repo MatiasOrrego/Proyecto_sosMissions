@@ -9,6 +9,15 @@ ctrl.register = async (req, res) => {
 
     const connection = await newConnection();
 
+    const veriicarUser = 'SELECT * FROM usuarios WHERE username = ? LIMIT 1'
+    const [userExists] = await connection.query(veriicarUser, [username]);
+
+    if (userExists.length > 0) {
+        return res.status(400).json({
+            msg: 'El nombre de usuario ya existe'
+            })
+        }
+
     const sql = 'INSERT INTO usuarios (username, contrasenia, email, fecha_registro) VALUES (?,?,?,CURRENT_DATE())';
 
     const hashContrasenia = bcrypt.hashSync(contrasenia, 10);

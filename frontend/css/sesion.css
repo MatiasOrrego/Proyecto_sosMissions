@@ -8,6 +8,16 @@
     width: 100%;
 }
 
+#logout {
+    text-decoration: none;
+    color: black;
+}
+
+#logout:hover {
+    width: fit-content;
+    text-decoration: underline;
+}
+
 .titulo {
     margin-top: 15px;
     margin-bottom: 25px;
@@ -56,3 +66,8 @@ width: fit-content;
     background-color: rgb(132, 219, 125);
     width: fit-content;
 }
+
+#search:hover{
+    background-color: rgb(132, 219, 125);
+    width: fit-content;
+    }

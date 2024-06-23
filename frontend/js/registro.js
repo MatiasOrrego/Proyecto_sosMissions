@@ -10,6 +10,16 @@ const register = async (e) => {
     const contrasenia = document.getElementById('password').value;
     const confircon = document.getElementById('passwordConfirm').value;
 
+    if (!nombre || !apellido || !username || !email || !contrasenia || !confircon) {
+        errorMessage.textContent = 'Todos los campos son obligatorios';
+        return;
+    }
+
+    if (contrasenia !== confircon) {
+        alert('Las contraseñas no coinciden');
+        return;
+    }
+
     const peticion = await fetch('http://localhost:3000/register', {
         method: 'POST',
         body: JSON.stringify({username, contrasenia, email}),
@@ -26,7 +36,7 @@ if(!peticion.ok) {
 
     alert(respuesta.msg)
 
-    window.location.href = '/sesion.html'
+    window.location.href = '/frontend/sesion.html'
 }
 }
 

@@ -23,7 +23,7 @@ const login = async (e) => {
 
         localStorage.setItem('token', respuesta.token);
 
-        window.location.href = '/index.html'
+        window.location.href = './home.html'
     }
     }
 

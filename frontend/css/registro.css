@@ -25,6 +25,11 @@
     width: 100px;
 }
 
+#search:hover{
+    background-color: rgb(132, 219, 125);
+    max-width: fit-content;
+    }
+
 .navbar {
     background-color:#b1fcb3;
     border-bottom: 1px solid #1a1717;
@@ -57,4 +62,14 @@ width: fit-content;
 #resgisterBtn:hover {
     background-color: rgb(132, 219, 125);
     width: fit-content;
+}
+
+#logout {
+    text-decoration: none;
+    color: black;
+}
+
+#logout:hover {
+    width: fit-content;
+    text-decoration: underline;
 }
