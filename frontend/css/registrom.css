@@ -1,0 +1,75 @@
+.formulario {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.titulo {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.form-label {
+    padding-top: 20px;
+}
+
+#btn-reg {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100px;
+}
+
+#search:hover{
+    background-color: rgb(132, 219, 125);
+    max-width: fit-content;
+    }
+
+.navbar {
+    background-color:#b1fcb3;
+    border-bottom: 1px solid #1a1717;
+}
+footer{
+    background-color: #89fcb3;
+    color: #1a1717;
+}
+body{
+    background-color: #d8fcb3;
+}
+.nav-item:hover {
+    background-color:  rgb(132, 219, 125);
+    width: fit-content;
+}
+#loginBtn a {
+    text-decoration: none;
+    color: black;
+}
+#loginBtn:hover{
+background-color: rgb(132, 219, 125);
+width: fit-content;
+}
+
+#resgisterBtn a {
+    text-decoration: none;
+    color: black;
+}
+
+#resgisterBtn:hover {
+    background-color: rgb(132, 219, 125);
+    width: fit-content;
+}
+
+#logout {
+    text-decoration: none;
+    color: black;
+}
+
+#logout:hover {
+    width: fit-content;
+    text-decoration: underline;
+}
