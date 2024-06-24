@@ -1,31 +1,96 @@
-body{
-    background-color: #d8fcb3;
-}
-
-main{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-section{
-    background-color: #fcf5e971;
-    border: black solid 2px;
-    border-radius: 10px;
-    width: 700px;
-    height: auto;
-    overflow:auto;
-    margin: 10px;
-}
-
-div{
-    margin: 10px;
-}
-dd{
-    margin: 5px;
-}
-
-ol{
-    font-weight: bold;
-}
+@media (min-width: 1025px) {
+    body {
+      background-color: #d8fcb3;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    section {
+      background-color: #fcf5e971;
+      border: black solid 2px;
+      border-radius: 10px;
+      width: 700px;
+      height: auto;
+      overflow: auto;
+      margin: 10px;
+    }
+    div {
+      margin: 10px;
+    }
+    dd {
+      margin: 5px;
+    }
+    .advertencia{
+        border: solid 2px black;
+        border-radius: 10px;
+        background-color: red;
+        font-weight: bold;
+    }
+  }
+  @media (min-width: 800px) and (max-width: 1024px) {
+    body {
+      background-color: #d8fcb3;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    section {
+      background-color: rgba(252, 245, 233, 0.44);
+      border: 2px solid black;
+      border-radius: 10px;
+      width: auto;
+      height: fit-content;
+      overflow: auto;
+      margin: 10px;
+    }
+    div {
+      margin: 10px;
+    }
+    dd {
+      margin: 5px;
+    }
+    .advertencia{
+        border: solid 2px black;
+        border-radius: 10px;
+        background-color: red;
+        font-weight: bold;
+    }
+  }
+  @media (max-width: 799px) {
+    body {
+      background-color: #d8fcb3;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    section {
+      background-color: rgba(252, 245, 233, 0.44);
+      border: 2px solid black;
+      border-radius: 10px;
+      width: auto;
+      height: auto;
+      overflow: auto;
+      margin: 10px;
+    }
+    div {
+      margin: 10px;
+    }
+    dd {
+      margin: 5px;
+    }
+    .advertencia{
+        border: solid 2px black;
+        border-radius: 10px;
+        background-color: red;
+        font-weight: bold;
+    }
+  }
