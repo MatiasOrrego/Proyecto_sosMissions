@@ -93,6 +93,19 @@ width: fit-content;
   transform: scale(1.05);
 }
 
+#addPostBtn {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+#addPostBtn i {
+  margin-right: 8px;
+}
+
+.btn-float:hover {
+  background-color: #0056b3;
+}
+
 main img {
   height: auto;
   width: auto;

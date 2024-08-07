@@ -11,7 +11,7 @@ const register = async (e) => {
     const confircon = document.getElementById('passwordConfirm').value;
 
     if (!nombre || !apellido || !username || !email || !contrasenia || !confircon) {
-        errorMessage.textContent = 'Todos los campos son obligatorios';
+        alert('Todos los campos son obligatorios')
         return;
     }
 
