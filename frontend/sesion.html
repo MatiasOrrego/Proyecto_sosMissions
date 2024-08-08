@@ -37,8 +37,7 @@
                           <li><a class="dropdown-item" href="#">Maniobras de emergencias</a></li>
                           <li><a class="dropdown-item" href="#">Prevencion en accidentes</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#"> Primeros auxilios
-                          </a></li>
+                          <li><a class="dropdown-item" href="#"> Primeros auxilios</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -55,11 +54,11 @@
               </nav>
         </header>
 
-
         <main class="d-flex justify-content-center align-items-center vh-100">
-            <div class="formulario">
+            <div class="formulario w-100">
                 <h1 class="titulo text-center">Iniciar Sesión</h1>
-                <form class="w-100" id="form">
+                <div id="alertPlaceholder" class="mb-3"></div>
+                <form id="form">
                     <div class="mb-3 col-12 col-md-6 mx-auto">
                         <label for="username" class="form-label">Nombre de Usuario</label>
                         <input type="text" class="form-control" id="username" required>
@@ -84,45 +83,20 @@
               <!-- Section: Social media -->
               <section class="mb-2">
                 <!-- Facebook -->
-                <a
-                  data-mdb-ripple-init
-                  class="btn btn-link btn-floating btn-lg text-body m-1"
-                  href="#!"
-                  role="button"
-                  data-mdb-ripple-color="dark"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-          
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
                 <!-- Google -->
-                <a
-                  data-mdb-ripple-init
-                  class="btn btn-link btn-floating btn-lg text-body m-1"
-                  href="#!"
-                  role="button"
-                  data-mdb-ripple-color="dark"
-                  ><i class="fab fa-google"></i
-                ></a>
-          
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
                 <!-- Instagram -->
-                <a
-                  data-mdb-ripple-init
-                  class="btn btn-link btn-floating btn-lg text-body m-1"
-                  href="#!"
-                  role="button"
-                  data-mdb-ripple-color="dark"
-                  ><i class="fab fa-instagram"></i
-                ></a>
+                <a class="btn btn-link btn-floating btn-lg text-body m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
               </section>
               <!-- Section: Social media -->
             </div>
             <!-- Grid container -->
-          
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-              © 2024 Copyright: SOSMissions.com
-            </div>
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">© 2024 Copyright: SOSMissions.com</div>
             <!-- Copyright -->
-          </footer>
+        </footer>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
         <script src="/frontend/js/sesion.js"></script>

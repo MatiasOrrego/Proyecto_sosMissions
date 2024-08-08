@@ -1,27 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
+  const btnLoginRegister = document.getElementById('btn-lr');
+  
+  if (token) {
+      btnLoginRegister.innerHTML = `<a href='' id='logout'>Cerrar Sesión</a>`;
 
-    if(!token){
-    } else {
-        document.getElementById('btn-lr').innerHTML = `
-        <a href='' id='logout'>Cerrar Sesión</a>`
+      document.getElementById('logout').addEventListener('click', (event) => {
+          event.preventDefault(); // Previene el comportamiento por defecto del enlace
+          localStorage.removeItem('token');
+          window.location.reload();
+      });
+  }
+});
 
-        document.getElementById('logout').addEventListener('click', () => {
-            localStorage.removeItem('token')
+// Mostrar modal para agregar publicación
+document.addEventListener("DOMContentLoaded", () => {
+  const addPostBtn = document.getElementById('addPostBtn');
+  const addPostModal = new bootstrap.Modal(document.getElementById('addPostModal'));
+  const agregarPublicacionBtn = document.getElementById('agregar-publicacion-btn');
+  const nuevaPublicacionForm = document.getElementById('nueva-publicacion-form');
+  const alertPlaceholder = document.createElement('div');
+  document.querySelector('main').insertBefore(alertPlaceholder, document.querySelector('main').firstChild);
 
-            window.location.reload()
-        })
-    }
-})
+  // Función para mostrar alertas
+  function showAlert(message, type = 'danger') {
+      alertPlaceholder.innerHTML = `
+          <div class="alert alert-${type}" role="alert">
+              ${message}
+          </div>
+      `;
+      setTimeout(() => alertPlaceholder.innerHTML = '', 3000); // Ocultar alerta después de 3 segundos
+  }
 
-// Seleccionar elementos del DOM
-const formulario = document.getElementById('nueva-publicacion-form');
-const btnAgregar = document.getElementById('agregar-publicacion-btn');
-const contenedorPublicaciones = document.querySelector('.card-group');
+  // Verificar si el usuario está registrado
+  function isUserRegistered() {
+      return localStorage.getItem('token') !== null;
+  }
+
+  // Manejar el clic en el botón de agregar publicación
+  addPostBtn.addEventListener('click', () => {
+      if (isUserRegistered()) {
+          addPostModal.show();
+      } else {
+          showAlert('Debes estar registrado para agregar una publicación.');
+      }
+  });
+
+  // Manejar el clic en el botón de agregar publicación en el modal
+  agregarPublicacionBtn.addEventListener('click', () => {
+      if (isUserRegistered()) {
+          const titulo = document.getElementById('titulo').value;
+          const descripcion = document.getElementById('descripcion').value;
+          const imagen = document.getElementById('imagen').files[0];
+
+          if (titulo && descripcion) {
+              if (imagen) {
+                  const reader = new FileReader();
+                  reader.onload = function(e) {
+                      crearNuevaPublicacion(titulo, descripcion, e.target.result);
+                  };
+                  reader.readAsDataURL(imagen);
+              } else {
+                  crearNuevaPublicacion(titulo, descripcion);
+              }
+
+              // Limpiar el formulario y cerrar el modal
+              nuevaPublicacionForm.reset();
+              addPostModal.hide();
+          } else {
+              showAlert('Por favor, completa todos los campos.');
+          }
+      } else {
+          showAlert('Debes estar registrado para agregar una publicación.');
+      }
+  });
+});
 
 // Función para crear una nueva tarjeta de publicación
 function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
+  const contenedorPublicaciones = document.querySelector('.card-group');
+
   // Crear la estructura de la tarjeta
   const nuevaTarjeta = document.createElement('div');
   nuevaTarjeta.classList.add('card-publi');
@@ -56,36 +114,3 @@ function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
   // Añadir la nueva tarjeta al contenedor de publicaciones
   contenedorPublicaciones.appendChild(nuevaTarjeta);
 }
-
-// Manejar el clic del botón "Añadir Publicación"
-btnAgregar.addEventListener('click', () => {
-  const titulo = document.getElementById('titulo').value;
-  const descripcion = document.getElementById('descripcion').value;
-  const imagen = document.getElementById('imagen').files[0];
-
-  if (titulo && descripcion) {
-    // Leer la imagen como DataURL si se ha subido una
-    if (imagen) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        crearNuevaPublicacion(titulo, descripcion, e.target.result);
-      };
-      reader.readAsDataURL(imagen);
-    } else {
-      crearNuevaPublicacion(titulo, descripcion);
-    }
-
-    // Limpiar el formulario después de agregar la publicación
-    formulario.reset();
-  } else {
-    alert('Por favor, completa todos los campos.');
-  }
-});
-
-const addPostBtn = document.getElementById('addPostBtn');
-const addPostModal = new bootstrap.Modal(document.getElementById('addPostModal'));
-
-// Mostrar la modal al hacer clic en el botón flotante
-addPostBtn.addEventListener('click', () => {
-  addPostModal.show();
-});
