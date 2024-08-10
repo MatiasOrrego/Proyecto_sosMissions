@@ -1,9 +1,11 @@
-const { ctrl } = require('../controllers/users.controller');
+import { Router } from 'express';
+export const router = Router();
 
-const router = require('express').Router();
+import {
+    register,
+    login
+} from '../controllers/users.controller.js';
 
-router.post('/register', ctrl.register);
+router.post('/register', register);
 
-router.post('/login', ctrl.login);
-
-module.exports = router;
+router.post('/login', login);

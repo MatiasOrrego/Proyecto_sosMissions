@@ -1,9 +1,9 @@
-const jwt = require('jsonwebtoken');
-const { newConnection } = require('../database/db');
+import { verify } from 'jsonwebtoken';
+import { newConnection } from '../database/db.js';
 
-const validarJWT = async (token) => {
+export const validarJWT = async (token) => {
     try {
-        const { id_usuario } = jwt.verify(token, 'mysecret');
+        const { id_usuario } = verify(token, 'mysecret');
 
         const connection = await newConnection();
 
@@ -19,5 +19,3 @@ const validarJWT = async (token) => {
         return false;
     }
 }
-
-module.exports = validarJWT;

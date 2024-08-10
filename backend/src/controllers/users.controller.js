@@ -1,16 +1,15 @@
-const { newConnection } = require('../database/db');
-const bcrypt = require('bcrypt');
-const generarJWT = require('../helpers/generarJWT');
+import { newConnection } from '../database/db.js';
+import { hashSync, compareSync } from 'bcrypt';
+import { generarJWT } from '../helpers/generarJWT.js';
 
-const ctrl = {};
 
-ctrl.register = async (req, res) => {
+export const register = async (req, res) => {
     const { username, contrasenia, email, fecha_registro } = req.body;
 
     const connection = await newConnection();
 
-    const veriicarUser = 'SELECT * FROM usuarios WHERE username = ? LIMIT 1'
-    const [userExists] = await connection.query(veriicarUser, [username]);
+    const verificarUser = 'SELECT * FROM usuarios WHERE username = ? LIMIT 1'
+    const [userExists] = await connection.query(verificarUser, [username]);
 
     if (userExists.length > 0) {
         return res.status(400).json({
@@ -20,7 +19,7 @@ ctrl.register = async (req, res) => {
 
     const sql = 'INSERT INTO usuarios (username, contrasenia, email, fecha_registro) VALUES (?,?,?,CURRENT_DATE())';
 
-    const hashContrasenia = bcrypt.hashSync(contrasenia, 10);
+    const hashContrasenia = hashSync(contrasenia, 10);
 
     await connection.query(sql, [username, hashContrasenia, email, fecha_registro]);
 
@@ -30,7 +29,7 @@ ctrl.register = async (req, res) => {
     connection.end()
 }
 
-ctrl.login = async (req,res) => {
+export const login = async (req,res) => {
     const { username, contrasenia} = req.body;
 
     const connection = await newConnection();
@@ -44,7 +43,7 @@ ctrl.login = async (req,res) => {
             msg: 'El usuario no existe'
         })
     }
-    const validarContrasenia = bcrypt.compareSync(contrasenia, buscarUsuario[0].contrasenia);
+    const validarContrasenia = compareSync(contrasenia, buscarUsuario[0].contrasenia);
 
     if(!validarContrasenia) {
         return res.status(401).json({
@@ -58,23 +57,3 @@ ctrl.login = async (req,res) => {
         token
     })
 }
-
-module.exports = {
-    ctrl
-}
-
-// const insertUser =()=> {
-//     app.post('/cuenta', async (req, res) => {
-
-//         const connection = await newConnection()
-    
-//         const { username, contraseña, email, tipo_usuario, fecha_registro } = req.body
-    
-//         connection.query(`INSERT INTO cuenta (username, contraseña, email, tipo_usuario, fecha_registro) values (?,?,?,?,?)`, [username, contraseña, email, tipo_usuario, fecha_registro])
-    
-//         res.send("Usuario creado correctamente")
-    
-//         connection.end()
-//     })
-// }
-
