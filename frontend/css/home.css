@@ -22,9 +22,39 @@ body {
   background-color: rgb(132, 219, 125);
   width: fit-content;
 }
+
+#loginBtn a {
+  text-decoration: none;
+  color: black;
+}
+#loginBtn:hover{
+background-color: rgb(132, 219, 125);
+width: fit-content;
+}
+
+#resgisterBtn a {
+  text-decoration: none;
+  color: black;
+}
+
+#resgisterBtn:hover {
+  background-color: rgb(132, 219, 125);
+  width: fit-content;
+}
+
 .btn:hover {
   background-color: rgb(132, 219, 125);
   width: fit-content;
+}
+
+#logout {
+  text-decoration: none;
+  color: black;
+}
+
+#logout:hover {
+  width: fit-content;
+  text-decoration: underline;
 }
 
 .titulo1 {
@@ -63,9 +93,21 @@ body {
   transform: scale(1.05);
 }
 
-main img {
-  height: auto;
-  width: auto;
+#addPostBtn {
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+#addPostBtn i {
+  margin-right: 8px;
+}
+
+.btn-float:hover {
+  background-color: #0056b3;
+}
+
+.imagen-principal {
+  width: 100vw;
 }
 
 main .carrousel {

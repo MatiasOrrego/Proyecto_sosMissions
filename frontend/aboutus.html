@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>About us</title>
+    <title>Sobre Nosotros</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -16,8 +16,9 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="assets/aboutus.css">
+    <link rel="stylesheet" href="/frontend/css/aboutus.css">
     <link rel="shortcut icon" href="assets/img/retrocamIcon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
     <script src="https://kit.fontawesome.com/368cdab837.js" crossorigin="anonymous"></script>
   </head>
 
@@ -32,17 +33,17 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-4 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/frontend/home.html">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="aboutus.html">About us</a>
+                    <a class="nav-link active" aria-current="page" href="/frontend/aboutus.html">Sobre Nosotros</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                    <a class="nav-link active" aria-current="page" href="/frontend/contact.html">Contactos</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      categorias
+                      Categorías
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Maniobras de emergencias</a></li>
@@ -54,12 +55,12 @@
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                    <button class="btn btn-outline" type="submit">Buscar</button>
                   </form>
-                  <div class="btn-login">
-                    <button class="btn" id="loginBtn">Login</button>
-                    <button class="btn" id="resgisterBtn">Register</button>
+                  <div class="btn-login" id="btn-lr">
+                    <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
+                    <button class="btn" id="resgisterBtn"><a href="/frontend/registro.html">Registrarse</a></button>
                 </div>
               </div>
             </div>
@@ -71,19 +72,19 @@
         
         <div class="row">
             <div class="col-md-4 team-member text-center">
-                <img src="https://image.cdn2.seaart.ai/2024-01-07/cmdgiqte878c73aquhi0/c6cd8159c80ff46cb78cccf140c741513732def5_high.webp" alt="Persona 1" class="img-fluid">
+                <img src="/assets/img/perfil.jpeg" alt="Persona 1" class="img-fluid">
                 <h3>Orrego Matias</h3>
                 <p>Estudiante</p>
             </div>
             
             <div class="col-md-4 team-member text-center">
-                <img src="https://static01.nyt.com/newsgraphics/2020/11/12/fake-people/4b806cf591a8a76adfc88d19e90c8c634345bf3d/fallbacks/mobile-02.jpg" alt="Persona 2" class="img-fluid">
+                <img src="/assets/img/perfil.jpeg" alt="Persona 2" class="img-fluid">
                 <h3>Vega Tobias</h3>
                 <p>Estudiante</p>
             </div>
             
             <div class="col-md-4 team-member text-center">
-                <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/272776289/original/743b03da2f068295564a411b9b4f6653cdfff4f2/get-u-pictures-of-ai-generated-people-that-do-not-exist.jpg" alt="Persona 3" class="img-fluid">
+                <img src="/assets/img/perfil.jpeg" alt="Persona 3" class="img-fluid">
                 <h3>Villalba Ramiro</h3>
                 <p>Estudiante</p>
             </div>
@@ -92,7 +93,7 @@
         <div class="row mt-5">
             <div class="col-12 text-center">
                 <h2>Nuestra Misión</h2>
-                <p>Somos un grupo de estudiantes, los cuales nos dedicamos a crear soluciones tecnológicas innovadoras que mejoren la vida de las personas. Para la creacion de esta plataforma nos inspiramos en la diferentes problematicas que afrontan, las diferentees personas que no tienen un conocimiento adecuado sobre la salud y su bienestar. Por eso comenzamos con el desarrollo de este proyecto, para que los medicos puedan darnos informacion desde sus dispositivos tegnologicos y, que,  las demas personas puedan tener acceso a el y aprender sobre ello .</p>
+                <p>Somos un grupo de estudiantes, los cuales nos dedicamos a crear soluciones tecnológicas innovadoras que mejoren la vida de las personas. Para la creacion de esta plataforma nos inspiramos en la diferentes problematicas que afrontan, las diferentes personas que no tienen un conocimiento adecuado sobre la salud y su bienestar. Por eso comenzamos con el desarrollo de este proyecto, para que los médicos puedan darnos información desde sus dispositivos tegnológicos y, que, las demás personas puedan tener acceso a el y aprender sobre ello.</p>
             </div>
         </div>
     </div>
@@ -154,5 +155,6 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"
       ></script>
+      <script src="/frontend/js/home.js"></script>
     </body>
   </html>
