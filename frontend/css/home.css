@@ -1,6 +1,5 @@
 .navbar {
-  background-color: #b1fcb3;
-  border-bottom: 1px solid #1a1717;
+  background-color: #ffffff00;
 }
 footer {
   background-color: #89fcb3;
@@ -9,6 +8,55 @@ footer {
 }
 body {
   background-color: #d8fcb3;
+}
+
+.banner{
+  position:relative;
+  width: 100%;
+  height: 100vh;
+  background: url(https://heartsaversinc.com/wp-content/themes/heartsavers/images/newbannercontact.jpg);
+  background-size: cover;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: 0.6s;
+  padding:40px 100px;
+  z-index:100000;
+}
+
+.form-control{
+  background-color: #0057b300;
+  border: none;
+  color: #0057b300;
+}
+
+.navbar-brand, .nav-link, .btn, #loginBtn a, #registerBtn a{
+  color:rgba(0, 0, 255, 0);
+  text-decoration: none;
+}
+
+header.sticky{
+  padding: 5px 100px;
+  background: #b60d0d;
+}
+
+header.sticky .form-control{
+  background-color: white;
+  border: 2px solid black;
+  transition: 0.6s;
+}
+
+header.sticky .navbar-brand,
+header.sticky .nav-link,
+header.sticky .btn,
+header.sticky #loginBtn a,
+header.sticky #registerBtn a{
+  color: turquoise;
+  transition: 0.6s;
 }
 
 .cardImg{
@@ -23,10 +71,6 @@ body {
   width: fit-content;
 }
 
-#loginBtn a {
-  text-decoration: none;
-  color: black;
-}
 #loginBtn:hover{
 background-color: rgb(132, 219, 125);
 width: fit-content;
