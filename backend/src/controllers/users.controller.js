@@ -1,4 +1,4 @@
-import { newConnection } from '../database/db.js';
+import { pool } from '../database/db.js';
 import { hashSync, compareSync } from 'bcrypt';
 import { generarJWT } from '../helpers/generarJWT.js';
 
@@ -6,7 +6,7 @@ import { generarJWT } from '../helpers/generarJWT.js';
 export const register = async (req, res) => {
     const { username, contrasenia, email, fecha_registro } = req.body;
 
-    const connection = await newConnection();
+    const connection = await pool();
 
     const verificarUser = 'SELECT * FROM usuarios WHERE username = ? LIMIT 1'
     const [userExists] = await connection.query(verificarUser, [username]);
@@ -32,7 +32,7 @@ export const register = async (req, res) => {
 export const login = async (req,res) => {
     const { username, contrasenia} = req.body;
 
-    const connection = await newConnection();
+    const connection = await pool();
 
     const sql = 'SELECT * FROM usuarios where username=? LIMIT 1';
 

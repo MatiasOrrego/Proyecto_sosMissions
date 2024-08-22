@@ -9,5 +9,3 @@ import {
 userRouter.post('/register', register);
 
 userRouter.post('/login', login);
-
-app.use(errorHandler);
