@@ -14,6 +14,19 @@
   });
 
   document.addEventListener("DOMContentLoaded", () => {
+
+    fetch('http://localhost:3000/post')
+        .then(response => response.json())
+        .then(data => {
+            const contenedorPublicaciones = document.querySelector('.card-group');
+            data.forEach(post => {
+                crearNuevaPublicacion(post.title, post.description, post.image);
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener las publicaciones:', error);
+        });
+
     const addPostBtn = document.getElementById('addPostBtn');
     const addPostModal = new bootstrap.Modal(document.getElementById('addPostModal'));
     const agregarPublicacionBtn = document.getElementById('agregar-publicacion-btn');
@@ -59,8 +72,31 @@
                     crearNuevaPublicacion(titulo, descripcion);
                 }
 
-                nuevaPublicacionForm.reset();
-                addPostModal.hide();
+                function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
+                    const postData = {
+                        title: titulo,
+                        description: descripcion,
+                        image: imagenSrc
+                    };
+                
+                    fetch('http://localhost:3000/post', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(postData),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Publicación creada:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error al crear la publicación:', error);
+                    });
+
+                    nuevaPublicacionForm.reset();
+                    addPostModal.hide();
+                }
             } else {
                 showAlert('Por favor, completa todos los campos.');
             }

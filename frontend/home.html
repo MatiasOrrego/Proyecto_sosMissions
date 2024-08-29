@@ -121,18 +121,18 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="nueva-publicacion-form">
+              <form action="http://localhost/:3000/post" id="nueva-publicacion-form" method="POST">
                 <div class="mb-3">
                   <label for="titulo" class="form-label">Título de la Publicación</label>
-                  <input type="text" class="form-control" id="titulo" placeholder="Título">
+                  <input type="text" class="form-control" id="titulo" placeholder="Título" name="title">
                 </div>
                 <div class="mb-3">
                   <label for="descripcion" class="form-label">Descripción</label>
-                  <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción"></textarea>
+                  <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción" name="description"></textarea>
                 </div>
                 <div class="mb-3">
                   <label for="imagen" class="form-label">Subir Imagen</label>
-                  <input class="form-control" type="file" id="imagen">
+                  <input class="form-control" type="file" id="imagen" name="image">
                 </div>
               </form>
             </div>
