@@ -1,13 +1,14 @@
 /* Estilos Generales */
 body {
   background-color: #d8fcb3;
-  margin: 0;
 }
 
 canvas {
   width: 100%;
-  height: 100vh;
+  height: 104vh;
   background-color: #202020;
+  margin: 0;
+  z-index: -1;
 }
 
 /* Navbar */
@@ -159,6 +160,14 @@ header.sticky .form-control {
   cursor: auto;
 }
 
+main{
+  background-color: white;
+  border-radius: 20px 20px 0px 0px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+}
+
 /* Footer */
 footer {
   background-color: #89fcb3;
@@ -221,7 +230,7 @@ footer {
 
 .title-container {
   position: absolute;
-  top: 40%; /* Ajusta la posición vertical si es necesario */
+  top: 40%; 
   left: 0;
   right: 0;
   text-align: center;
@@ -229,6 +238,7 @@ footer {
 }
 
 .title {
+  cursor: default;
   color: white;
   font-size: 3rem;
   padding: 20px;
