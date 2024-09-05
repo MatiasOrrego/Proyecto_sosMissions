@@ -17,7 +17,7 @@ export const register = async (req, res) => {
             })
         }
 
-    const sql = 'INSERT INTO usuarios (username, contrasenia, email, fecha_registro) VALUES (?,?,?,CURRENT_DATE())';
+    const sql = 'INSERT INTO usuarios (username, contrasenia, email, activo, fecha_registro) VALUES (?,?,?,true,CURRENT_DATE())';
 
     const hashContrasenia = hashSync(contrasenia, 10);
 

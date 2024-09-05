@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import upload from '../middlewares/multer.js';
 export const postRouter = Router();
 
 import {
@@ -12,6 +11,6 @@ import {
 
 postRouter.get('/post', getAllPosts);
 postRouter.get('/post', getPostById);
-postRouter.post('/post', upload.single('image'), createPost);
+postRouter.post('/post', createPost);
 postRouter.put('/post', updatePost);
 postRouter.delete('/post', deletePost)

@@ -1,31 +1,44 @@
 import { newConnection } from "../database/db.js";
+import { uploadImage } from "../utils/cludinary.js";
 
-export const getAllPosts = async (req,res) => {
-    const connection = await newConnection()
+export const getAllPosts = async (req, res) => {
+    const connection = await newConnection();
 
-    const [result] = await connection.query(`SELECT * FROM post`)
+    const [result] = await connection.query(`SELECT * FROM post`);
 
-    res.json(result)
+    res.json(result);
 
-    connection.end()
-}
+    connection.end();
+};
 
-export const getPostById = async (req,res) => {
+export const getPostById = async (req, res) => {
+    const id = parseInt(req.params.id);
 
-    const id = parseInt(req.params.id)
-
-    const connection = await newConnection()
+    const connection = await newConnection();
 
     const [result] = await connection.query(`SELECT * FROM post WHERE id = ?`, [id]);
 
-    res.status(200).json(result[0])
+    if (result.length === 0) {
+        return res.status(404).json({ msg: 'Publicación no encontrada' });
+    }
 
-    connection.end()
-}
+    res.status(200).json(result[0]);
+
+    connection.end();
+};
 
 export const createPost = async (req, res) => {
     const { title, description } = req.body;
-    const image = req.file ? req.file.filename: null
+    let image = null;
+
+    if (req.files?.image) {
+        try {
+            // Sube la imagen usando la ruta temporal proporcionada por `express-fileupload`
+            image = await uploadImage(req.files.image.tempFilePath);
+        } catch (error) {
+            return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
+        }
+    }
 
     const connection = await newConnection();
 
@@ -44,49 +57,54 @@ export const createPost = async (req, res) => {
     connection.end();
 };
 
-export const updatePost = async (req,res) => {
-    const id = parseInt(req.params.id)
+export const updatePost = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const { title, description } = req.body;
+    let image = req.body.image;  // Mantener la imagen actual si no se cambia
 
-    const { title, description, image } = req.body
+    if (req.files?.image) {
+        // Subir la nueva imagen a Cloudinary
+        const result = await uploadImage(req.files.image.tempFilePath);
+        image = result.secure_url;
+    }
 
-    const connection = await newConnection()
+    const connection = await newConnection();
 
-    const [result] = await connection.query(`SELECT * FROM post WHERE id = ?`)
+    const [result] = await connection.query(`SELECT * FROM post WHERE id = ?`, [id]);
 
     if (result.length === 0) {
-        return res.status(404).json( { msg: 'Tarea no encontrada' });
-    };
+        return res.status(404).json({ msg: 'Publicación no encontrada' });
+    }
 
-    await connection.query(`
-        UPDATE post SET title = ?, description = ?, image = ? WHERE id = ?`, [title, description, isCompleted, id]
+    await connection.query(
+        `UPDATE post SET title = ?, description = ?, image = ? WHERE id = ?`,
+        [title, description, image, id]
     );
 
-    res.status(201).json({
-        id: id,
+    res.status(200).json({
+        id,
         title,
         description,
         image
     });
 
     connection.end();
-} 
+};
 
-export const deletePost = async (req,res) => {
+export const deletePost = async (req, res) => {
     const id = parseInt(req.params.id);
 
     const connection = await newConnection();
 
     const [result] = await connection.query('SELECT * FROM post WHERE id = ?', [id]);
-    
+
     if (result.length === 0) {
-        return res.status(404).json( { msg: 'Tarea no encontrada' });
-    };
+        return res.status(404).json({ msg: 'Publicación no encontrada' });
+    }
 
-    await connection.query(`
-        DELETE FROM publicaciones WHERE id = ?`, [id]
-    );
+    await connection.query(`DELETE FROM post WHERE id = ?`, [id]);
 
-    res.status(200).json({ msg: 'Tarea eliminada' })
+    res.status(200).json({ msg: 'Publicación eliminada' });
 
     connection.end();
-}
+};

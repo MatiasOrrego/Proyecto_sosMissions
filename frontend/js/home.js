@@ -1,4 +1,4 @@
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     const btnLoginRegister = document.getElementById('btn-lr');
     
@@ -11,10 +11,9 @@
             window.location.reload();
         });
     }
-  });
+});
 
-  document.addEventListener("DOMContentLoaded", () => {
-
+document.addEventListener("DOMContentLoaded", () => {
     fetch('http://localhost:3000/post')
         .then(response => response.json())
         .then(data => {
@@ -61,52 +60,40 @@
             const descripcion = document.getElementById('descripcion').value;
             const imagen = document.getElementById('imagen').files[0];
 
-            if (titulo && descripcion) {
-                if (imagen) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        crearNuevaPublicacion(titulo, descripcion, e.target.result);
-                    };
-                    reader.readAsDataURL(imagen);
-                } else {
-                    crearNuevaPublicacion(titulo, descripcion);
-                }
+            if (titulo && descripcion && imagen) {
+                const formData = new FormData();
+                formData.append('title', titulo);
+                formData.append('description', descripcion);
+                formData.append('image', imagen);
 
-                function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
-                    const postData = {
-                        title: titulo,
-                        description: descripcion,
-                        image: imagenSrc
-                    };
-                
-                    fetch('http://localhost:3000/post', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(postData),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Publicación creada:', data);
-                    })
-                    .catch(error => {
-                        console.error('Error al crear la publicación:', error);
-                    });
-
+                fetch('http://localhost:3000/post', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`  // Enviar token de autenticación si es necesario
+                    },
+                    body: formData  // Usar FormData para enviar archivos
+                })
+                .then(response => response.json())
+                .then(data => {
+                    crearNuevaPublicacion(data.title, data.description, data.image);
+                    console.log('Publicación creada:', data);
                     nuevaPublicacionForm.reset();
                     addPostModal.hide();
-                }
+                })
+                .catch(error => {
+                    console.error('Error al crear la publicación:', error);
+                    showAlert('Hubo un error al crear la publicación.', 'danger');
+                });
             } else {
-                showAlert('Por favor, completa todos los campos.');
+                showAlert('Por favor, completa todos los campos y selecciona una imagen.');
             }
         } else {
             showAlert('Debes estar registrado para agregar una publicación.');
         }
     });
-  });
+});
 
-  function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
+function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
     const contenedorPublicaciones = document.querySelector('.card-group');
 
     const nuevaTarjeta = document.createElement('div');
@@ -139,4 +126,4 @@
     nuevaTarjeta.appendChild(cuerpoTarjeta);
 
     contenedorPublicaciones.appendChild(nuevaTarjeta);
-  }
+}
