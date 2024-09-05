@@ -93,8 +93,7 @@
         </div>
     </header>
 
-    <canvas id="canvas" width="32" height="32">
-    </canvas>
+    <canvas id="canvas" width="32" height="32"></canvas>
     
     <script type= "text/javascript">
       window.addEventListener("scroll",function(){
@@ -104,19 +103,28 @@
     </script>
     
     <div class="title-container">
-      <h1 class="title">Bienvenido a SOSMissions</h1>
+      <h1 class="title">Bienvenido a SOSDoc</h1>
+    </div>
+
+    <div class="box">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <main>  
-      <div class="container my-4 text-center">
-        <h3>Tus Publicaciones</h3>
+      <article class="info_pri">
+        <section class="info-primera"></section>
+      </article>
+
+      <div class="container text-center">
+        <div class="container_titulo"><h3>Tus Publicaciones</h3></div>
         <div id="tus-publicaciones" class="card-group row mx-auto "></div>
       </div>
     
-      <div class="text-center my-4">
+      <div class="text-center">
         <button id="addPostBtn" class="btn btn-primary">
-          <i class="fas fa-plus"></i> Añadir Publicación
-        </button>
+          <i class="fas fa-plus"></i>Añadir Publicación</button>
       </div>
       
       <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
@@ -150,88 +158,9 @@
         </div>
       </div>
 
-      <div class="Titulo-publi">
-        <h3 class="titulo1 text-center">Ultimas Publicaciones</h3>
-      </div>
-      <div class="card-group row mx-auto">
-        <div class="card-publi">
-          <img
-            src="/assets/img/asfixia_recien_nacidos.avif"
-            class="card-img-top row mx-auto cardImg"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title-publi">ASFIXIA EN RECIEN NACIDOS</h5>
-            <p class="card-text-publi">
-              Es una complicación que afecta al feto durante el nacimiento en la que por diversas causas no recibe una adecuada oxigenación e irrigación de sus órganos vitales.
-            </p>
-            <a href="seccion3.html" class="card-link">Leer mas</a>
-          </div>
-        </div>
-        <div class="card-publi">
-          <img
-            src="/assets/img/img_accidente.jpg"
-            class="card-img-top cardImg"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title-publi">QUE HACER EN UN ACCIDENTE</h5>
-            <p class="card-text-publi">
-              Los accidentes de tránsito son eventos lamentables que pueden ocurrir en cualquier momento y lugar. Desde pequeñas colisiones hasta siniestros viales más graves.
-            </p>
-            <a href="#" class="card-link">Leer mas</a>
-          </div>
-        </div>
-        <div class="card-publi">
-          <img src="/assets/img/img_enfermera.jpg" class="card-img-top cardImg" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title-publi">CUIDADOS PARA ADULTOS MAYORES</h5>
-            <p class="card-text-publi">
-              Los adultos mayores pueden requerir ayuda para realizar actividades básicas debido al deterioro físico asociado al envejecimiento y las enfermedades propias de esta etapa.
-            </p>
-            <a href="#" class="card-link">Leer mas</a>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="Titulo-categorias">
-        <h3 class="Titulo2 text-center">CATEGORIAS</h3>
-      </div>
-      <div id="miCarrusel" class="carousel slide" data-bs-ride="carousel">
-        <!-- Slides -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/img/imh-maniobras-emergencia.png" class="d-block w-100" alt="Imagen 1">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>MANIOBRAS DE EMERGENCIA</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/img/prevencionaccidentes.jpg" class="d-block w-100" alt="Imagen 2">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>PREVENCION DE ACCIDENTES</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/img/img-primeros-auxilios.jpg" class="d-block w-100" alt="Imagen 3">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>PRIMEROS AUXILIOS</h5>
-                </div>
-            </div>
-        </div>
     
-        <!-- Controles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#miCarrusel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#miCarrusel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
     </main>
+
     <footer class="text-center">
       <!-- Grid container -->
       <div class="container pt-2">

@@ -1,6 +1,6 @@
 /* Estilos Generales */
 body {
-  background-color: #d8fcb3;
+  background-color: rgb(199, 78, 78);
 }
 
 canvas {
@@ -9,6 +9,51 @@ canvas {
   background-color: #202020;
   margin: 0;
   z-index: -1;
+}
+
+.box{
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.box span{
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2.6px solid #ffffff;
+  border-right: 2.6px solid #fff;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+}
+
+.box span:nth-child(2){
+  animation-delay: -0.2s;
+}
+
+.box span:nth-child(3){
+  animation-delay: -0.4s;
+  
+}
+
+@keyframes animate{
+  0%
+  {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+
+  50%{
+    opacity: 1;
+  }
+
+  100%
+  {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
 }
 
 /* Navbar */
@@ -104,7 +149,7 @@ header.sticky .navbar-brand,
 header.sticky .nav-link,
 header.sticky .btn,
 header.sticky #registerBtn {
-  color: rgb(71, 0, 0);
+  color: rgb(0, 0, 0);
   transition: 0.6s;
 }
 
@@ -126,11 +171,12 @@ header.sticky #loginBtn,
 header.sticky #registerBtn {
   background-color: rgb(184, 9, 9); /* Fondo cuando el header es sticky */
   color: white; /* Color del texto cuando el header es sticky */
+  transition: 0.20s ease;
 }
 
 header.sticky #loginBtn:hover,
 header.sticky #registerBtn:hover {
-  background-color: rgb(200, 0, 0); /* Fondo al pasar el cursor cuando el header es sticky */
+  background-color: rgb(228, 3, 3); /* Fondo al pasar el cursor cuando el header es sticky */
   color: white; /* Color del texto al pasar el cursor cuando el header es sticky */
 }
 
@@ -163,16 +209,42 @@ header.sticky .form-control {
 main{
   background-color: white;
   border-radius: 20px 20px 0px 0px;
-  margin-top: -50px;
   position: relative;
+  margin-top: -30px;
   z-index: 1;
 }
 
+#addPostBtn{
+  background-color: rgb(184, 9, 9); 
+  border: none;
+}
+
+#addPostBtn:hover{
+  background-color: rgb(228, 3, 3);
+}
+
+.container_titulo{
+  padding-top: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.info_pri{
+  height: 40vh;
+  margin-top: 100px;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(177, 177, 177);
+}
+
+.info-primera{
+  padding-top: 10px;
+}
+
+
 /* Footer */
 footer {
-  background-color: #89fcb3;
+  background-color: #ffffff;
   color: #1a1717;
-  gap: 20px;
 }
 
 /* Botones */
