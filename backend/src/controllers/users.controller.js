@@ -4,7 +4,7 @@ import { generarJWT } from '../helpers/generarJWT.js';
 
 
 export const register = async (req, res) => {
-    const { username, contrasenia, email, fecha_registro } = req.body;
+    const { username, contrasenia, email, activo, fecha_registro } = req.body;
 
     const connection = await newConnection();
 
@@ -21,7 +21,7 @@ export const register = async (req, res) => {
 
     const hashContrasenia = hashSync(contrasenia, 10);
 
-    await connection.query(sql, [username, hashContrasenia, email, fecha_registro]);
+    await connection.query(sql, [username, hashContrasenia, email, activo, fecha_registro]);
 
     res.json({
         msg: 'Registrado correctamente'
@@ -51,9 +51,43 @@ export const login = async (req,res) => {
         })
     }
 
-    const token = await generarJWT({id_usuario: buscarUsuario[0].id_usuario});
-    return res.json({
-        msg: 'Inicio de sesión exitoso',
-        token
-    })
+    const token = await generarJWT(username[0].id);
+
+    res.cookie('authToken', token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 3600000
+    });
+
+    connection.end()
+    return res.json({msg: 'Inicio de sesión exitoso'  })
+};
+
+export const session = async (req, res) => {
+    if(req.session.id) {
+        try {
+            const connection = await newConnection();
+            const [result] = await connection.query('SELECT id, username FROM usuarios WHERE id = ?', [req.session.id]);
+
+            if (result.length > 0) {
+                const user = result[0];
+                return res.json({
+                    loggedIn: true,
+                    user: { id: user.id, username: user.username }
+                });
+            } else {
+                return res.status(401).json({ loggedIn: false, msg: 'No hay sesión activa' });
+            }
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ msg: 'Error interno del servidor' })
+        }
+    } else {
+        return res.status(401).json({ loggedIn: false, msg: 'No hay sesión activa' })
+    }
 }
+
+export const logout = async (req,res) => {
+        res.clearCookie('sid');
+        return res.json({ msg: 'Sesión cerrada' })
+    }

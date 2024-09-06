@@ -3,9 +3,15 @@ export const userRouter = Router();
 
 import {
     register,
-    login
+    login,
+    session,
+    logout
 } from '../controllers/users.controller.js';
 
 userRouter.post('/register', register);
 
 userRouter.post('/login', login);
+
+userRouter.get('/session', session)
+
+userRouter.post('/logout', logout)

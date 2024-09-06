@@ -16,7 +16,7 @@ app.use(fileupload({
     tempFileDir: './uploads'
 }))
 app.use('/', userRouter);
-app.use('/', postRouter)
+app.use('/', postRouter);
 
 app.listen(3000, () => {
     console.log('Servidor iniciado');
