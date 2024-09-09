@@ -12,51 +12,74 @@
         <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">SOSMissions</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-4 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/home.html">Inicio</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/aboutus.html">Sobre Nosotros</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/contact.html">Contactos</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Categorías
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Maniobras de emergencias</a></li>
-                          <li><a class="dropdown-item" href="#">Prevencion en accidentes</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#"> Primeros auxilios
-                          </a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn btn-outline" type="submit" id="search">Buscar</button>
-                      </form>
-                      <div class="btn-login" id="btn-lr">
-                        <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
-                        <button class="btn" id="resgisterBtn"><a href="/frontend/registro.html">Registrarse</a></button>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-        </header>
-
-        <canvas id="canvas" width="32" height="32"></canvas>
+      <header class="navbar navbar-expand-lg p-3 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">SOSMissions</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/home.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/aboutus.html"
+                  >Sobre Nosotros</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/contact.html"
+                  >Contactos</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categorías
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="seccion2.html"
+                      >Maniobras de RCP</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="seccion3.html"
+                      >Maniobra de Heimlich</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="seccion1.html"> Primeros auxilios </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input id="search" class="form-control me-2" type="search" aria-label="Search">
+              <button class="btn btn-outline" type="submit">Buscar</button>
+            </form>
+            <div class="btn-login" id="btn-lr">
+              <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
+              <button class="btn" id="registerBtn"><a href="/frontend/registro.html">Registrarse</a></button>
+            </div>
+          </div>
+        </div>
+    </header>
     
         <script type= "text/javascript">
           window.addEventListener("scroll",function(){
@@ -64,21 +87,8 @@
             header.classList.toggle("sticky", window.scrollY > 0);
           })
         </script>
-        
-        <div class="title-container">
-          <h1 class="title">Bienvenido a SOSDoc</h1>
-        </div>
-    
-        <div class="box">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
         <main>
-    
-          <article class="info_pri"></article>
-            <section class="info-primera"></section>
-          </article>
+  
 
 
         <main>
