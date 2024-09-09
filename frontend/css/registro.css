@@ -19,51 +19,6 @@
     padding-top: 20px;
 }
 
-#btn-reg {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    width: 100px;
-}
-
-#search:hover{
-    background-color: rgb(132, 219, 125);
-    max-width: fit-content;
-    }
-
-.navbar {
-    background-color:#b1fcb3;
-    border-bottom: 1px solid #1a1717;
-}
-footer{
-    background-color: #89fcb3;
-    color: #1a1717;
-}
-body{
-    background-color: #d8fcb3;
-}
-.nav-item:hover {
-    background-color:  rgb(132, 219, 125);
-    width: fit-content;
-}
-#loginBtn a {
-    text-decoration: none;
-    color: black;
-}
-#loginBtn:hover{
-background-color: rgb(132, 219, 125);
-width: fit-content;
-}
-
-#resgisterBtn a {
-    text-decoration: none;
-    color: black;
-}
-
-#resgisterBtn:hover {
-    background-color: rgb(132, 219, 125);
-    width: fit-content;
-}
-
 #logout {
     text-decoration: none;
     color: black;
