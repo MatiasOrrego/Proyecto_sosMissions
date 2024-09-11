@@ -318,6 +318,18 @@ footer {
   margin-right: 8px;
 }
 
+.contenedor-form {
+  display: flex;
+  justify-content: center;
+}
+
+.formulario {
+  margin: 15px;
+  padding: 25px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
 .title-container {
   position: absolute;
   top: 40%; 

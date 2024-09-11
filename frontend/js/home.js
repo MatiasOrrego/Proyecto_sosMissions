@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             const contenedorPublicaciones = document.querySelector('.card-group');
             data.forEach(post => {
-                crearNuevaPublicacion(post.title, post.description, post.image);
+                crearNuevaPublicacion(post.title, post.description, post.image, post.video);
             });
         })
         .catch(error => {
@@ -27,8 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     const addPostBtn = document.getElementById('addPostBtn');
-    const addPostModal = new bootstrap.Modal(document.getElementById('addPostModal'));
-    const agregarPublicacionBtn = document.getElementById('agregar-publicacion-btn');
     const nuevaPublicacionForm = document.getElementById('nueva-publicacion-form');
     const alertPlaceholder = document.createElement('div');
     document.querySelector('main').insertBefore(alertPlaceholder, document.querySelector('main').firstChild);
@@ -48,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addPostBtn.addEventListener('click', () => {
         if (isUserRegistered()) {
-            addPostModal.show();
         } else {
             showAlert('Debes estar registrado para agregar una publicación.');
         }
@@ -59,12 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const titulo = document.getElementById('titulo').value;
             const descripcion = document.getElementById('descripcion').value;
             const imagen = document.getElementById('imagen').files[0];
+            const video = document.getElementById('video').files[0];
 
-            if (titulo && descripcion && imagen) {
+            if (titulo && descripcion && imagen && video) {
                 const formData = new FormData();
                 formData.append('title', titulo);
                 formData.append('description', descripcion);
                 formData.append('image', imagen);
+                formData.append('video', video)
 
                 fetch('http://localhost:3000/post', {
                     method: 'POST',
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    crearNuevaPublicacion(data.title, data.description, data.image);
+                    crearNuevaPublicacion(data.title, data.description, data.image , data.video);
                     console.log('Publicación creada:', data);
                     nuevaPublicacionForm.reset();
                     addPostModal.hide();
@@ -93,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
+function crearNuevaPublicacion(titulo, descripcion, imagenSrc, video) {
     const contenedorPublicaciones = document.querySelector('.card-group');
 
     const nuevaTarjeta = document.createElement('div');
@@ -102,6 +101,9 @@ function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
     const nuevaImagen = document.createElement('img');
     nuevaImagen.classList.add('card-img-top', 'cardImg');
     nuevaImagen.src = imagenSrc || '/path/to/default/image.jpg';
+
+    const nuevoVideo = document.createElement('div');
+    nuevoVideo.classList.add('card-video')
 
     const cuerpoTarjeta = document.createElement('div');
     cuerpoTarjeta.classList.add('card-body');
@@ -123,6 +125,7 @@ function crearNuevaPublicacion(titulo, descripcion, imagenSrc) {
     cuerpoTarjeta.appendChild(nuevaDescripcion);
     cuerpoTarjeta.appendChild(enlaceLeerMas);
     nuevaTarjeta.appendChild(nuevaImagen);
+    nuevaTarjeta.appendChild(nuevoVideo);
     nuevaTarjeta.appendChild(cuerpoTarjeta);
 
     contenedorPublicaciones.appendChild(nuevaTarjeta);

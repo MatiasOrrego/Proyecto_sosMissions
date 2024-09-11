@@ -1,5 +1,5 @@
 import { newConnection } from "../database/db.js";
-import { uploadImage } from "../utils/cludinary.js";
+import { uploadImage, uploadVideo } from "../utils/cludinary.js";
 
 export const getAllPosts = async (req, res) => {
     const connection = await newConnection();
@@ -30,6 +30,7 @@ export const getPostById = async (req, res) => {
 export const createPost = async (req, res) => {
     const { title, description } = req.body;
     let image = null;
+    let video = null
 
     if (req.files?.image) {
         try {
@@ -40,18 +41,27 @@ export const createPost = async (req, res) => {
         }
     }
 
+    if (req.files?.video) {
+        try {
+            video = await uploadVideo(req.files.video.tempFilePath);
+        } catch (error) {
+            return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
+        }
+    }
+
     const connection = await newConnection();
 
     const [result] = await connection.query(
-        `INSERT INTO post (title, description, image) VALUES (?, ?, ?)`,
-        [title, description, image]
+        `INSERT INTO post (title, description, image, video) VALUES (?, ?, ?, ?)`,
+        [title, description, image, video]
     );
 
     res.status(201).json({
         id: result.insertId,
         title,
         description,
-        image
+        image,
+        video
     });
 
     connection.end();

@@ -122,45 +122,32 @@
         <div class="container_titulo"><h3>Tus Publicaciones</h3></div>
         <div id="tus-publicaciones" class="card-group row mx-auto "></div>
       </div>
-    
-      <div class="text-center">
-        <button id="addPostBtn" class="btn btn-primary">
-          <i class="fas fa-plus"></i>Añadir Publicación</button>
+
+      <div class="contenedor-form">
+          <form id="nueva-publicacion-form" class="formulario">
+            <div class="mb-3">
+              <label for="titulo" class="form-label">Título de la Publicación</label>
+              <input type="text" class="form-control" id="titulo" placeholder="Título" required>
+            </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="imagen" class="form-label">Subir Imagen</label>
+              <input class="form-control" type="file" id="imagen">
+            </div>
+            <div class="mb-3">
+              <label for="video" class="form-label">Subir Video</label>
+              <input class="form-control" type="file" id="video" accept="video/*">
+            </div>
+            <div class="text-center">
+              <button id="addPostBtn" class="btn btn-primary">Añadir Publicación</button>
+            </div>
+          </form>
       </div>
 
-      
-
-      <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addPostModalLabel">Añadir Nueva Publicación</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="nueva-publicacion-form">
-                <div class="mb-3">
-                  <label for="titulo" class="form-label">Título de la Publicación</label>
-                  <input type="text" class="form-control" id="titulo" placeholder="Título">
-                </div>
-                <div class="mb-3">
-                  <label for="descripcion" class="form-label">Descripción</label>
-                  <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imagen" class="form-label">Subir Imagen</label>
-                  <input class="form-control" type="file" id="imagen">
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="agregar-publicacion-btn">Añadir Publicación</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+            
     </main>
     <footer class="text-center">
       <!-- Grid container -->
@@ -222,7 +209,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    <script src="/frontend/js/home.js"></script>
+    <script src="/frontend/js/prueba.js"></script>
     <script src="/frontend/js/fondo.js"></script>
   </body>
 </html>
