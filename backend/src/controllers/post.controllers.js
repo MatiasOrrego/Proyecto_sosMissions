@@ -1,5 +1,5 @@
 import { newConnection } from "../database/db.js";
-import { uploadImage } from "../utils/cludinary.js";
+import { deleteImge, uploadImage } from "../utils/cludinary.js";
 
 export const getAllPosts = async (req, res) => {
     const connection = await newConnection();
@@ -107,4 +107,6 @@ export const deletePost = async (req, res) => {
     res.status(200).json({ msg: 'Publicación eliminada' });
 
     connection.end();
+
+    deleteImge()
 };

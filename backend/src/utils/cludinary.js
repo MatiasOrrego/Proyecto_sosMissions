@@ -16,6 +16,7 @@ export async function uploadImage(filePath) {
         });
 
         console.log('Imagen subida correctamente:', uploadResult.secure_url)
+        console.log(uploadResult)
 
         fs.unlinkSync(filePath);
 
@@ -24,4 +25,8 @@ export async function uploadImage(filePath) {
         console.error('Error al subir la imagen a Cloudinary:', error);
         throw error;
     }
+}
+ 
+export const deleteImge = async (idImage)=>{
+    await cloudinary.uploader.destroy(idImage)
 }
