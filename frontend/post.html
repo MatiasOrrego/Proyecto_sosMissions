@@ -124,25 +124,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    <script>
-        var quill = new Quill('#editor-container', {
-          theme: 'snow',
-          modules: {
-            toolbar: [
-              [{ 'header': [1, 2, false] }],
-              ['bold', 'italic', 'underline'],
-              ['image', 'video'] // Agregar imágenes y videos
-            ]
-          }
-        });
-      
-        document.getElementById('nueva-publicacion-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          var descriptionField = document.getElementById('descripcion');
-          descriptionField.value = quill.root.innerHTML;  // Obtener el contenido en formato HTML
-          this.submit(); // Enviar el formulario
-        });
-      </script>
+    <script src="/frontend/js/post.js"></script>
       
   </body>
 </html>
