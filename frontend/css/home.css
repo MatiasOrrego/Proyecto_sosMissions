@@ -80,7 +80,6 @@ canvas {
   color: rgba(0, 0, 0, 0.938);
   font-weight: bold;
   text-decoration: none;
-  margin-left: 4px;
 }
 
 .nav-item a:hover {
@@ -161,6 +160,11 @@ header.sticky #registerBtn {
   color: black;
 }
 
+#loginBtn{
+  margin-right: 8px;
+}
+
+
 #loginBtn:hover,
 #registerBtn:hover {
   background-color: rgb(224, 224, 224); /* Fondo al pasar el cursor */
@@ -231,13 +235,12 @@ main{
 
 .info_pri{
   height: 40vh;
-  margin-top: 100px;
   border-radius: 20px 20px 0px 0px;
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(255, 255, 255);
 }
 
 .info-primera{
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 
@@ -302,17 +305,49 @@ footer {
 
 .title-container {
   position: absolute;
-  top: 40%; 
+  top: 37%; 
   left: 0;
   right: 0;
   text-align: center;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titulo-cont{
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+}
+
+.imagen-titu {
+  height: 60px;
+  vertical-align: middle; 
+  fill: white; 
+}
+
+.subtitulo-home {
+  color: rgb(219, 219, 219);
+  font-weight: 300;
+  font-size: 24px;
+  display: flex;
+  justify-items: center;
+  cursor: default;
+}
+
+.sub-container{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-width: 400px
 }
 
 .title {
   cursor: default;
   color: white;
-  font-size: 3rem;
+  font-size: 3.7rem;
   padding: 20px;
   font-weight: bold;
 }
