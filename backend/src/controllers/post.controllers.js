@@ -29,39 +29,18 @@ export const getPostById = async (req, res) => {
 
 export const createPost = async (req, res) => {
     const { title, description } = req.body;
-    let image = null;
-    let video = null
-
-    if (req.files?.image) {
-        try {
-            // Sube la imagen usando la ruta temporal proporcionada por `express-fileupload`
-            image = await uploadImage(req.files.image.tempFilePath);
-        } catch (error) {
-            return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
-        }
-    }
-
-    if (req.files?.video) {
-        try {
-            video = await uploadVideo(req.files.video.tempFilePath);
-        } catch (error) {
-            return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
-        }
-    }
 
     const connection = await newConnection();
 
     const [result] = await connection.query(
-        `INSERT INTO post (title, description, image, video) VALUES (?, ?, ?, ?)`,
-        [title, description, image, video]
+        `INSERT INTO post (title, description) VALUES (?, ?)`,
+        [title, description]
     );
 
     res.status(201).json({
         id: result.insertId,
         title,
-        description,
-        image,
-        video
+        description
     });
 
     connection.end();
@@ -118,3 +97,24 @@ export const deletePost = async (req, res) => {
 
     connection.end();
 };
+
+
+    // let image = null;
+    // let video = null
+
+    // if (req.files?.image) {
+    //     try {
+    //         // Sube la imagen usando la ruta temporal proporcionada por `express-fileupload`
+    //         image = await uploadImage(req.files.image.tempFilePath);
+    //     } catch (error) {
+    //         return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
+    //     }
+    // }
+
+    // if (req.files?.video) {
+    //     try {
+    //         video = await uploadVideo(req.files.video.tempFilePath);
+    //     } catch (error) {
+    //         return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
+    //     }
+    // }

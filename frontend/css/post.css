@@ -51,6 +51,7 @@
     background-color: #0056b3;
   }
   
+  
   /* Responsivo */
   @media (max-width: 768px) {
     .contenedor {
@@ -62,4 +63,4 @@
       padding: 12px;
     }
   }
-  
+
