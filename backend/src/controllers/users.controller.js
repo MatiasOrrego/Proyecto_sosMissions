@@ -2,7 +2,7 @@ import { pool } from '../database/db.js';
 import { hashSync, compareSync } from 'bcrypt';
 import { generarJWT } from '../helpers/generarJWT.js';
 
-export const controller = { 
+export const userController = { 
     register: async (req, res) => {
         const { username, contrasenia, email, fecha_registro } = req.body;
 
