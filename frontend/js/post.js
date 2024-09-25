@@ -5,7 +5,8 @@ var quill = new Quill('#editor-container', {
           [{ 'header': [1, 2, false] }],
           ['bold', 'italic', 'underline'],
           [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-          [{ 'align': [] }]
+          [{ 'align': [] }],
+          ['image']
       ]
   }
 });
@@ -31,6 +32,7 @@ document.getElementById('nueva-publicacion-form').addEventListener('submit', fun
   .then(response => response.json())
   .then(data => {
       console.log('Éxito:', data);
+      window.location.href = '/frontend/home.html';
   })
   .catch((error) => {
       console.error('Error:', error);
