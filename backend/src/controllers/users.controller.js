@@ -95,4 +95,4 @@ export const userController = {
     }
 };
 
-export default controller;
+export default userController;

@@ -24,207 +24,109 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">SOSMissions</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-4 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/frontend/home.html">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/frontend/aboutus.html"
-                  >Sobre Nosotros</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/frontend/contact.html"
-                  >Contactos</a
-                >
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Categorías
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="seccion2.html"
-                      >Maniobras de RCP</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="seccion3.html"
-                      >Maniobra de Heimlich</a
-                    >
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="seccion1.html"> Primeros auxilios </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-              <button class="btn btn-outline" type="submit">Buscar</button>
-            </form>
-            <div class="btn-login" id="btn-lr">
-              <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
-              <button class="btn" id="resgisterBtn"><a href="/frontend/registro.html">Registrarse</a></button>
-            </div>
+    <header class="navbar navbar-expand-lg p-3 fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SOSMissions</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/frontend/home.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/frontend/aboutus.html"
+                >Sobre Nosotros</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/frontend/contact.html"
+                >Contactos</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categorías
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="seccion2.html"
+                    >Maniobras de RCP</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="seccion3.html"
+                    >Maniobra de Heimlich</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="seccion1.html"> Primeros auxilios </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input id="search" class="form-control me-2" type="search" aria-label="Search">
+            <button class="btn btn-outline" type="submit">Buscar</button>
+          </form>
+          <div class="btn-login" id="btn-lr">
+            <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
+            <button class="btn" id="registerBtn"><a href="/frontend/registro.html">Registrarse</a></button>
           </div>
         </div>
-      </nav>
-        <div class="row mt-1 imagen-principal">
-          <img class="main-img" src="https://heartsaversinc.com/wp-content/themes/heartsavers/images/newbannercontact.jpg" alt="">
       </div>
-    </header>
+  </header>
+
+  <canvas id="canvas" width="32" height="32"></canvas>
+    
+    <script type= "text/javascript">
+      window.addEventListener("scroll",function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      })
+    </script>
+    
+    <div class="title-container">
+      <h1 class="title">Bienvenido a SOSDoc</h1>
+    </div>
+
+    <div class="box">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <main>
 
+      <article class="info_pri"></article>
+        <section class="info-primera"></section>
+      </article>
+
       
-      <div class="container my-4 text-center">
-        <h3>Tus Publicaciones</h3>
+      <div class="container text-center">
+        <div class="container_titulo"><h3>Tus Publicaciones</h3></div>
         <div id="tus-publicaciones" class="card-group row mx-auto "></div>
       </div>
-    
-      <div class="text-center my-4">
-        <button id="addPostBtn" class="btn btn-primary">
-          <i class="fas fa-plus"></i> Añadir Publicación
-        </button>
-      </div>
 
-      
-
-      <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addPostModalLabel">Añadir Nueva Publicación</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="nueva-publicacion-form">
-                <div class="mb-3">
-                  <label for="titulo" class="form-label">Título de la Publicación</label>
-                  <input type="text" class="form-control" id="titulo" placeholder="Título">
-                </div>
-                <div class="mb-3">
-                  <label for="descripcion" class="form-label">Descripción</label>
-                  <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imagen" class="form-label">Subir Imagen</label>
-                  <input class="form-control" type="file" id="imagen">
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="agregar-publicacion-btn">Añadir Publicación</button>
-            </div>
-          </div>
+        <div class="text-center">
+          <button id="addPostBtn" class="btn btn-primary"><a href="/frontend/post.html">Añadir Publicación</a></button>
         </div>
-      </div>
-
-      <div class="Titulo-publi">
-        <h3 class="titulo1 text-center">Ultimas Publicaciones</h3>
-      </div>
-      <div class="card-group row mx-auto">
-        <div class="card-publi">
-          <img
-            src="/assets/img/asfixia_recien_nacidos.avif"
-            class="card-img-top row mx-auto cardImg"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title-publi">ASFIXIA EN RECIEN NACIDOS</h5>
-            <p class="card-text-publi">
-              Es una complicación que afecta al feto durante el nacimiento en la que por diversas causas no recibe una adecuada oxigenación e irrigación de sus órganos vitales.
-            </p>
-            <a href="seccion3.html" class="card-link">Leer mas</a>
-          </div>
-        </div>
-        <div class="card-publi">
-          <img
-            src="/assets/img/img_accidente.jpg"
-            class="card-img-top cardImg"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title-publi">QUE HACER EN UN ACCIDENTE</h5>
-            <p class="card-text-publi">
-              Los accidentes de tránsito son eventos lamentables que pueden ocurrir en cualquier momento y lugar. Desde pequeñas colisiones hasta siniestros viales más graves.
-            </p>
-            <a href="#" class="card-link">Leer mas</a>
-          </div>
-        </div>
-        <div class="card-publi">
-          <img src="/assets/img/img_enfermera.jpg" class="card-img-top cardImg" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title-publi">CUIDADOS PARA ADULTOS MAYORES</h5>
-            <p class="card-text-publi">
-              Los adultos mayores pueden requerir ayuda para realizar actividades básicas debido al deterioro físico asociado al envejecimiento y las enfermedades propias de esta etapa.
-            </p>
-            <a href="#" class="card-link">Leer mas</a>
-          </div>
-        </div>
-
-
-      </div>
-      <div class="Titulo-categorias">
-        <h3 class="Titulo2 text-center">CATEGORIAS</h3>
-      </div>
-      <div id="miCarrusel" class="carousel slide" data-bs-ride="carousel">
-        <!-- Slides -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/assets/img/imh-maniobras-emergencia.png" class="d-block w-100" alt="Imagen 1">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>MANIOBRAS DE EMERGENCIA</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/img/prevencionaccidentes.jpg" class="d-block w-100" alt="Imagen 2">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>PREVENCION DE ACCIDENTES</h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/assets/img/img-primeros-auxilios.jpg" class="d-block w-100" alt="Imagen 3">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>PRIMEROS AUXILIOS</h5>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Controles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#miCarrusel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#miCarrusel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
+            
     </main>
     <footer class="text-center">
       <!-- Grid container -->
@@ -286,6 +188,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    <script src="/frontend/js/home.js"></script>
+    <script src="/frontend/js/prueba.js"></script>
+    <script src="/frontend/js/fondo.js"></script>
   </body>
 </html>

@@ -2,17 +2,17 @@ import { Router } from 'express';
 export const router = Router();
 
 import {
-    getAllPost,
+    getAllPosts,
     getPostById,
     createPost,
     updatePost,
     deletePost
 } from '../controllers/post.controllers.js';
 
-postRouter.get('/post', getAllPost);
-postRouter.get('/post', getPostById);
-postRouter.post('/post', createPost);
-postRouter.put('/post', updatePost);
-postRouter.delete('/post', deletePost)
+router.get('/post', getAllPosts);
+router.get('/post/:id', getPostById);
+router.post('/post', createPost);
+router.put('/post/:id', updatePost);
+router.delete('/post/:id', deletePost);
 
 app.use(errorHandler);
