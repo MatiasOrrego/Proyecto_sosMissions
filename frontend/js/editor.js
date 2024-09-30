@@ -24,7 +24,8 @@ document.getElementById('nueva-publicacion-form').addEventListener('submit', fun
       headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ title, description })
+      body: JSON.stringify({ title, description }),
+      credentials: "include"
   })
   .then(response => response.json())
   .then(data => {

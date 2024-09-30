@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Hacer una solicitud para obtener las publicaciones
-    fetch('http://localhost:3000/post')
+    fetch('http://localhost:3000/post', {credentials: "include"})
         .then(response => response.json())
         .then(data => {
             const contenedorPublicaciones = document.querySelector('.card-group');
