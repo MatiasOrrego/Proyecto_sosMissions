@@ -23,9 +23,9 @@ export const getCommentByIdCtrl = async (req, res) => {
 
 export const createCommentCtrl = async (req, res) => {
   const userId = req.user.id;
-  const { title, description, postId } = req.body;
+  const { text, postId } = req.body;
 
-  const comment = await createComment(title, description, userId, postId);
+  const comment = await createComment(userId, postId, text);
 
   res.status(201).json(comment);
 };
