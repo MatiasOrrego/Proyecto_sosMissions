@@ -5,30 +5,15 @@ const showAlert = (message, type) => {
     alertPlaceholder.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`;
 };
 
-// Verificar si el usuario ya está autenticado al cargar la página
-(async () => {
-    try {
-        const response = await fetch("http://localhost:3000/auth/me", {
-            credentials: "include"
-        });
-
-        if (response.ok) {
-            // Si está autenticado, redirigir
-            window.location.href = '/frontend/home.html';
-        }
-    } catch (error) {
-        console.error('Error al verificar la sesión:', error);
-    }
-})();
-
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(loginForm);
     const entries = Object.fromEntries(formData.entries());
 
-    const username = document.getElementById('username');
-    const contrasenia = document.getElementById('password');
+    // Verifica si los campos están vacíos
+    const username = entries.username;
+    const contrasenia = entries.password;
 
     if (!username || !contrasenia) {
         showAlert('Por favor, completa todos los campos.', 'danger');
@@ -36,19 +21,21 @@ loginForm.addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/auth/sign-in', {
-            method: 'POST',
+        const response = await fetch("http://localhost:3000/auth/sign-in", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(entries),
-            credentials: "include"
+            credentials: "include", 
         });
 
         const respuesta = await response.json();
 
+        console.log(respuesta);
+
         if (!response.ok) {
-            showAlert(respuesta.msg || 'Error al iniciar sesión', 'danger');
+            showAlert(respuesta.message || 'Error al iniciar sesión', 'danger');
         } else {
             showAlert(respuesta.msg || 'Inicio de sesión exitoso', 'success');
 

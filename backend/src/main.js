@@ -11,15 +11,15 @@ import { commentRouter } from './routes/comments.routes.js';
 const app = express();
 
 // Middlewares
+app.use(morgan('dev'));
 app.use(
   cors({
     origin: "http://127.0.0.1:5500",
     credentials: true,
-  }),
+  })
 );
 app.use(helmet())
 app.use(cookieParser())
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(
@@ -35,7 +35,7 @@ app.use((err, _req, res, _next) => {
 });
 
 // Rutas
-app.use('/auth', authRouter);
+app.use("/auth", authRouter);
 app.use('/post', postRouter);
 app.use('/comment', commentRouter);
 

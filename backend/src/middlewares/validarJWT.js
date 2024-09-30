@@ -1,4 +1,3 @@
-import { SECRET_KEY } from "../../config/config.js";
 import { getUserById } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 
@@ -10,7 +9,7 @@ export const validateJwt = async (req, res, next) => {
   }
 
   try {
-    const { userId } = jwt.verify(token, SECRET_KEY);
+    const { userId } = jwt.verify(token, "secret");
 
     // Se obtiene el usuario por su id
     const user = await getUserById(userId);
