@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { addComment, getCommentsByPost, getAllComments } from '../controllers/comments.controllers.js';
+import { getAllCommentsCtrl, getCommentByIdCtrl, createCommentCtrl, deleteCommentCtrl } from '../controllers/comments.controllers.js';
+import { validateJwt } from '../middlewares/validarJWT.js';
 
-export const commentRouter = Router();
-commentRouter.get('/comments', getAllComments);
+const commentRouter = Router();
 
+commentRouter.get('/', validateJwt, getAllCommentsCtrl);
+commentRouter.post('/', validateJwt, createCommentCtrl);
+commentRouter.get('/', validateJwt, getCommentByIdCtrl);
+commentRouter.delete('/:id', validateJwt, deleteCommentCtrl)
 
-// Ruta para agregar un comentario a una publicación
-commentRouter.post('/comments', addComment);
-
-// Ruta para obtener los comentarios de una publicación específica
-commentRouter.get('/comments/:postId', getCommentsByPost);
+export { commentRouter }

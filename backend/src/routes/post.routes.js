@@ -1,16 +1,18 @@
 import { Router } from 'express';
-export const postRouter = Router();
+import { validateJwt } from '../middlewares/validarJWT.js';
 
 import {
-    getAllPosts,
-    getPostById,
-    createPost,
-    updatePost,
-    deletePost
+    getAllPostsCtrl,
+    getPostByIdCtrl,
+    createPostCtrl,
+    deletePostCtrl
 } from '../controllers/post.controllers.js';
 
-postRouter.get('/post', getAllPosts);
-postRouter.get('/post', getPostById);
-postRouter.post('/post', createPost);
-postRouter.put('/post', updatePost);
-postRouter.delete('/post', deletePost)
+const postRouter = Router();
+
+postRouter.get('/', validateJwt, getAllPostsCtrl);
+postRouter.get('/:id', validateJwt, getPostByIdCtrl);
+postRouter.post('/', validateJwt, createPostCtrl);
+postRouter.delete('/:id', validateJwt, deletePostCtrl);
+
+export { postRouter };

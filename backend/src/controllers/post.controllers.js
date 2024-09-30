@@ -1,120 +1,62 @@
-import { newConnection } from "../database/db.js";
-import { uploadImage, uploadVideo } from "../utils/cludinary.js";
+import { createPost, deletePostById, getPosts } from '../models/post.model.js';
 
-export const getAllPosts = async (req, res) => {
-    const connection = await newConnection();
+export const getAllPostsCtrl = async (req, res) => {
+  const userId = req.user.id;
+  const post = await getPosts(userId);
 
-    const [result] = await connection.query(`SELECT * FROM post`);
-
-    res.json(result);
-
-    connection.end();
+  res.status(200).json(post);
 };
 
-export const getPostById = async (req, res) => {
-    const id = parseInt(req.params.id);
+export const getPostByIdCtrl = async (req, res) => {
+  const { id } = req.params;
+  const { user } = req;
 
-    const connection = await newConnection();
+  const post = await getOrderById(id, user.id);
 
-    const [result] = await connection.query(`SELECT * FROM post WHERE id = ?`, [id]);
+  if (!post) {
+    return res.status(404).json({ message: 'Publicación no encontrada' });
+  }
 
-    if (result.length === 0) {
-        return res.status(404).json({ msg: 'Publicación no encontrada' });
-    }
-
-    res.status(200).json(result[0]);
-
-    connection.end();
+  res.status(200).json(post);
 };
 
-export const createPost = async (req, res) => {
-    const { title, description } = req.body;
+export const createPostCtrl = async (req, res) => {
+  const userId = req.user.id;
+  const { title, description } = req.body;
 
-    const connection = await newConnection();
+  const post = await createPost(title, description, userId);
 
-    const [result] = await connection.query(
-        `INSERT INTO post (title, description) VALUES (?, ?)`,
-        [title, description]
-    );
-
-    res.status(201).json({
-        id: result.insertId,
-        title,
-        description
-    });
-
-    connection.end();
+  res.status(201).json(post);
 };
 
-export const updatePost = async (req, res) => {
-    const id = parseInt(req.params.id);
-    const { title, description } = req.body;
-    let image = req.body.image;  // Mantener la imagen actual si no se cambia
+export const deletePostCtrl = async (req, res) => {
+  const { id } = req.params
+  const { user } = req;
 
-    if (req.files?.image) {
-        // Subir la nueva imagen a Cloudinary
-        const result = await uploadImage(req.files.image.tempFilePath);
-        image = result.secure_url;
-    }
+  const deletePost = await deletePostById(id, user.id);
 
-    const connection = await newConnection();
-
-    const [result] = await connection.query(`SELECT * FROM post WHERE id = ?`, [id]);
-
-    if (result.length === 0) {
-        return res.status(404).json({ msg: 'Publicación no encontrada' });
-    }
-
-    await connection.query(
-        `UPDATE post SET title = ?, description = ?, image = ? WHERE id = ?`,
-        [title, description, image, id]
-    );
-
-    res.status(200).json({
-        id,
-        title,
-        description,
-        image
-    });
-
-    connection.end();
+  if (!deletePost) {
+    return res.status(404).json({ message: 'Order not found' })
+  }
+  res.status(204).send()
 };
 
-export const deletePost = async (req, res) => {
-    const id = parseInt(req.params.id);
+// let image = null;
+// let video = null
 
-    const connection = await newConnection();
+// if (req.files?.image) {
+//     try {
+//         // Sube la imagen usando la ruta temporal proporcionada por `express-fileupload`
+//         image = await uploadImage(req.files.image.tempFilePath);
+//     } catch (error) {
+//         return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
+//     }
+// }
 
-    const [result] = await connection.query('SELECT * FROM post WHERE id = ?', [id]);
-
-    if (result.length === 0) {
-        return res.status(404).json({ msg: 'Publicación no encontrada' });
-    }
-
-    await connection.query(`DELETE FROM post WHERE id = ?`, [id]);
-
-    res.status(200).json({ msg: 'Publicación eliminada' });
-
-    connection.end();
-};
-
-
-    // let image = null;
-    // let video = null
-
-    // if (req.files?.image) {
-    //     try {
-    //         // Sube la imagen usando la ruta temporal proporcionada por `express-fileupload`
-    //         image = await uploadImage(req.files.image.tempFilePath);
-    //     } catch (error) {
-    //         return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
-    //     }
-    // }
-
-    // if (req.files?.video) {
-    //     try {
-    //         video = await uploadVideo(req.files.video.tempFilePath);
-    //     } catch (error) {
-    //         return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
-    //     }
-    // }
+// if (req.files?.video) {
+//     try {
+//         video = await uploadVideo(req.files.video.tempFilePath);
+//     } catch (error) {
+//         return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
+//     }
+// }
