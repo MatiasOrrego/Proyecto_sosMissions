@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import session from 'express-session';
 import { userRouter } from './routes/users.routes.js';
+import { medicRouter } from './routes/medics.routes.js';
 import { errorHandler } from './middleware/error.js';
 
 const app = express();
@@ -21,8 +22,8 @@ app.use(session({
 })); 
 app.use(morgan('dev'));
 app.use(json());
-app.use('/', userRouter);
-
+app.use('/', userRouter,);
+app.use('/medics', medicRouter);
 // Middleware para errores
 app.use(errorHandler);
 
