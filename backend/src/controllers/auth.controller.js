@@ -15,7 +15,7 @@ export const signInCtrl = async (req, res) => {
 
     res.cookie("token", token, { httpOnly: true });
 
-    res.status(200).json({ token, user });
+    res.status(200).json({ token, user, msg: 'Inicio de sesión exitoso'});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -31,7 +31,8 @@ export const signUpCtrl = async (req, res) => {
 
     res.cookie('token', token), { httpOnly: true }
 
-    res.status(201).json({ token, user: newUser })
+
+    res.status(201).json({ token, user: newUser, msg: 'Registrado correctamente' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

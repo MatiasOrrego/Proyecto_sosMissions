@@ -1,32 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('token');
-    const btnLoginRegister = document.getElementById('btn-lr');
-    
-    if (token) {
-        btnLoginRegister.innerHTML = `<a href='' id='logout'>Cerrar Sesión</a>`;
-
-        document.getElementById('logout').addEventListener('click', (event) => {
-            event.preventDefault();
-            localStorage.removeItem('token');
-            window.location.reload();
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    fetch('http://localhost:3000/post')
-        .then(response => response.json())
-        .then(data => {
-            const contenedorPublicaciones = document.querySelector('.card-group');
-            data.forEach(post => {
-                crearNuevaPublicacion(post.title, post.description, post.image, post.video);
-            });
-        })
-        .catch(error => {
-            console.error('Error al obtener las publicaciones:', error);
-        });
-})
-
 function showAlert(message, type = 'danger') {
     alertPlaceholder.innerHTML = `
         <div class="alert alert-${type}" role="alert">

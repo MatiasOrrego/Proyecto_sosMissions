@@ -1,15 +1,34 @@
-const form = document.getElementById('form');
+const loginForm = document.getElementById('login-form');
 
 const showAlert = (message, type) => {
     const alertPlaceholder = document.getElementById('alertPlaceholder');
     alertPlaceholder.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`;
 };
 
-const login = async (e) => {
+// Verificar si el usuario ya está autenticado al cargar la página
+(async () => {
+    try {
+        const response = await fetch("http://localhost:3000/auth/me", {
+            credentials: "include"
+        });
+
+        if (response.ok) {
+            // Si está autenticado, redirigir
+            window.location.href = '/frontend/home.html';
+        }
+    } catch (error) {
+        console.error('Error al verificar la sesión:', error);
+    }
+})();
+
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const contrasenia = document.getElementById('password').value;
+    const formData = new FormData(loginForm);
+    const entries = Object.fromEntries(formData.entries());
+
+    const username = document.getElementById('username');
+    const contrasenia = document.getElementById('password');
 
     if (!username || !contrasenia) {
         showAlert('Por favor, completa todos los campos.', 'danger');
@@ -17,22 +36,21 @@ const login = async (e) => {
     }
 
     try {
-        const peticion = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://localhost:3000/auth/sign-in', {
             method: 'POST',
-            body: JSON.stringify({ username, contrasenia }),
             headers: {
-                'Content-type': 'application/json'
-            }
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entries),
+            credentials: "include"
         });
 
-        const respuesta = await peticion.json();
+        const respuesta = await response.json();
 
-        if (!peticion.ok) {
-            showAlert(respuesta.msg, 'danger');
+        if (!response.ok) {
+            showAlert(respuesta.msg || 'Error al iniciar sesión', 'danger');
         } else {
-            showAlert(respuesta.msg, 'success');
-
-            localStorage.setItem('token', respuesta.token);
+            showAlert(respuesta.msg || 'Inicio de sesión exitoso', 'success');
 
             setTimeout(() => {
                 window.location.href = '/frontend/home.html';
@@ -41,6 +59,4 @@ const login = async (e) => {
     } catch (error) {
         showAlert('Ocurrió un error. Inténtalo nuevamente.', 'danger');
     }
-}
-
-form.addEventListener('submit', login);
+});
