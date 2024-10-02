@@ -1,4 +1,4 @@
-import { pool } from "../database/db.js";
+import { conn } from "../database/db.js";
 import { authMiddleware } from "../middleware/user.authen.js";
 import { authorizeRoles } from "../middleware/user.authorize.js";
 import { validationResult } from "express-validator";
@@ -6,7 +6,7 @@ import { validatePost } from "./validate.post.js";
 
 export const getAllPosts = [authMiddleware, authorizeRoles, async (req, res) => {
     try {
-        const connection = await pool();
+        const connection = await conn();
         const [result] = await connection.query(`SELECT * FROM posts`);
         res.json(result);
         connection.end();
@@ -18,7 +18,7 @@ export const getAllPosts = [authMiddleware, authorizeRoles, async (req, res) => 
 export const getPostById = [authMiddleware, authorizeRoles, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const connection = await pool();
+        const connection = await conn();
         const [result] = await connection.query(`SELECT * FROM posts WHERE id = ?`, [id]);
         if (result.length === 0) {
             connection.end();
@@ -39,7 +39,7 @@ export const createPost = [authMiddleware, authorizeRoles, validatePost, async (
 
     try {
         const { title, description, image } = req.body;
-        const connection = await pool();
+        const connection = await conn();
         const [result] = await connection.query(`INSERT INTO posts (title, description, image) VALUES (?, ?, ?)`, [title, description, image]);
         res.status(201).json({
             id: result.insertId,
@@ -57,7 +57,7 @@ export const updatePost = [authMiddleware, authorizeRoles, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const { title, description, image } = req.body;
-        const connection = await pool();
+        const connection = await conn();
         const [result] = await connection.query(`SELECT * FROM posts WHERE id = ?`, [id]);
 
         if (result.length === 0) {
@@ -81,7 +81,7 @@ export const updatePost = [authMiddleware, authorizeRoles, async (req, res) => {
 export const deletePost = [authMiddleware, authorizeRoles, async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const connection = await pool();
+        const connection = await conn();
         const [result] = await connection.query('SELECT * FROM posts WHERE id = ?', [id]);
 
         if (result.length === 0) {

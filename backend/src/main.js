@@ -15,6 +15,10 @@ const app = express();
 
 // Middlewares
 app.use(cors());
+app.use(helmet());
+app.use(cookieParser());
+app.use(fileupload());
+
 app.use(session({
     secret: 'mi_secreto',
     resave: false,
@@ -27,7 +31,9 @@ app.use(session({
 })); 
 app.use(morgan('dev'));
 app.use(json());
-app.use('/', userRouter,);
+app.use('/auth', authRouter);
+app.use('/posts', postRouter);
+app.use('/comments', commentRouter);
 app.use('/medics', medicRouter);
 // Middleware para errores
 app.use(errorHandler);

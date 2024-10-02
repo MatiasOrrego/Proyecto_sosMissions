@@ -1,5 +1,7 @@
-import { Router } from 'express';
+import { postRouter } from 'express';
 import { validateJwt } from '../middlewares/validarJWT.js';
+
+
 
 import {
     getAllPosts,
@@ -9,10 +11,12 @@ import {
     deletePost
 } from '../controllers/post.controllers.js';
 
-router.get('/post', getAllPosts);
-router.get('/post/:id', getPostById);
-router.post('/post', createPost);
-router.put('/post/:id', updatePost);
-router.delete('/post/:id', deletePost);
+postRouter.get('/post', getAllPosts);
+postRouter.get('/post/:id', getPostById);
+postRouter.post('/post', createPost);
+postRouter.put('/post/:id', updatePost);
+postRouter.delete('/post/:id', deletePost);
+
+export { postRouter };
 
 app.use(errorHandler);

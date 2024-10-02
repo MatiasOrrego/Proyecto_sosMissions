@@ -1,13 +1,13 @@
-import { pool } from "../database/db";
-import { hashSync, compareSync } from "bcrypt";
-import { generarJWT } from "../helpers/generarJWT";
+import { conn } from '../database/db.js';
+import { hashSync, compareSync } from 'bcrypt';
+import { createJwt } from '../helpers/createJwt.js';
 
 export const medicController = {
     register: async (req, res) => {
         const { username, contrasenia, email, fecha_registro } = req.body;
 
         try {
-            const connection = await pool();
+            const connection = await conn();
 
             const verificarMedico = 'SELECT * FROM medicos WHERE username = ? LIMIT 1';
             const [medicoExists] = await connection.query(verificarMedico, [username]);
@@ -38,7 +38,7 @@ export const medicController = {
         const { username, contrasenia } = req.body;
 
         try {
-            const connection = await pool();
+            const connection = await conn();
 
             const sql = 'SELECT * FROM medicos WHERE username = ? LIMIT 1';
             const [buscarMedico] = await connection.query(sql, [username]);
@@ -61,7 +61,7 @@ export const medicController = {
 
             req.session.id_medico = buscarMedico[0].id_medico;
 
-            const token = await generarJWT({ id_medico: buscarMedico[0].id_medico });
+            const token = await createJwt({ id_medico: buscarMedico[0].id_medico });
             connection.end();
             return res.json({
                 msg: 'Inicio de sesión exitoso',
@@ -76,8 +76,8 @@ export const medicController = {
     session: async (req, res) => {
         if (req.session.id_medico) {
             try {
-                const connection = await pool();
-                const [rows] = await connection.query('SELECT id_medico, username FROM medicos WHERE id_medico = ?', [req.session.id_medico]);
+                const connection = await conn();
+                const [rows] = await connection.query('SELECT id_usuario, username FROM usuarios WHERE id_usuario = ?', [req.session.id_medico]);
 
                 if (rows.length > 0) {
                     const medicos = rows[0];
