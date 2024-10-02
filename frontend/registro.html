@@ -7,53 +7,88 @@
 
         <!-- Bootstrap CSS v5.3.2 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+        <link rel="stylesheet" href="/frontend//css/navbar.css">
         <link rel="stylesheet" href="/frontend/css/registro.css">
         <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">SOSMissions</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-4 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/home.html">Inicio</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/aboutus.html">Sobre Nosotros</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/contact.html">Contactos</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Categorías
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Maniobras de emergencias</a></li>
-                          <li><a class="dropdown-item" href="#">Prevencion en accidentes</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#"> Primeros auxilios
-                          </a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn btn-outline" type="submit" id="search">Buscar</button>
-                      </form>
-                      <div class="btn-login" id="btn-lr">
-                        <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
-                        <button class="btn" id="resgisterBtn"><a href="/frontend/registro.html">Registrarse</a></button>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-        </header>
+      <header class="navbar navbar-expand-lg p-3 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">SOSMissions</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/home.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/aboutus.html"
+                  >Sobre Nosotros</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/contact.html"
+                  >Contactos</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categorías
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="seccion2.html"
+                      >Maniobras de RCP</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="seccion3.html"
+                      >Maniobra de Heimlich</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="seccion1.html"> Primeros auxilios </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input id="search" class="form-control me-2" type="search" aria-label="Search">
+              <button class="btn btn-outline" type="submit">Buscar</button>
+            </form>
+            <div class="btn-login" id="btn-lr">
+              <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
+              <button class="btn" id="registerBtn"><a href="/frontend/registro.html">Registrarse</a></button>
+            </div>
+          </div>
+        </div>
+    </header>
+    
+        <script type= "text/javascript">
+          window.addEventListener("scroll",function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+          })
+        </script>
+        <main>
+  
 
 
         <main>
@@ -61,33 +96,33 @@
           
             <div class="formulario container d-flex flex-column align-items-center">
                 <h1 class="titulo text-center">Registrarse</h1>
-                <form class="w-100" id="registrarFormulario">
+                <form class="w-100" id="register-form">
                   <div class="row">
                     <div class="mb-3 col-6 col-md-6 mx-auto">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Juan">
+                    <input type="text" class="form-control" id="name" placeholder="Juan" name="name">
                   </div>
                   <div class="mb-3 col-6 col-md-6 mx-auto">
                     <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" placeholder="Pérez">
+                    <input type="text" class="form-control" id="lastname" placeholder="Pérez" name="lastname">
                   </div>
                   </div>
 
                   <div class="row">
                     <div class="mb-3 col-6 col-md-6 mx-auto">
                     <label for="username" class="form-label">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="username" placeholder="juan123">
+                    <input type="text" class="form-control" id="username" placeholder="juan123" name="username">
                   </div>
                   <div class="mb-3 col-6 col-md-6 mx-auto">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="ejemplo@gmail.com">
+                    <input type="email" class="form-control" id="email" placeholder="ejemplo@gmail.com" name="email">
                   </div>
                   </div>
 
                   <div class="row">
                     <div class="mb-3 col-6 col-md-6 mx-auto">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" id="password" name="password">
                   </div>
                   <div class="mb-3 col-6 col-md-6 mx-auto">
                     <label for="passwordConfirm" class="form-label">Confirmar Contraseña</label>
@@ -157,6 +192,5 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
         <script src="/frontend/js/registro.js"></script>
-        <script src="/frontend/js/home.js"></script>
     </body>
 </html>

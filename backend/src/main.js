@@ -1,8 +1,13 @@
-import express, { json } from 'express';
+import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import session from 'express-session';
-import { userRouter } from './routes/users.routes.js';
+import fileupload from 'express-fileupload';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
+import { authRouter } from './routes/auth.routes.js';
+import { postRouter } from './routes/post.routes.js';
+import { commentRouter } from './routes/comments.routes.js';
 import { medicRouter } from './routes/medics.routes.js';
 import { errorHandler } from './middleware/error.js';
 
@@ -28,5 +33,5 @@ app.use('/medics', medicRouter);
 app.use(errorHandler);
 
 app.listen(3000, () => {
-    console.log('Servidor iniciado');
+  console.log('Servidor iniciado en el puerto 3000');
 });

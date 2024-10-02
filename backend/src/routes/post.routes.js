@@ -1,5 +1,5 @@
 import { Router } from 'express';
-export const router = Router();
+import { validateJwt } from '../middlewares/validarJWT.js';
 
 import {
     getAllPosts,
