@@ -1,6 +1,5 @@
 import { createComment, deleteCommentById, getCommentById, getComments } from "../models/comments.js";
 
-
 export const getAllCommentsCtrl = async (req, res) => {
   const userId = req.user.id;
   const comment = await getComments(userId);
@@ -9,25 +8,35 @@ export const getAllCommentsCtrl = async (req, res) => {
 };
 
 export const getCommentByIdCtrl = async (req, res) => {
-  const { id } = req.params;
-  const { user } = req;
+  const { postId } = req.params;
 
-  const comment = await getCommentById(id, user.id);
+  try {
+    const comments = await getComments(postId);
+    
+    if (!comments) {
+      return res.status(404).json({ message: "Comentario no encontrado" });
+    }
+    
 
-  if (!comment) {
-    return res.status(404).json({ message: 'Comentario no encontrado' });
+    res.status(200).json(comments);
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: "Error al obtener comentarios", error });
   }
-
-  res.status(200).json(comment);
 };
 
 export const createCommentCtrl = async (req, res) => {
   const userId = req.user.id;
-  const { text, postId } = req.body;
+  const { text } = req.body;
+  const { postId } = req.params;
 
-  const comment = await createComment(userId, postId, text);
-
-  res.status(201).json(comment);
+  try {
+    const comment = await createComment(userId, postId, text);
+    res.status(201).json(comment);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al crear el comentario", error });
+  }
 };
 
 export const deleteCommentCtrl = async (req, res) => {

@@ -37,7 +37,7 @@ app.use((err, _req, res, _next) => {
 // Rutas
 app.use("/auth", authRouter);
 app.use('/post', postRouter);
-app.use('/comment', commentRouter);
+app.use(commentRouter);
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en el puerto 3000');

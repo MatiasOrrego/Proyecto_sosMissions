@@ -4,9 +4,9 @@ import { validateJwt } from '../middlewares/validarJWT.js';
 
 const commentRouter = Router();
 
-commentRouter.get('/', validateJwt, getAllCommentsCtrl);
-commentRouter.post('/', validateJwt, createCommentCtrl);
-commentRouter.get('/:id', validateJwt, getCommentByIdCtrl);
-commentRouter.delete('/:id', validateJwt, deleteCommentCtrl)
+commentRouter.get('/comment', getAllCommentsCtrl);
+commentRouter.post('/post/:postId/comment', validateJwt, createCommentCtrl);
+commentRouter.get('/post/:postId/comment', getCommentByIdCtrl);
+commentRouter.delete('comment/:id', validateJwt, deleteCommentCtrl)
 
 export { commentRouter }

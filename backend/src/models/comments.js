@@ -6,13 +6,14 @@ const [result] = await conn.query(`INSERT INTO comments (userId, postId, text, f
 return { id: result.insertId, userId, postId, text, fecha_comentario }
 };
 
-export const getComments = async (userId) => {
-  const [result] = await conn.query(`SELECT * FROM comments WHERE userId = ?`, [userId]);
+export const getComments = async (postId) => {
+  const [result] = await conn.query(`SELECT * FROM comments WHERE postId = ?`, [postId]);
   return result
 };
 
-export const getCommentById = async (id, userId) => {
-  const [result] = await conn.query(`SELECT * FROM comments WHERE id = ? AND userId = ?`, [id, userId])
+export const getCommentById = async (id, postId) => {
+  const [result] = await conn.query(`SELECT * FROM comments WHERE id = ? AND postId = ?`, [id, postId])
+  console.log(result)
   return result[0] || null;
 };
 
