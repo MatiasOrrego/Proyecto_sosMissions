@@ -19,6 +19,7 @@ const cargarComentarios = async (postId) => {
           const commentElement = document.createElement('div');
           commentElement.classList.add('comment');
           commentElement.innerHTML = `
+
               <p>${comment.text}</p>
               <small>Publicado el: ${new Date(comment.fecha_comentario).toLocaleDateString()}</small>
           `;
