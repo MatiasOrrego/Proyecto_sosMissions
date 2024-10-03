@@ -25,7 +25,7 @@ canvas {
 main{
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: 120vh;
 }
 
 .formulario {
@@ -149,6 +149,32 @@ color: black;
 width: fit-content;
 text-decoration: underline;
 }
+
+
+header.sticky {
+    padding: 5px 100px;
+    background: transparent;
+    pointer-events: none; /* Desactiva la interacción */
+}
+
+header.sticky .navbar-brand,
+header.sticky .nav-link,
+header.sticky .btn,
+header.sticky #loginBtn,
+header.sticky #registerBtn,
+header.sticky #loginBtn a,
+header.sticky #registerBtn a{
+    color: transparent; /* Hace el contenido invisible */
+    transition: 0.2s ease;
+    background-color: transparent;
+    color: transparent;
+}
+
+header.sticky .nav-item:hover,
+header.sticky .btn:hover {
+    background-color: transparent; /* Elimina el fondo de los elementos interactivos */
+}
+
 
 .form-control{
     background-color: white;

@@ -146,58 +146,28 @@ width: fit-content;
 text-decoration: underline;
 }
 
-header.sticky .nav-item a:hover {
-    color: white;
-    transition: color 0.3s ease;
-}
-
-header.sticky .navbar-brand{
-    margin-right: 115px;
-}
-
-header.sticky .nav-link:hover,
-header.sticky .btn:hover,
-header.sticky #registerBtn a,
-header.sticky #loginBtn a {
-    color: white;
-    transition: color 0.3s ease;
-}
-
 header.sticky {
     padding: 5px 100px;
-    background: #ffffff;
+    background: transparent;
+    pointer-events: none; /* Desactiva la interacción */
 }
 
 header.sticky .navbar-brand,
 header.sticky .nav-link,
 header.sticky .btn,
-header.sticky #registerBtn {
-    color: rgb(0, 0, 0);
-    transition: 0.6s;
+header.sticky #loginBtn,
+header.sticky #registerBtn,
+header.sticky #loginBtn a,
+header.sticky #registerBtn a{
+    color: transparent; /* Hace el contenido invisible */
+    transition: 0.2s ease;
+    background-color: transparent;
+    color: transparent;
 }
 
-header.sticky #loginBtn, 
-header.sticky #registerBtn {
-    background-color: rgb(184, 9, 9); /* Fondo cuando el header es sticky */
-    color: white; /* Color del texto cuando el header es sticky */
-    transition: 0.20s ease;
-}
-
-header.sticky #loginBtn:hover,
-header.sticky #registerBtn:hover {
-    background-color: rgb(228, 3, 3); /* Fondo al pasar el cursor cuando el header es sticky */
-    color: white; /* Color del texto al pasar el cursor cuando el header es sticky */
-}
-
-header.sticky .btn{
-    pointer-events: all;
-}
-
-header.sticky .form-control {
-    background-color: white;
-    border-radius: 100px;
-    color: black;
-    cursor: auto;
+header.sticky .nav-item:hover,
+header.sticky .btn:hover {
+    background-color: transparent; /* Elimina el fondo de los elementos interactivos */
 }
 
 .form-control{

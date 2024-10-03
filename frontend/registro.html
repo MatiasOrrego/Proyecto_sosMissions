@@ -75,6 +75,13 @@
         </div>
     </header>
 
+    <script type= "text/javascript">
+      window.addEventListener("scroll",function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      })
+    </script>
+
         <main>
           <canvas id="canvas" width="32" height="32"></canvas>
             <div class="formulario container d-flex flex-column align-items-center">

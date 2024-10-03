@@ -235,7 +235,7 @@ main{
 
 .seccion-primera{
   /* background: linear-gradient(180deg, white, rgb(255, 238, 238), rgb(255, 65, 65), rgb(167, 0, 0), rgb(138, 0, 0), rgb(34, 0, 0)); */
-  height: 130vh;
+  height: 150vh;
   border-radius: 20px 20px 0px 0px;
   background-color: rgb(255, 255, 255);
   padding-top: 20px;
@@ -244,7 +244,7 @@ main{
 .seccion-segunda{
   margin-top: -18px;
   border-radius: 20px;
-  height: 100vh;
+  height: 137vh;
   background: radial-gradient(circle, rgba(3,12,21,1) 27%, rgba(116,6,32,1) 73%, rgba(228,1,46,1) 93%, rgba(255,0,47,1) 99%);
 }
 
@@ -257,7 +257,8 @@ main{
 
 .seccion-primera .card{
   border-radius: 30px;
-  background: linear-gradient(0deg, rgba(3,12,21,1) 10%, rgba(116,6,32,1) 40%, rgba(228,1,46,1) 93%, rgba(3,12,21,1) 99%);
+  /* background: linear-gradient(0deg, rgba(3,12,21,1) 10%, rgba(116,6,32,1) 40%, rgba(228,1,46,1) 93%, rgba(3,12,21,1) 99%); */
+  background-color: rgba(3,12,21,1);
 }
 
 .seccion-primera .card-img-top{
