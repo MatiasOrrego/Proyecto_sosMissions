@@ -388,6 +388,28 @@ footer {
   max-width: 400px
 }
 
+.card-publi {
+  border-radius: 30px;
+  background-color: white;
+  transition: transform 0.3s ease;
+  max-width: 400px;
+  box-shadow: 0 0 22px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-publi img {
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 10px;
+  height: 300px;
+}
+
+.card-text-publi{
+  margin-top: 10px;
+}
+
+.card-publi:hover {
+  transform: scale(1.05);
+}
+
 .title {
   cursor: default;
   color: white;
