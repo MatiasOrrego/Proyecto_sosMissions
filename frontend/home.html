@@ -16,6 +16,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/frontend/css/home.css" />
+    <link rel="stylesheet" href="/frontend//css/comment.css">
     <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png">
     <link rel="stylesheet" href="/frontend/css/comment.css">
     <script
@@ -26,75 +27,75 @@
 
   <body>
     <header class="navbar navbar-expand-lg p-3 fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">SOSMissions</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-4 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/frontend/home.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/frontend/aboutus.html"
-                >Sobre Nosotros</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/frontend/contact.html"
-                >Contactos</a
-              >
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Categorías
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="seccion2.html"
-                    >Maniobras de RCP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="seccion3.html"
-                    >Maniobra de Heimlich</a
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="seccion1.html"> Primeros auxilios </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input id="search" class="form-control me-2" type="search" aria-label="Search">
-            <button class="btn btn-outline" type="submit">Buscar</button>
-          </form>
-          <div class="btn-login" id="btn-lr">
-            <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
-            <button class="btn" id="registerBtn"><a href="/frontend/registro.html">Registrarse</a></button>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="home.html">SOSDoc</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/home.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/aboutus.html"
+                  >Sobre Nosotros</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/frontend/contact.html"
+                  >Contactos</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categorías
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="seccion2.html"
+                      >Maniobras de RCP</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="seccion3.html"
+                      >Maniobra de Heimlich</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="seccion1.html"> Primeros auxilios </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" aria-label="Search">
+              <button class="btn btn-outline" type="submit">Buscar</button>
+            </form>
+            <div class="btn-login" id="btn-lr">
+              <button class="btn" id="loginBtn"> <a href="/frontend/sesion.html">Iniciar Sesión</a></button>
+              <button class="btn" id="registerBtn"><a href="/frontend/registro.html">Registrarse</a></button>
+            </div>
           </div>
         </div>
-      </div>
-  </header>
+    </header>
 
-  <canvas id="canvas" width="32" height="32"></canvas>
+    <canvas id="canvas" width="32" height="32"></canvas>
     
     <script type= "text/javascript">
       window.addEventListener("scroll",function(){
@@ -104,7 +105,16 @@
     </script>
     
     <div class="title-container">
-      <h1 class="title">Bienvenido a SOSDoc</h1>
+      <div class = "titulo-cont">
+      <h1 class="title"><svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 15px;" class="imagen-titu" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+      </svg>Saber actuar es salvar vidas <svg xmlns="http://www.w3.org/2000/svg" class="imagen-titu" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+      </svg></h1>
+      </div>
+      <div class="sub-container">
+      <p class = "subtitulo-home">Conoce los pasos clave para manejar emergencias de manera efectiva </p>
+      </div>
     </div>
 
     <div class="box">
@@ -112,41 +122,126 @@
       <span></span>
       <span></span>
     </div>
-    <main>
 
-      <article class="info_pri"></article>
-        <section class="info-primera"></section>
+    <main>  
+      <article class="seccion_pri">
+        <section class="seccion-primera">
+          <h3 class="text-center mt-5" style="font-weight: lighter; color: black;">COMO FUNCIONA SOSDoc</h3>
+          <h1 class="text-center" style="color: rgb(0, 0, 0)">Avalado por médicos, para los usuarios</h1>
+
+          <div class="tarjetas">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card">
+                <img src="../assets/img/si.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Videos e Imagenes</h5>
+                  <p class="card-text">Mira demostraciones en videos o imagenes para conocer mejor las técnicas.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="../assets/img/si.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Aprende técnicas de emergencia</h5>
+                  <p class="card-text">Descubre todo tipo de técnicas para situaciones de emergencia.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="../assets/img/si.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Comparte tu opinión</h5>
+                  <p class="card-text">Comenta y participa en las discusiones de técnicas y situaciones de emergencia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+
+        <section class="seccion-segunda">
+          <h1 class="text-center">Algunas de nuestras categorías</h1>
+          <div class="tarjetas-seccion-segunda">
+          <div class="row row-cols-1 row-cols-md-3 g-5">
+            <div class="col">
+              <div class="card text-bg-dark h-100">
+                <img src="/assets/img/si.jpeg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Maniobras de Heimlich</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-bg-dark h-100">
+                <img src="/assets/img/si.jpeg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Maniobras de RCP</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-bg-dark h-100">
+                <img src="/assets/img/si.jpeg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Tratamiento de Quemaduras</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-bg-dark h-100">
+                <img src="/assets/img/si.jpeg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Control de Hemorragias</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-bg-dark h-100">
+                <img src="/assets/img/si.jpeg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Tratamiento de Heridas</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-bg-dark h-100">
+                <img src="/assets/img/si.jpeg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Respiración de Rescate</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+        
       </article>
 
-      
       <div class="container text-center">
         <div class="container_titulo"><h3>Tus Publicaciones</h3></div>
         <div id="tus-publicaciones" class="card-group row mx-auto "></div>
       </div>
-
-        <div class="text-center">
-          <button id="addPostBtn" class="btn btn-primary"><a href="/frontend/post.html">Añadir Publicación</a></button>
-        </div>
-
-        <!-- Modal para agregar comentarios -->
-<!-- Modal -->
-<!-- Modal -->
-<div class="modal" id="comentariosModal" style="display: none;">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Comentarios</h2>
-      <div class="comentarios-container">
-          <!-- Aquí se cargarán los comentarios -->
+    
+      <div class="text-center">
+        <button id="addPostBtn" class="btn btn-primary"><a href="/frontend/post.html">Añadir Publicación</a></button>
       </div>
-      <textarea id="nuevoComentario" placeholder="Escribe tu comentario aquí..."></textarea>
-      <button id="btnEnviarComentario">Enviar Comentario</button>
-  </div>
-</div>
 
-
-
-            
+      <div class="modal" id="comentariosModal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comentarios</h2>
+            <div class="comentarios-container">
+                <!-- Aquí se cargarán los comentarios -->
+            </div>
+            <textarea id="nuevoComentario" placeholder="Escribe tu comentario aquí..."></textarea>
+            <button id="btnEnviarComentario">Enviar Comentario</button>
+        </div>
+      </div>
     </main>
+
     <footer class="text-center">
       <!-- Grid container -->
       <div class="container pt-2">
@@ -207,10 +302,8 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    
     <script src="/frontend/js/fondo.js"></script>
     <script src="/frontend/js/auth.js"></script>
     <script src="/frontend/js/post.js"></script>
-
   </body>
 </html>
