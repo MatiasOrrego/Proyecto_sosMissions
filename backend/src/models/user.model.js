@@ -6,7 +6,7 @@ export const createUser = async (user) => {
   const salt = await genSalt(10);
   const hashedPassword = await hash(password, salt);
 
-  const [result] = await conn.query(`INSERT INTO users (username, email, password, roleId, fecha_registro) VALUES (?,?,?,2,CURRENT_DATE())`, [username, email, hashedPassword])
+  const [result] = await conn.query(`INSERT INTO users (username, email, password, roleId, fecha_registro) VALUES (?,?,?,3,CURRENT_DATE())`, [username, email, hashedPassword])
 
   return { id: result.insertId, username, email }
 };
