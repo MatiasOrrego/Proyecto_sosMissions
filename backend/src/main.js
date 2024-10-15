@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import { authRouter } from './routes/auth.routes.js';
 import { postRouter } from './routes/post.routes.js';
 import { commentRouter } from './routes/comments.routes.js';
+import { medicRouter } from './routes/medic.routes.js';
 
 const app = express();
 
@@ -35,9 +36,10 @@ app.use((err, _req, res, _next) => {
 });
 
 // Rutas
-app.use("/auth", authRouter);
+app.use('/auth', authRouter);
 app.use('/post', postRouter);
 app.use(commentRouter);
+app.use('/medic', medicRouter)
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en el puerto 3000');

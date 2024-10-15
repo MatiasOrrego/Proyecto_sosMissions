@@ -20,6 +20,7 @@ export const getUserById = async (id) => {
 // Función para obtener usuario por credenciales
 export const getUserByCredentials = async (username, password) => {
   const [result] = await conn.query(`SELECT * FROM users WHERE username = ?`, [username]);
+  console.log(result)
 
   if (result.length === 0) {
     return null;

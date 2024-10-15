@@ -8,12 +8,12 @@ export const createMedicUser = async (user) => {
 
   const [result] = await conn.query(`INSERT INTO medics (name, lastname, email, username, password, dni, matricula_nacional, matricula_provincial, especialidad, telefono, date) VALUES (?,?,?,?,?,?,?,?,?,?,CURRENT_DATE())`, [name, lastname, email, username, hashedPassword, dni, matricula_nacional, matricula_provincial, especialidad, telefono]);
 
-  const [users] = await conn.query(`INSERT INTO users (username, email, password, roleId) VALUES (?,?,?,2)`,[username, email, hashedPassword, roleId])
+  const [users] = await conn.query(`INSERT INTO users (username, email, password, roleId, fecha_registro) VALUES (?,?,?,2,CURRENT_DATE())`,[username, email, hashedPassword, roleId])
 
   return { id: result.insertId, name, lastname, email, username, hashedPassword, dni, matricula_nacional, matricula_provincial, especialidad, telefono }
 };
 
-export const getUserById = async (id) => {
+export const getMedicUserById = async (id) => {
   const [result] = await conn.query(`SELECT * FROM medics WHERE id = ?`, [id])
   return result[0] || null;
 };
