@@ -401,6 +401,9 @@ footer {
   margin-top: 10px;
   height: 300px;
 }
+a{
+  text-decoration: none;
+}
 
 .card-text-publi{
   margin-top: 10px;
