@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Temporizador RCP</title>
+</head>
+<body>
+    <script>
+        // Aquí va todo el código del temporizador anterior
+        class RCPTimer {
+            constructor() {
+                this.isRunning = false;
+                this.compressionCount = 0;
+                this.audioContext = null;
+                this.interval = null;
+                this.beatsPerMinute = 100;
+            }
+
+            initAudio() {
+                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            playBeep() {
+                if (!this.audioContext) this.initAudio();
+                
+                const oscillator = this.audioContext.createOscillator();
+                const gainNode = this.audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(this.audioContext.destination);
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 800;
+                gainNode.gain.value = 0.5;
+                
+                oscillator.start();
+                
+                setTimeout(() => {
+                    oscillator.stop();
+                }, 100);
+            }
+
+            start() {
+                if (this.isRunning) return;
+                
+                this.isRunning = true;
+                this.compressionCount = 0;
+                
+                const interval = Math.floor(60000 / this.beatsPerMinute);
+                
+                this.interval = setInterval(() => {
+                    this.compressionCount++;
+                    this.playBeep();
+                    
+                    this.updateDisplay();
+                    
+                    if (this.compressionCount === 30) {
+                        this.ventilationAlert();
+                        this.compressionCount = 0;
+                    }
+                }, interval);
+            }
+
+            stop() {
+                if (!this.isRunning) return;
+                
+                clearInterval(this.interval);
+                this.isRunning = false;
+                this.compressionCount = 0;
+                this.updateDisplay();
+            }
+
+            updateDisplay() {
+                const displayElement = document.getElementById('compression-count');
+                if (displayElement) {
+                    displayElement.textContent = this.compressionCount;
+                }
+                
+                const statusElement = document.getElementById('status');
+                if (statusElement) {
+                    statusElement.textContent = this.isRunning ? 'Ejecutando compresiones' : 'Detenido';
+                }
+            }
+
+            ventilationAlert() {
+                const alertElement = document.getElementById('alert');
+                if (alertElement) {
+                    alertElement.textContent = '¡REALIZAR 2 VENTILACIONES!';
+                    setTimeout(() => {
+                        alertElement.textContent = '';
+                    }, 3000);
+                }
+            }
+        }
+
+        // Crear el HTML necesario
+        document.body.innerHTML = `
+            <div class="rcp-container">
+                <h2>Temporizador RCP</h2>
+                <div id="compression-display">
+                    <p>Compresión actual: <span id="compression-count">0</span></p>
+                    <p>Estado: <span id="status">Detenido</span></p>
+                    <p id="alert" style="color: red; font-weight: bold;"></p>
+                </div>
+                <div class="controls">
+                    <button onclick="rcpTimer.start()">Iniciar</button>
+                    <button onclick="rcpTimer.stop()">Detener</button>
+                </div>
+            </div>
+        `;
+
+        // Agregar estilos
+        const styles = document.createElement('style');
+        styles.textContent = `
+            .rcp-container {
+                max-width: 400px;
+                margin: 20px auto;
+                padding: 20px;
+                border: 2px solid #ccc;
+                border-radius: 8px;
+                text-align: center;
+            }
+            
+            .controls {
+                margin-top: 20px;
+            }
+            
+            button {
+                padding: 10px 20px;
+                margin: 0 10px;
+                font-size: 16px;
+                cursor: pointer;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+            }
+            
+            button:hover {
+                background-color: #0056b3;
+            }
+        `;
+        document.head.appendChild(styles);
+
+        // Inicializar el temporizador
+        const rcpTimer = new RCPTimer();
+    </script>
+</body>
+</html>
