@@ -1,32 +1,39 @@
 // Función para cargar comentarios de una publicación específica
 const cargarComentarios = async (postId) => {
   try {
-      const response = await fetch(`http://localhost:3000/post/${postId}/comment`, { credentials: "include" });
-      if (!response.ok) {
-          throw new Error('Error al obtener los comentarios');
-      }
-      const comments = await response.json();
+    const response = await fetch(
+      `http://localhost:3000/post/${postId}/comment`,
+      { credentials: 'include' },
+    );
+    if (!response.ok) {
+      throw new Error('Error al obtener los comentarios');
+    }
+    const comments = await response.json();
 
-      const modal = document.getElementById('comentariosModal');
-      modal.dataset.postId = postId
+    const modal = document.getElementById('comentariosModal');
+    modal.dataset.postId = postId;
 
-      // Limpiar el contenedor de comentarios antes de agregar nuevos
-      const comentariosContainer = document.querySelector('.comentarios-container');
-      comentariosContainer.innerHTML = '';
+    // Limpiar el contenedor de comentarios antes de agregar nuevos
+    const comentariosContainer = document.querySelector(
+      '.comentarios-container',
+    );
+    comentariosContainer.innerHTML = '';
 
-      // Añadir los comentarios al contenedor
-      comments.forEach(comment => {
-          const commentElement = document.createElement('div');
-          commentElement.classList.add('comment');
-          commentElement.innerHTML = `
+    // Añadir los comentarios al contenedor
+    comments.forEach((comment) => {
+      const commentElement = document.createElement('div');
+      commentElement.classList.add('comment');
+      commentElement.innerHTML = `
 
               <p>${comment.text}</p>
-              <small>Publicado el: ${new Date(comment.fecha_comentario).toLocaleDateString()}</small>
+              <small>Publicado el: ${new Date(
+                comment.fecha_comentario,
+              ).toLocaleDateString()}</small>
           `;
-          comentariosContainer.appendChild(commentElement);
-      });
+      comentariosContainer.appendChild(commentElement);
+    });
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 };
 
@@ -59,28 +66,28 @@ function crearNuevaPublicacion(titulo, descripcion, postId) {
 
   // Añadir evento al enlace para abrir la modal de comentarios
   enlaceLeerMas.addEventListener('click', (event) => {
-      event.preventDefault();
-      // Mostrar la modal
-      const modal = document.getElementById('comentariosModal');
-      modal.style.display = 'block'; // Muestra la modal
+    event.preventDefault();
+    // Mostrar la modal
+    const modal = document.getElementById('comentariosModal');
+    modal.style.display = 'block'; // Muestra la modal
 
-      // Cargar comentarios de la publicación
-      cargarComentarios(postId);
+    // Cargar comentarios de la publicación
+    cargarComentarios(postId);
   });
 
   // Cerrar la modal cuando se hace clic en el botón de cerrar
   const closeButton = document.querySelector('.close');
   closeButton.addEventListener('click', () => {
-      const modal = document.getElementById('comentariosModal');
-      modal.style.display = 'none'; // Oculta la modal
+    const modal = document.getElementById('comentariosModal');
+    modal.style.display = 'none'; // Oculta la modal
   });
 
   // Cerrar la modal si se hace clic fuera de la modal
   window.addEventListener('click', (event) => {
-      const modal = document.getElementById('comentariosModal');
-      if (event.target === modal) {
-          modal.style.display = 'none'; // Oculta la modal
-      }
+    const modal = document.getElementById('comentariosModal');
+    if (event.target === modal) {
+      modal.style.display = 'none'; // Oculta la modal
+    }
   });
 
   cuerpoTarjeta.appendChild(nuevoTitulo);
@@ -94,15 +101,15 @@ function crearNuevaPublicacion(titulo, descripcion, postId) {
 }
 
 // Obtener publicaciones y generar tarjetas
-fetch('http://localhost:3000/post', { credentials: "include" })
-  .then(response => response.json())
-  .then(data => {
-      data.forEach(post => {
-          crearNuevaPublicacion(post.title, post.description, post.id);
-      });
+fetch('http://localhost:3000/post', { credentials: 'include' })
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((post) => {
+      crearNuevaPublicacion(post.title, post.description, post.id);
+    });
   })
-  .catch(error => {
-      console.error('Error al obtener las publicaciones:', error);
+  .catch((error) => {
+    console.error('Error al obtener las publicaciones:', error);
   });
 
 // Función para agregar un nuevo comentario
@@ -111,33 +118,33 @@ document.getElementById('btnEnviarComentario').addEventListener('click', () => {
   const postId = document.getElementById('comentariosModal').dataset.postId; // Asegúrate de tener el postId disponible
 
   if (nuevoComentario.trim() === '') {
-      alert('El comentario no puede estar vacío.');
-      return;
+    alert('El comentario no puede estar vacío.');
+    return;
   }
 
   // Hacer la solicitud para crear un nuevo comentario
   fetch(`http://localhost:3000/post/${postId}/comment`, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ text: nuevoComentario, postId: postId }),
-      credentials: "include"
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ text: nuevoComentario, postId: postId }),
+    credentials: 'include',
   })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Error al enviar el comentario');
-          }
-          return response.json();
-      })
-      .then(data => {
-          console.log('Comentario agregado:', data);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Error al enviar el comentario');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Comentario agregado:', data);
 
-          // Recargar los comentarios para reflejar el nuevo
-          cargarComentarios(postId);
-          document.getElementById('nuevoComentario').value = '';
-      })
-      .catch(error => {
-          console.error('Error al agregar el comentario:', error);
-      });
+      // Recargar los comentarios para reflejar el nuevo
+      cargarComentarios(postId);
+      document.getElementById('nuevoComentario').value = '';
+    })
+    .catch((error) => {
+      console.error('Error al agregar el comentario:', error);
+    });
 });

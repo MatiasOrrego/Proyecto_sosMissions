@@ -11,28 +11,36 @@ let quill = new Quill('#editor-container', {
   }
 });
 
-document.getElementById('nueva-publicacion-form').addEventListener('submit', function(event) {
-  event.preventDefault();
+const form = document.getElementById('post-category');
 
-  let title = document.getElementById('titulo').value;
-  
-  // Obtener solo el texto plano de la descripción, sin etiquetas HTML
-  let description = document.querySelector('#editor-container .ql-editor').innerText;
+form.addEventListener('submit',async (e) => {
+  e.preventDefault();
 
-  fetch('http://localhost:3000/post', {
+  const title = document.getElementById('titulo').value;
+  const description = document.getElementById('descripcion').value;
+
+  const category = document.getElementById('categories').value;
+  console.log(category)
+
+  const categoryId = parseInt(category)
+
+  try {
+    const response = await fetch('http://localhost:3000/post', {
       method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ title, description }),
-      credentials: "include"
-  })
-  .then(response => response.json())
-  .then(data => {
-      console.log('Éxito:', data);
-      window.location.href = '/frontend/home.html';
-  })
-  .catch((error) => {
-      console.error('Error:', error);
-  });
-});
+      headers: {'Content-Type': 'application/json'},
+      credentials: 'include',
+      body: JSON.stringify({
+        title,
+        description,
+        categoryId
+      })
+    })
+    if(!response.ok) {
+        throw new Error('Error al crear la publicacion')
+    } else {
+      window.location.href = 'http://localhost:5500/frontend/home.html'
+    }
+  } catch (error) {
+    alert('Hubo un error al crear la publicacion')
+  }
+})

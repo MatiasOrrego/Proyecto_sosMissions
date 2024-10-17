@@ -22,9 +22,9 @@ export const getPostByIdCtrl = async (req, res) => {
 
 export const createPostCtrl = async (req, res) => {
   const userId = req.user.id;
-  const { title, description } = req.body;
+  const { title, description, categoryId } = req.body;
 
-  const post = await createPost(title, description, userId);
+  const post = await createPost(title, description, userId, categoryId);
 
   res.status(201).json(post);
 };
@@ -36,7 +36,7 @@ export const deletePostCtrl = async (req, res) => {
   const deletePost = await deletePostById(id, user.id);
 
   if (!deletePost) {
-    return res.status(404).json({ message: 'Order not found' })
+    return res.status(404).json({ message: 'Publicación no encontrada' })
   }
   res.status(204).send()
 };
