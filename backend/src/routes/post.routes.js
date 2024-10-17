@@ -1,22 +1,14 @@
-import { postRouter } from 'express';
-import { validateJwt } from '../middlewares/validarJWT.js';
+import express from 'express';
+import { getAllPosts, getPostById, createPost, updatePost, deletePost } from '../controllers/post.controllers.js';
 
+const router = express.Router();
 
+router.get('/posts', getAllPosts);
+router.get('/posts/:id', getPostById);
+router.post('/posts', createPost);
+router.put('/posts/:id', updatePost);
+router.delete('/posts/:id', deletePost);
 
-import {
-    getAllPosts,
-    getPostById,
-    createPost,
-    updatePost,
-    deletePost
-} from '../controllers/post.controllers.js';
-
-postRouter.get('/post', getAllPosts);
-postRouter.get('/post/:id', getPostById);
-postRouter.post('/post', createPost);
-postRouter.put('/post/:id', updatePost);
-postRouter.delete('/post/:id', deletePost);
-
-export { postRouter };
+export default router;
 
 app.use(errorHandler);
