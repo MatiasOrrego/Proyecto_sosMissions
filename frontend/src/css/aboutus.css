@@ -1,0 +1,286 @@
+/* Header */
+header {
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    border-radius: 35px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:130vh;
+    background-color: #202020;
+    z-index: -1;
+}
+
+main{
+    margin-top: 150px;
+    position: relative;
+    overflow: hidden;
+    height: 120vh;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.navbar-brand{
+    margin-right: 220px;
+    transition: margin-right 0.6s ease;
+}
+
+.navbar-brand, 
+.nav-link, 
+.btn {
+    color: rgba(255, 255, 255, 0.938);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#loginBtn a, 
+#registerBtn a {
+    color: rgba(0, 0, 0, 0.938);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-item a:hover {
+    color: white;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-item {
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgb(180, 0, 0);
+    width: fit-content;
+}
+
+
+header.sticky .nav-item a:hover {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+header.sticky .navbar-brand{
+    margin-right: 115px;
+}
+
+header.sticky .nav-link:hover,
+header.sticky .btn:hover,
+header.sticky #registerBtn a,
+header.sticky #loginBtn a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* Navbar-brand hover */
+.navbar-brand:hover {
+  color: rgba(255, 255, 255, 0.938); /* Color original antes del sticky */
+}
+
+
+
+header.sticky {
+    padding: 5px 100px;
+    background: #ffffff;
+}
+
+header.sticky .form-control {
+    background-color: white;
+    border: 1px solid rgb(90, 90, 90);
+    transition: 0.6s;
+    pointer-events: all; /* Habilitar eventos del puntero cuando el header es sticky */
+}
+
+header.sticky .navbar-brand,
+header.sticky .nav-link,
+header.sticky .btn,
+header.sticky #registerBtn {
+    color: rgb(0, 0, 0);
+    transition: 0.6s;
+}
+
+/* Botones */
+#loginBtn, 
+#registerBtn {
+    border-radius: 100px;
+    background-color: white;
+    color: black;
+}
+
+#loginBtn{
+    margin-right: 8px;
+}
+
+
+#loginBtn:hover,
+#registerBtn:hover {
+    background-color: rgb(224, 224, 224); /* Fondo al pasar el cursor */
+    color: white; /* Color del texto al pasar el cursor */
+}
+
+header.sticky #loginBtn, 
+header.sticky #registerBtn {
+    background-color: rgb(184, 9, 9); /* Fondo cuando el header es sticky */
+    color: white; /* Color del texto cuando el header es sticky */
+    transition: 0.20s ease;
+}
+
+header.sticky #loginBtn:hover,
+header.sticky #registerBtn:hover {
+    background-color: rgb(228, 3, 3); /* Fondo al pasar el cursor cuando el header es sticky */
+    color: white; /* Color del texto al pasar el cursor cuando el header es sticky */
+}
+
+/* Formulario */
+.form-control {
+    background-color: transparent;
+    border: 2px transparent;
+    color: transparent;
+    cursor: default;
+    pointer-events: none; /* Desactivar eventos del puntero cuando el header no es sticky */
+}
+
+.btn-outline {
+    color: transparent;
+    pointer-events: none;
+    margin-right: 4px;
+}
+
+header.sticky .btn{
+    pointer-events: all;
+}
+
+header.sticky .form-control {
+    background-color: white;
+    border-radius: 100px;
+    color: black;
+    cursor: auto;
+}
+
+
+footer {
+    background-color: #ffffff;
+    color: #1a1717;
+}
+
+body{
+    background-color: rgb(199, 78, 78);
+}
+
+/* Título principal */
+h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}   
+
+/* Miembros del equipo */
+.team-member {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+    margin: 0 auto 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 5px solid #2b6340;
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-member:hover img {
+    transform: scale(1.1);
+}
+
+.team-member h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.team-member p:first-of-type {
+    color: #2b6340;
+    font-weight: bold;
+}
+
+
+
+h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+p {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: lighter;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .team-member {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .mission {
+        padding: 30px 15px;
+    }
+}
+
+.team-member {
+    margin-bottom: 30px;
+}
+.team-member img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
