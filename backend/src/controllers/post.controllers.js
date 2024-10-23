@@ -1,4 +1,4 @@
-import { createPost, deletePostById, getAllPost, getPosts } from '../models/post.model.js';
+import { createPost, deletePostById, getAllPost, getPostByCategory, getPostById, getPosts } from '../models/post.model.js';
 
 export const getAllPostsCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -17,7 +17,7 @@ export const getPostByIdCtrl = async (req, res) => {
   const { id } = req.params;
   const { user } = req;
 
-  const post = await getOrderById(id, user.id);
+  const post = await getPostById(id, user.id);
 
   if (!post) {
     return res.status(404).json({ message: 'Publicación no encontrada' });
@@ -25,6 +25,14 @@ export const getPostByIdCtrl = async (req, res) => {
 
   res.status(200).json(post);
 };
+
+export const getPostByCategoryCtrl = async (req, res) => {
+  const { categoryId } = parseInt(req.params)
+
+  const post = await getPostByCategory(categoryId)
+
+  res.status(200).json(post)
+}
 
 export const createPostCtrl = async (req, res) => {
   const userId = req.user.id;

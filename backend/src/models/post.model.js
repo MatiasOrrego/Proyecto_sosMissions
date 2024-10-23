@@ -20,6 +20,12 @@ export const getPostById = async (id, userId) => {
   return result[0] || null;
 };
 
+export const getPostByCategory = async (categoryId) => {
+  const [result] = await conn.query(`SELECT * FROM post WHERE categoryId = ?`, [categoryId])
+
+  return result
+}
+
 export const deletePostById = async (id, userId) => {
   const [result] = await conn.query(`DELETE FROM post WHERE id = ? AND userId = ?`, [id, userId]);
   return result.affectedRows > 0
