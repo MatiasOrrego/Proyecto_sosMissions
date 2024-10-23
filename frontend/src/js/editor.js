@@ -38,7 +38,7 @@ form.addEventListener('submit',async (e) => {
     if(!response.ok) {
         throw new Error('Error al crear la publicacion')
     } else {
-      window.location.href = 'http://localhost:5500/frontend/home.html'
+      window.location.href = 'http://localhost:5173/index.html'
     }
   } catch (error) {
     alert('Hubo un error al crear la publicacion')

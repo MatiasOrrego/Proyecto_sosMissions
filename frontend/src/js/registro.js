@@ -48,7 +48,7 @@ registerForm.addEventListener('submit', async (e) => {
         } else {
             showAlert(respuesta.msg, 'success');
             setTimeout(() => {
-                window.location.href = '/frontend/sesion.html';
+                window.location.href = 'http://localhost:5173/sesion.html';
             }, 2000);
         }
     } catch (error) {

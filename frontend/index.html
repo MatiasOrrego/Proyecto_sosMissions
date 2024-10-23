@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="./src/css/index.css" />
     <link rel="shortcut icon" href="./src/assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./src/css/comment.css">
     <script
       src="https://kit.fontawesome.com/368cdab837.js"
       crossorigin="anonymous"
@@ -64,6 +65,11 @@
                   Categorías
                 </a>
                 <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="seccion-general.html">
+                      Primeros auxilios
+                    </a>
+                  </li>
                   <li>
                     <a class="dropdown-item" href="seccion2.html"
                       >Maniobras de RCP</a
@@ -218,48 +224,9 @@
         
       </article>
 
-      <div class="container text-center">
-        <div class="container_titulo"><h3>Tus Publicaciones</h3></div>
-        <div id="tus-publicaciones" class="card-group row mx-auto "></div>
-      </div>
-    
-      <div class="text-center">
-        <button id="addPostBtn" class="btn btn-primary">
-          <i class="fas fa-plus"></i>Añadir Publicación</button>
-      </div>
-      
-      <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addPostModalLabel">Añadir Nueva Publicación</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="nueva-publicacion-form">
-                <div class="mb-3">
-                  <label for="titulo" class="form-label">Título de la Publicación</label>
-                  <input type="text" class="form-control" id="titulo" placeholder="Título">
-                </div>
-                <div class="mb-3">
-                  <label for="descripcion" class="form-label">Descripción</label>
-                  <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imagen" class="form-label">Subir Imagen</label>
-                  <input class="form-control" type="file" id="imagen">
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="agregar-publicacion-btn">Añadir Publicación</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    
+      <a href="post.html" id="addPostButton" class="floating-btn" style="display: none;">
+        <i class="fas fa-plus"></i>
+      </a>      
     </main>
 
     <footer class="text-center">
@@ -324,5 +291,6 @@
     ></script>
     <script src="./src/js/home.js"></script>
     <script src="./src/js/fondo.js"></script>
+    <script src="./src/js/auth.js"></script>
   </body>
 </html>
