@@ -61,41 +61,45 @@
           <canvas id="canvas" width="32" height="32"></canvas>
               <div class="formulario container d-flex flex-column align-items-center">
                 <h1 class="titulo text-center">Registrate como usuario médico</h1>
-                <form class="w-100" id="registrarFormulario">
+                <form class="w-100" id="register-medic">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Juan" required>
+                            <input type="text" class="form-control" id="nombre" placeholder="Juan" name="name" required>
                         </div>
                         <div class="col-md-6">
                             <label for="apellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" placeholder="Pérez" required>
+                            <input type="text" class="form-control" id="apellido" placeholder="Pérez" name="lastname" required>
                         </div>
                     </div>
+                    <div class="mb-3 col-12 col-md-8 mx-auto">
+                      <label for="username" class="form-label">Nombre de usuario</label>
+                      <input type="text" class="form-control" id="username" name="username" required>
+                  </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="ejemplo@gmail.com" required>
+                            <input type="email" class="form-control" id="email" placeholder="ejemplo@gmail.com" name="email" required>
                         </div>
                         <div class="col-md-6">
                             <label for="documento" class="form-label">Número de documento</label>
-                            <input type="text" class="form-control" id="documento" required>
+                            <input type="text" class="form-control" id="documento" name="dni" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="matriculaNacional" class="form-label">Matrícula nacional</label>
-                            <input type="text" class="form-control" id="matriculaNacional" required>
+                            <input type="text" class="form-control" id="matriculaNacional" name="matricula_nacional" required>
                         </div>
                         <div class="col-md-6">
                             <label for="matriculaProvincial" class="form-label">Matricula provincial</label>
-                            <input type="text" class="form-control" id="matriculaProvincial" required>
+                            <input type="text" class="form-control" id="matriculaProvincial" name="matricula_provincial" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="col-md-6">
                             <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
@@ -103,11 +107,11 @@
                         </div>
                         <div class="mb-3 col-12 col-md-8 mx-auto">
                             <label for="especialidad" class="form-label">Especialidades</label>
-                            <input type="text" class="form-control" id="especialidad" required>
+                            <input type="text" class="form-control" id="especialidad" name="especialidad" required>
                         </div>
                         <div class="mb-3 col-12 col-md-8 mx-auto">
                             <label for="telefono" class="form-label">Télefono</label>
-                            <input type="text" class="form-control" id="telefono" required>
+                            <input type="text" class="form-control" id="telefono" required name="telefono">
                         </div>
                     </div>
                     <div class="col-12 col-md-8 mx-auto d-flex justify-content-center">
@@ -132,5 +136,7 @@
             crossorigin="anonymous"
           ></script>      
           <script src="../src/js/fondo.js"></script>
+          <script src="../src/js/medicRegister.js"></script>
+          <script src="../src/js/auth.js"></script>
     </body>
 </html>

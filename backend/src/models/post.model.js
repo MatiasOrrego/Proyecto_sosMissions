@@ -6,6 +6,10 @@ const [result] = await conn.query(`INSERT INTO post (title, description, userId,
 return { id: result.insertId, title, description, userId, fecha_publi, categoryId }
 };
 
+export const getAllPost = async () => {
+  const [result] = await conn.query(`SELECT * FROM post`);
+  return result;
+} 
 export const getPosts = async (userId) => {
   const [result] = await conn.query(`SELECT * FROM post WHERE userId = ?`, [userId]);
   return result

@@ -1,4 +1,4 @@
-import { createPost, deletePostById, getPosts } from '../models/post.model.js';
+import { createPost, deletePostById, getAllPost, getPosts } from '../models/post.model.js';
 
 export const getAllPostsCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -6,6 +6,12 @@ export const getAllPostsCtrl = async (req, res) => {
 
   res.status(200).json(post);
 };
+
+export const getAllGeneralPost = async (req, res) => {
+  const post = await getAllPost();
+
+  res.status(200).json(post)
+}
 
 export const getPostByIdCtrl = async (req, res) => {
   const { id } = req.params;

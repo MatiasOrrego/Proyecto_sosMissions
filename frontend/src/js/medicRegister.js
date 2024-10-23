@@ -31,7 +31,7 @@ registerForm.addEventListener('submit', async (e) => {
         } else {
             alert(respuesta.msg, );
             setTimeout(() => {
-                window.location.href = '/frontend/sesion.html';
+                window.location.href = 'sesion.html';
             }, 2000);
         }
     } catch (error) {

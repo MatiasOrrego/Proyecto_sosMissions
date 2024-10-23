@@ -39,7 +39,7 @@ const cargarComentarios = async (postId) => {
 
 // Función para crear una nueva tarjeta de publicación
 function crearNuevaPublicacion(titulo, descripcion, postId) {
-  const contenedorPublicaciones = document.querySelector('.card-group');
+  const contenedorPublicaciones = document.getElementById('publicaciones');
 
   const nuevaTarjeta = document.createElement('div');
   nuevaTarjeta.classList.add('card-publi');
@@ -139,7 +139,7 @@ function crearNuevaPublicacion(titulo, descripcion, postId) {
 }
 
 // Obtener publicaciones y generar tarjetas
-fetch('http://localhost:3000/post', { credentials: 'include' })
+fetch('http://localhost:3000/post/general')
   .then((response) => response.json())
   .then((data) => {
     data.forEach((post) => {

@@ -5,11 +5,13 @@ import {
     getAllPostsCtrl,
     getPostByIdCtrl,
     createPostCtrl,
-    deletePostCtrl
+    deletePostCtrl,
+    getAllGeneralPost
 } from '../controllers/post.controllers.js';
 
 const postRouter = Router();
 
+postRouter.get('/general', getAllGeneralPost)
 postRouter.get('/', validateJwt, getAllPostsCtrl);
 postRouter.get('/:id', validateJwt, getPostByIdCtrl);
 postRouter.post('/', validateJwt, createPostCtrl);
