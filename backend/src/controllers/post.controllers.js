@@ -27,12 +27,20 @@ export const getPostByIdCtrl = async (req, res) => {
 };
 
 export const getPostByCategoryCtrl = async (req, res) => {
-  const { categoryId } = parseInt(req.params)
+  try {
+    const categoryId = parseInt(req.params.categoryId);
+    if (isNaN(categoryId)) {
+      return res.status(400).json({ message: 'Categoría no válida' });
+    }
 
-  const post = await getPostByCategory(categoryId)
+    const posts = await getPostByCategory(categoryId);
 
-  res.status(200).json(post)
-}
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener las publicaciones por categoría' });
+  }
+};
+
 
 export const createPostCtrl = async (req, res) => {
   const userId = req.user.id;
