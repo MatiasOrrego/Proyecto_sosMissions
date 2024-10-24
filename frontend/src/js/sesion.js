@@ -40,7 +40,7 @@ loginForm.addEventListener('submit', async (e) => {
             showAlert(respuesta.msg || 'Inicio de sesión exitoso', 'success');
 
             setTimeout(() => {
-                window.location.href = 'http://localhost:5173/index.html';
+                window.location.href = 'index.html';
             }, 2000);
         }
     } catch (error) {

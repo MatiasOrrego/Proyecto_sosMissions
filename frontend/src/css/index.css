@@ -358,6 +358,7 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: white;
 }
 
 .titulo-cont{
@@ -411,4 +412,12 @@ footer {
 
 .floating-btn i {
   font-size: 24px;
+}
+
+#videoButton {
+  bottom: 90px;
+}
+
+#addPostButton {
+  bottom: 20px;
 }
