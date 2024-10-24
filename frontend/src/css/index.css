@@ -339,12 +339,20 @@ footer {
 /* Logout */
 #logout {
   text-decoration: none;
-  color: white;
+  color: black;
+  border-radius: 100px;
+  background-color: white;
 }
 
 #logout:hover {
   width: fit-content;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+header.sticky #logout{
+  color: white;
+  background-color: rgb(184, 9, 9);
+  border-radius: 100px;
 }
 
 .title-container {
@@ -391,6 +399,7 @@ footer {
 
 /* Estilos para el botón flotante circular */
 .floating-btn {
+  text-decoration: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -402,6 +411,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
 }
@@ -412,6 +422,7 @@ footer {
 
 .floating-btn i {
   font-size: 24px;
+  text-decoration: none;
 }
 
 #videoButton {

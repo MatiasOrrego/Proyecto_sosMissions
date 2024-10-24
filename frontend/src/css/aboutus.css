@@ -167,6 +167,23 @@ header.sticky .form-control {
     cursor: auto;
 }
 
+#logout {
+    text-decoration: none;
+    color: black;
+    border-radius: 100px;
+    background-color: white;
+}
+
+#logout:hover {
+    width: fit-content;
+    text-decoration: none;
+}
+
+header.sticky #logout{
+    color: white;
+    background-color: rgb(184, 9, 9);
+    border-radius: 100px;
+}
 
 footer {
     background-color: #ffffff;

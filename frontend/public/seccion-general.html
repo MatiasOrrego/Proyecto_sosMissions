@@ -100,6 +100,13 @@
         </div>
     </header>
 
+    <script type= "text/javascript">
+      window.addEventListener("scroll",function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      })
+    </script>
+
     <main class="d-flex justify-content-center align-items-center">
       <div class="container text-center">
         <div class="container_titulo"><h3>Publicaciones</h3></div>
