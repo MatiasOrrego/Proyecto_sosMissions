@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const btnLoginRegister = document.getElementById('btn-lr');
-  const addPostButton = document.getElementById('addPostButton'); // Botón de añadir publicación
+  const addPostButton = document.getElementById('addPostButton');
+  const addVideoButton = document.getElementById('videoButton')
 
   if (!addPostButton) {
     console.error('El botón de añadir publicación no existe en el DOM.');
@@ -20,11 +21,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await response.json();
 
     if (data) {
-      // Si el usuario tiene roleId 2 (medic), mostrar el botón de añadir publicación
       if (data.roleId === 2) {
-        addPostButton.style.display = 'flex'; // Mostrar el botón
+        addPostButton.style.display = 'flex';
+        addVideoButton.style.display = 'flex';
       } else {
-        addPostButton.style.display = 'none'; // Ocultar el botón si no es roleId 2
+        addPostButton.style.display = 'none';
+        addVideoButton.style.display = 'none';
       }
 
       // Mostrar el botón de cerrar sesión si el usuario está autenticado

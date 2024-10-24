@@ -44,7 +44,7 @@ export const getVideoByCategoryCtrl = async (req, res) => {
 
 export const createVideoCtrl = async (req, res) => {
   const userId = req.user.id;
-  const { title, description, url, categoryId } = req.body;
+  const { title, description, categoryId } = req.body;
 
   const video = await createVideo(title, description, url, userId, categoryId);
 
