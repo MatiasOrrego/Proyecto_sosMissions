@@ -1,4 +1,5 @@
 import { getAllVideo, getVideo, getVideoById, getVideoByCategory, createVideo, deleteVideoById } from "../models/video.model.js";
+import { uploadVideo } from "../utils/cludinary.js";
 
 export const getAllVideoCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -46,10 +47,29 @@ export const createVideoCtrl = async (req, res) => {
   const userId = req.user.id;
   const { title, description, categoryId } = req.body;
 
-  const video = await createVideo(title, description, url, userId, categoryId);
+  if (!req.files || !req.files.video) {
+    return res.status(400).json({ message: 'El archivo de video es obligatorio' });
+  }
 
-  res.status(201).json(video);
+  let url; // Declarar la variable URL
+
+  try {
+    const videoUploadResponse = await uploadVideo(req.files.video.tempFilePath); // Sube el video a Cloudinary
+    url = videoUploadResponse.secure_url; // Obtén la URL segura de Cloudinary
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
+  }
+
+  try {
+    const video = await createVideo(title, description, url, userId, categoryId); // Asegúrate de pasar la URL
+    res.status(201).json(video); // Respuesta exitosa
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al crear el video en la base de datos', error });
+  }
 };
+
+
+
 
 export const deleteVideoCtrl = async (req, res) => {
   const { id } = req.params
