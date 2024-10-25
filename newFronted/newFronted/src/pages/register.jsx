@@ -1,11 +1,10 @@
-// src/pages/register.jsx
 import React from 'react';
+import RegisterForm from '../components/auth/registerForm';
 
 const Register = () => {
   return (
-    <div>
-      <h1>Register</h1>
-      <p>Create an account to get started.</p>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <RegisterForm />
     </div>
   );
 };

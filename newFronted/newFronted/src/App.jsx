@@ -23,10 +23,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
-          <div className="p-4">
-            <RCPCounter />
-            <Button onClick={() => alert('Button clicked!')}>Click Me</Button>
-          </div>
         </main>
         <Footer />
       </div>
