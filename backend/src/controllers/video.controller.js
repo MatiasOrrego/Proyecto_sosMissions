@@ -46,30 +46,39 @@ export const getVideoByCategoryCtrl = async (req, res) => {
 export const createVideoCtrl = async (req, res) => {
   const userId = req.user.id;
   const { title, description, categoryId } = req.body;
+  let video = null;
+console.log(req.files);
+console.log(req.file)
 
-  if (!req.files || !req.files.video) {
+  if (!req.files?.video) {
+    console.log('No se encontró el archivo de video en req.files');
     return res.status(400).json({ message: 'El archivo de video es obligatorio' });
   }
 
-  let url; // Declarar la variable URL
 
   try {
-    const videoUploadResponse = await uploadVideo(req.files.video.tempFilePath); // Sube el video a Cloudinary
-    url = videoUploadResponse.secure_url; // Obtén la URL segura de Cloudinary
+    const videoUploadResponse = await uploadVideo(req.files.video.tempFilePath);
+    video = videoUploadResponse;
+   
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
   }
 
   try {
-    const video = await createVideo(title, description, url, userId, categoryId); // Asegúrate de pasar la URL
-    res.status(201).json(video); // Respuesta exitosa
+    console.log({
+      "prueba": video
+    });
+    
+    const newVideo = await createVideo(title, description, video, userId, categoryId);
+    console.log();
+    
+    res.status(201).json(newVideo);
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ message: 'Error al crear el video en la base de datos', error });
   }
 };
-
-
-
 
 export const deleteVideoCtrl = async (req, res) => {
   const { id } = req.params
