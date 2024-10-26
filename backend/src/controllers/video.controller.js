@@ -47,8 +47,6 @@ export const createVideoCtrl = async (req, res) => {
   const userId = req.user.id;
   const { title, description, categoryId } = req.body;
   let video = null;
-console.log(req.files);
-console.log(req.file)
 
   if (!req.files?.video) {
     console.log('No se encontró el archivo de video en req.files');
@@ -59,19 +57,13 @@ console.log(req.file)
   try {
     const videoUploadResponse = await uploadVideo(req.files.video.tempFilePath);
     video = videoUploadResponse;
-   
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
   }
 
   try {
-    console.log({
-      "prueba": video
-    });
-    
     const newVideo = await createVideo(title, description, video, userId, categoryId);
-    console.log();
     
     res.status(201).json(newVideo);
   } catch (error) {
