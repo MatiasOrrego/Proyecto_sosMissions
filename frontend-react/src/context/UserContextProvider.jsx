@@ -1,5 +1,5 @@
 import React from "react";
-import { UserContext } from "./userContext";
+import { UserContext } from "./UserContext";
 import { loginUser, logoutUser } from "../services/auth.service";
 import { userReducer } from "./userReduce";
 import { userType } from "./userTypes";

@@ -1,132 +1,87 @@
-import { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import '../styles/home.css';
 
 export const Navbar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [isSticky, setIsSticky] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
-    setIsCollapsed(!isCollapsed);
+    setIsOpen(!isOpen);
   };
-
-  // Manejador para hacer el header sticky al hacer scroll
-  const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
 
   return (
-    <header className={`bg-blue-600 shadow-lg fixed top-0 w-full z-50 ${isSticky ? 'sticky' : ''}`}>
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <a className={`text-2xl font-bold navbar-brand ${isSticky ? 'text-black' : 'text-white'}`} href="index.html">
+    <header className="flex p-3 w-full fixed top-0 left-0 transition-all duration-500 z-[100000] rounded-[35px] mt-[15px] mx-[10px] bg-transparent">
+      <div className="max-w-full px-4">
+        {/* Brand */}
+        <Link to="/" className="mr-[220px] text-white/90 font-bold no-underline">
           SOSDoc
-        </a>
-        <button
-          className="text-white hover:text-gray-200 focus:outline-none lg:hidden"
+        </Link>
+        
+        {/* Button for toggling the navbar */}
+        <button 
+          className="flex items-center justify-center p-2 rounded-md focus:ring-2 focus:ring-gray-300"
+          type="button"
+          aria-controls="navbarSupportedContent"
+          aria-expanded={isOpen}
+          aria-label="Toggle navigation"
           onClick={toggleNavbar}
-          aria-expanded={!isCollapsed}
-          aria-label="Toggle navigation">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        >
+          <span className="block w-6 h-0.5 bg-gray-500 mb-1 transition-all duration-300"></span>
+          <span className="block w-6 h-0.5 bg-gray-500 mb-1 transition-all duration-300"></span>
+          <span className="block w-6 h-0.5 bg-gray-500 mb-1 transition-all duration-300"></span>
         </button>
-        <div
-          className={`${
-            isCollapsed ? 'hidden' : ''
-          } w-full lg:flex lg:w-auto lg:items-center justify-center`}>
-          <ul className="flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0 text-white text-center">
-            <li className="nav-item">
-              <a className="nav-link hover:text-gray-200" href="index.html">
-                Inicio
-              </a>
+
+        {/* Collapsible Navbar */}
+        <div className={`flex-col lg:flex-row lg:flex ${isOpen ? 'block' : 'hidden'} transition-all duration-300`} id="navbarSupportedContent">
+          <ul className="navbar-nav flex flex-col lg:flex-row">
+            <li className="nav-item transition-colors duration-300 ease hover:bg-[rgb(180,0,0)] w-fit">
+              <Link to="/" className="text-white/90 font-bold no-underline hover:text-white">Inicio</Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link hover:text-gray-200" href="./aboutus.html">
-                Sobre Nosotros
-              </a>
+            <li className="nav-item transition-colors duration-300 ease hover:bg-[rgb(180,0,0)] w-fit">
+              <Link to="/about" className="text-white/90 font-bold no-underline hover:text-white">Sobre Nosotros</Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link hover:text-gray-200" href="./contact.html">
-                Contactos
-              </a>
+            <li className="nav-item transition-colors duration-300 ease hover:bg-[rgb(180,0,0)] w-fit">
+              <Link to="/contact" className="text-white/90 font-bold no-underline hover:text-white">Contactos</Link>
             </li>
-            <li className="nav-item relative">
-              <button
-                className="nav-link hover:text-gray-200 flex items-center focus:outline-none"
-                onClick={() => setIsCollapsed(!isCollapsed)}>
+            <li className="nav-item dropdown relative">
+              <button className="text-white/90 font-bold no-underline hover:text-white">
                 Categorías
-                <svg
-                  className="w-4 h-4 ml-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
               </button>
-              <ul className="absolute bg-blue-600 text-white shadow-lg rounded-lg mt-2 hidden lg:block">
+              <ul className="absolute hidden transition-opacity duration-300 ease-in-out group-hover:block">
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-general.html">
-                    Primeros auxilios
-                  </a>
+                  <Link to="/first-aid" className="dropdown-item">Primeros Auxilios</Link>
                 </li>
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-rcp.html">
-                    Maniobras de RCP
-                  </a>
+                  <Link to="/rcp" className="dropdown-item">Maniobras de RCP</Link>
                 </li>
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-heimlich.html">
-                    Maniobra de Heimlich
-                  </a>
+                  <Link to="/heimlich" className="dropdown-item">Maniobra de Heimlich</Link>
                 </li>
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-hemorragias.html">
-                    Control de hemorragias
-                  </a>
+                  <Link to="/hemorragias" className="dropdown-item">Control de Hemorragías</Link>
                 </li>
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-heridas.html">
-                    Tratamiento de heridas
-                  </a>
+                  <Link to="/heridas" className="dropdown-item">Tratamiento de Heridas</Link>
                 </li>
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-quemaduras.html">
-                    Tratamiento de quemaduras
-                  </a>
+                  <Link to="/quemaduras" className="dropdown-item">Tratamiento de Quemaduras</Link>
                 </li>
                 <li>
-                  <a className="block px-4 py-2 hover:bg-blue-700" href="seccion-otros.html">
-                    Otros
-                  </a>
+                  <Link to="/otros" className="dropdown-item">Otros</Link>
                 </li>
               </ul>
             </li>
           </ul>
-          <div className="flex space-x-4 mt-4 lg:mt-0">
-            <a
-              id="loginBtn"
-              className={`px-4 py-2 ${isSticky ? 'bg-red-600 text-white' : 'bg-white text-black'} rounded-full`}
-              href="./sesion.html">
-              Iniciar Sesión
-            </a>
-            <a
-              id="registerBtn"
-              className={`px-4 py-2 ${isSticky ? 'bg-red-600 text-white' : 'bg-white text-black'} rounded-full`}
-              href="./registro.html">
-              Registrarse
-            </a>
+          <div className="btn-login">
+            <Link to="/login">
+              <button className="rounded-[100px] bg-white text-black hover:bg-[rgb(224,224,224)] hover:text-white">
+                Iniciar Sesión
+              </button>
+            </Link>
+            <Link to="/register">
+              <button className="rounded-[100px] bg-white text-black mr-2 hover:bg-[rgb(224,224,224)] hover:text-white">
+                Registrarse
+              </button>
+            </Link>
           </div>
         </div>
       </div>

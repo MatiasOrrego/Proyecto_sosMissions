@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const btnLoginRegister = document.getElementById('btn-lr');
   const addPostButton = document.getElementById('addPostButton');
-  const addVideoButton = document.getElementById('videoButton')
+  const addVideoButton = document.getElementById('videoButton');
+  const addQuizButton = document.getElementById('addQuizButton');
 
   if (!addPostButton) {
     console.error('El botón de añadir publicación no existe en el DOM.');
@@ -22,9 +23,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (data) {
       if (data.roleId === 2) {
+        addQuizButton.style.display = 'flex'
         addPostButton.style.display = 'flex';
         addVideoButton.style.display = 'flex';
       } else {
+        addQuizButton.style.display = 'none'
         addPostButton.style.display = 'none';
         addVideoButton.style.display = 'none';
       }

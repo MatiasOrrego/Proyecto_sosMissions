@@ -389,7 +389,6 @@ footer {
   max-width: 400px
 }
 
-/* Estilos para el botón flotante circular */
 .floating-btn {
   position: fixed;
   bottom: 20px;
@@ -414,10 +413,15 @@ footer {
   font-size: 24px;
 }
 
+/* Posiciones para cada botón */
+#addQuizButton {
+  bottom: 160px; /* Más alto que el botón de video */
+}
+
 #videoButton {
-  bottom: 90px;
+  bottom: 90px; /* Debajo del botón de agregar cuestionario */
 }
 
 #addPostButton {
-  bottom: 20px;
+  bottom: 20px; /* Botón en la posición más baja */
 }
