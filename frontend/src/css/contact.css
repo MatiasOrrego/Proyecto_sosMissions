@@ -1,102 +1,70 @@
-body{
-    background-color: #d8fcb3;
-}
-
-#logout {
-    text-decoration: none;
-    color: black;
-}
-
-#logout:hover {
-    width: fit-content;
-    text-decoration: underline;
-}
-.contenedor{
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-}
-.formulario{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    padding: 20px;
+/* Reset de estilos y configuración básica */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    width: 600px;
-    height: 532px;
+    font-family: Arial, sans-serif;
 }
-.Enviar{
-    background-color: #89fcb3;
-    border-radius: 10px;
-    box-shadow: 0 4px rgba(0,0,0,0.2);
-    margin-top: 5px;
+
+/* Estilo para el cuerpo de la página */
+body {
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Encabezado */
+.header {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    color: #1a73e8;
+    margin-bottom: 10px;
+}
+
+/* Formulario de contacto */
+.contact-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+}
+
+.contact-form button {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-}
-.correo{
-    width: 250px;
-}
-
-.contenedorDeAsunto{
-    width: 100%;
-    height: 50px;
-    margin-top: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none;
-}
-.contenedorDeTexto {
-    width: 100%;
-    height: 235px;
-    margin-top: 5px;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none; /* Evita que los usuarios redimensionen el área de texto */
-}
-
-@media (max-width: 480px){
-    .formulario{
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        padding: 20px;
-        box-sizing: border-box;
-        width: 600px;
-        height: 480px;
-    }
-    .contenedorDeAsunto{
-        width: 100%;
-        height: 50px;
-        margin-top: 5px;
-        padding: 10px;
-        border-radius: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        resize: none;
-    }
-    .contenedorDeTexto {
-        width: 100%;
-        height: 235px;
-        margin-top: 5px;
-        padding: 10px;
-        border-radius: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        resize: none; /* Evita que los usuarios redimensionen el área de texto */
-    }
 }

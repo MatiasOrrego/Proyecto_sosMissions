@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Médico - Preguntas y Respuestas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .user-type {
+            margin-bottom: 20px;
+        }
+
+        .user-type button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+        }
+
+        .user-type button.active {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        .question-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .question-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .question-form button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .questions-list {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .question h3 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .question p {
+            margin-bottom: 10px;
+        }
+
+        .question .metadata {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .answers {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .answer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .answer-form {
+            margin-top: 10px;
+        }
+
+        .answer-form textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            resize: vertical;
+        }
+
+        .answer-form button {
+            background-color: #34a853;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Foro Médico - Preguntas y Respuestas</h1>
+            <div class="user-type">
+                <button onclick="setUserType('patient')" id="patientBtn">Paciente</button>
+                <button onclick="setUserType('doctor')" id="doctorBtn">Médico</button>
+            </div>
+        </div>
+
+        <div class="question-form" id="questionForm">
+            <textarea placeholder="Escribe tu pregunta médica aquí..."></textarea>
+            <button onclick="submitQuestion()">Publicar Pregunta</button>
+        </div>
+
+        <div class="questions-list" id="questionsList">
+            <!-- Las preguntas se cargarán aquí dinámicamente -->
+        </div>
+    </div>
+
+    <script>
+        let currentUserType = 'patient';
+        let questions = [];
+
+        // Simular algunas preguntas iniciales
+        const initialQuestions = [
+            {
+                id: 1,
+                text: "¿Cuáles son los síntomas comunes de la migraña?",
+                author: "Usuario123",
+                date: "2024-03-28",
+                answers: [
+                    {
+                        text: "Los síntomas más comunes incluyen dolor de cabeza pulsátil, sensibilidad a la luz y sonido, náuseas. Es importante consultar a un médico para un diagnóstico preciso.",
+                        author: "Dr. García",
+                        date: "2024-03-28"
+                    }
+                ]
+            }
+        ];
+
+        // Cargar preguntas iniciales
+        window.onload = function() {
+            questions = initialQuestions;
+            updateQuestionsList();
+        };
+
+        function setUserType(type) {
+            currentUserType = type;
+            document.getElementById('patientBtn').classList.remove('active');
+            document.getElementById('doctorBtn').classList.remove('active');
+            document.getElementById(`${type}Btn`).classList.add('active');
+            
+            // Mostrar/ocultar el formulario de preguntas según el tipo de usuario
+            document.getElementById('questionForm').classList.toggle('hidden', type === 'doctor');
+            updateQuestionsList();
+        }
+
+        function submitQuestion() {
+            const questionText = document.querySelector('.question-form textarea').value.trim();
+            
+            if (questionText) {
+                const newQuestion = {
+                    id: questions.length + 1,
+                    text: questionText,
+                    author: "Usuario" + Math.floor(Math.random() * 1000),
+                    date: new Date().toISOString().split('T')[0],
+                    answers: []
+                };
+
+                questions.unshift(newQuestion);
+                document.querySelector('.question-form textarea').value = '';
+                updateQuestionsList();
+            }
+        }
+
+        function submitAnswer(questionId) {
+            const answerText = document.querySelector(`#answer-${questionId}`).value.trim();
+            
+            if (answerText) {
+                const question = questions.find(q => q.id === questionId);
+                if (question) {
+                    question.answers.push({
+                        text: answerText,
+                        author: "Dr. " + Math.floor(Math.random() * 1000),
+                        date: new Date().toISOString().split('T')[0]
+                    });
+                    updateQuestionsList();
+                }
+            }
+        }
+
+        function updateQuestionsList() {
+            const questionsList = document.getElementById('questionsList');
+            questionsList.innerHTML = questions.map(question => `
+                <div class="question">
+                    <h3>Pregunta #${question.id}</h3>
+                    <p>${question.text}</p>
+                    <div class="metadata">
+                        Publicado por: ${question.author} | Fecha: ${question.date}
+                    </div>
+                    <div class="answers">
+                        ${question.answers.map(answer => `
+                            <div class="answer">
+                                <p>${answer.text}</p>
+                                <div class="metadata">
+                                    Respondido por: ${answer.author} | Fecha: ${answer.date}
+                                </div>
+                            </div>
+                        `).join('')}
+                        ${currentUserType === 'doctor' ? `
+                            <div class="answer-form">
+                                <textarea id="answer-${question.id}" placeholder="Escribe tu respuesta..."></textarea>
+                                <button onclick="submitAnswer(${question.id})">Responder</button>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
