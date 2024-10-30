@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
+import { Badge } from '../components/ui/Badge';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import { Progress } from '../components/ui/Progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/Tabs';
 import { 
   Award, 
   BookOpen, 
@@ -34,7 +34,7 @@ const MedicalSurveys = () => {
       author: "Dr. García",
       specialty: "Cardiología",
       duration: "10 min",
-      questions: 15,
+      questionsCount: 15, // Cambié "questions" a "questionsCount" para evitar duplicados
       difficulty: "Intermedio",
       completions: 324,
       avgScore: 78,
@@ -62,7 +62,7 @@ const MedicalSurveys = () => {
       author: "Dra. Rodríguez",
       specialty: "Neurología",
       duration: "15 min",
-      questions: 20,
+      questionsCount: 20, // Cambié "questions" a "questionsCount" para evitar duplicados
       difficulty: "Avanzado",
       completions: 156,
       avgScore: 72,
@@ -265,7 +265,7 @@ const MedicalSurveys = () => {
                       <Clock size={16} />
                       {survey.duration}
                       <BookOpen size={16} className="ml-2" />
-                      {survey.questions} preguntas
+                      {survey.questionsCount} preguntas
                     </div>
 
                     <div className="flex gap-2">

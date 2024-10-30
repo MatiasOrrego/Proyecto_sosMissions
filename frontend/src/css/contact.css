@@ -68,3 +68,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
+
+.contact-form button:hover {
+    background-color: #155ab6;
+}

@@ -8,7 +8,7 @@ import Contact from './pages/contact';
 import Login from './pages/login';
 import Register from './pages/register';
 import RCPCounter from './components/ui/rcpCounter';
-import Button from './components/ui/button';
+import MedicalSurveys from './pages/Encuesta'; // Importa el componente MedicalSurveys
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/encuesta" element={<MedicalSurveys />} /> {/* Añade la ruta para MedicalSurveys */}
           </Routes>
         </main>
         <Footer />

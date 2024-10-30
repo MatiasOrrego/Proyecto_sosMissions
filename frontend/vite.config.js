@@ -11,6 +11,7 @@ build: {
         registro: resolve(__dirname, 'public/registro.html'),
         registrom: resolve(__dirname, 'public/registrom.html'),
         sesion: resolve(__dirname, 'public/sesion.html'),
+        foro: resolve(__dirname, 'public/Foro.html'),
     },
     },
 },
