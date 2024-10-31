@@ -13,12 +13,17 @@
     background-color: #f4f4f9;
   }
   
-  .contenedor {
+  .quiz-container {
     min-width: 450px;
     padding: 2rem;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+  }
+
+  main{
+    margin-top: 100px;
+    margin-bottom: 100px;
   }
   
   h2 {
@@ -72,4 +77,19 @@
   
   .btn-submit:hover {
     background-color: #0056b3;
+  }
+
+  .question-item {
+    margin-bottom: 20px;
+  }
+  
+  .option-item {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .option-item input[type="text"] {
+    margin-left: 10px;
+    flex: 1;
   }

@@ -1,9 +1,9 @@
 import { conn } from "../database/db.js";
 
-export const createQuiz = async (title, description, categoryId, userId, status, date) => {
-  const [result] = await conn.query(`INSERT INTO quiz (title, description, categoryId, userId, status, date) VALUES (?,?,?,?,true,CURRENT_DATE())`, [title, description, categoryId, userId, status, date])
+export const createQuestions = async (content, quizId) => {
+  const [result] = await conn.query(`INSERT INTO questions (content, quizId) VALUES (?,?)`, [content, quizId]);
 
-  return { id: result.insertId, title, description, categoryId, userId, status, date }
+  return { id: result.insertId, content, quizId };
 };
 
 export const getAllQuiz = async () => {

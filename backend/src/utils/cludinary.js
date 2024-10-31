@@ -16,7 +16,6 @@ export async function uploadImage(filePath) {
         });
 
         console.log('Imagen subida correctamente:', uploadResult.secure_url);
-        console.log('Imagen subida correctamente:', uploadResult);
         
         fs.unlinkSync(filePath);
 

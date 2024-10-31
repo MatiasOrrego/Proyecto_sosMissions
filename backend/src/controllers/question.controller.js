@@ -1,4 +1,5 @@
-import { createQuiz, deleteQuizById, getAllQuiz, getQuiz, getQuizByCategory, getQuizById } from "../models/quiz.model.js";
+import { createQuestions } from "../models/questions.js";
+
 
 export const getAllQuizCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -42,14 +43,13 @@ export const getQuizByCategoryCtrl = async (req, res) => {
 };
 
 
-export const createQuizCtrl = async (req, res) => {
-  const userId = req.user.id;
-  const { title, description, categoryId } = req.body;
+export const createQuestionsCtrl = async (req, res) => {
+  const { content, quizId } = req.body;
 
   try {
-    const newQuiz = await createQuiz(title, description, categoryId, userId);
+    const newQuestion = await createQuestions(content, quizId);
     
-    res.status(201).json(newQuiz);
+    res.status(201).json(newQuestion);
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: 'Error al crear el cuestionario', error });

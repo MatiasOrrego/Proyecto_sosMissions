@@ -9,6 +9,8 @@ import { postRouter } from './routes/post.routes.js';
 import { commentRouter } from './routes/comments.routes.js';
 import { medicRouter } from './routes/medic.routes.js';
 import { videoRouter } from './routes/video.routes.js';
+import { quizRouter } from './routes/quiz.routes.js';
+import { questionRouter } from './routes/question.routes.js';
 
 const app = express();
 
@@ -41,7 +43,9 @@ app.use('/auth', authRouter);
 app.use('/post', postRouter);
 app.use(commentRouter);
 app.use('/medic', medicRouter);
-app.use('/video', videoRouter)
+app.use('/video', videoRouter);
+app.use('/quiz', quizRouter);
+app.use('/question', questionRouter)
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en el puerto 3000');
