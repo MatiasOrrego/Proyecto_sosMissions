@@ -25,7 +25,7 @@ canvas {
 main{
     position: relative;
     overflow: hidden;
-    height: 120vh;
+    height: 100vh;
 }
 
 .formulario {
@@ -35,7 +35,7 @@ main{
     padding: 20px;
     max-width: 600px;
     width: 100%;
-    margin-top: 120px;
+    margin-top: 100px;
 }
 
 .titulo {
@@ -175,8 +175,57 @@ header.sticky #registerBtn a{
     color: transparent; /* Hace el contenido invisible */
     transition: 0.2s ease;
     background-color: transparent;
-    color: transparent;
+    color: transparent;;
 }
+
+header.sticky .logo{
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+.logo img{
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover{
+    transform: scale(1.1);
+}
+
+.dropdown-toggle{
+    color: white !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+    color: rgb(255, 255, 255) !important;
+}
+
+header.sticky .dropdown-toggle{
+    color: transparent !important;
+    pointer-events: none;
+
+}
+
+header.sticky .dropdown-toggle:focus,
+header.sticky .dropdown-toggle:active{
+    color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+    color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-item{
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.dropdown-item:hover{
+    color: black;
+    background-color: rgb(41, 0, 0);
+}
+
 
 header.sticky .nav-item:hover,
 header.sticky .btn:hover {

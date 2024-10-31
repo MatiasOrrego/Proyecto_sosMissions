@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Sobre Nosotros</title>
+    <title>SOSDoc</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -17,14 +17,17 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../src/css/aboutus.css">
-    <link rel="shortcut icon" href="../src/assets/img/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../src/assets/img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="./src/assets/img/LOGO SIN LETRAS - COLOR.png" type="image/png">
     <script src="https://kit.fontawesome.com/368cdab837.js" crossorigin="anonymous"></script>
   </head>
 
   <header class="navbar navbar-expand-lg p-3 fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">SOSDoc</a>
+      <div class="logo">
+        <a class="navbar-brand" href="index.html">
+          <img src="src/assets/img/LOGO SIN LETRAS.png" width="50">
+        </a>
+      </div>
       <button
         class="navbar-toggler"
         type="button"
@@ -111,92 +114,39 @@
 <canvas id="canvas" width="32" height="32"></canvas>
     
 <script type= "text/javascript">
-    window.addEventListener("scroll",function(){
-      var header = document.querySelector("header");
-      header.classList.toggle("sticky", window.scrollY > 0);
-    })
+  window.addEventListener("scroll",function(){
+    var header = document.querySelector("header");
+    var logo = document.querySelector(".navbar-brand img")
+    
+    if (window.scrollY > 0){
+      header.classList.add("sticky");
+      logo.src = "src/assets/img/LOGO SIN LETRAS - COLOR.png"
+    } else {
+      header.classList.remove("sticky");
+      logo.src = "src/assets/img/LOGO SIN LETRAS.png"
+    }
+  })
 </script>
 
     <main class="flex-fill">
-      <div class="container my-5">
-        
-        <div class="row">
-            <div class="col-md-4 team-member text-center">
-                <img src="../src/assets/img/perfil.jpeg" alt="Persona 1" class="img-fluid">
-                <h3>Orrego Matias</h3>
-                <p>Estudiante</p>
+      <div class="container ">
+        <section class = "info-primera d-flex">
+          <div class="blur-background"></div>
+        <div id="texto" class="col-6 text-center">
+                <h2 class="text-center" >¿Quienes Somos?</h2>
+                <p>Somos un grupo de estudiantes dedicados a crear soluciones tecnológicas para mejorar la vida de las personas. Inspirados en los desafíos de quienes carecen de conocimientos de salud, desarrollamos esta plataforma para que médicos puedan compartir información fácilmente y todos puedan acceder y aprender sobre bienestar.</p>
             </div>
-            
-            <div class="col-md-4 team-member text-center">
-                <img src="../src/assets/img/perfil.jpeg" alt="Persona 2" class="img-fluid">
-                <h3>Vega Tobias</h3>
-                <p>Estudiante</p>
-            </div>
-            
-            <div class="col-md-4 team-member text-center">
-                <img src="../src/assets/img/perfil.jpeg" alt="Persona 3" class="img-fluid">
-                <h3>Quiroga Juan</h3>
-                <p>Estudiante</p>
+            <div class = "col-6 text-center">
+            <img class="logo-info" src="../src/assets/img/SOSDoc-1.png" alt="">
             </div>
         </div>
-        
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <h2>Nuestra Misión</h2>
-                <p>Somos un grupo de estudiantes, los cuales nos dedicamos a crear soluciones tecnológicas innovadoras que mejoren la vida de las personas. Para la creacion de esta plataforma nos inspiramos en la diferentes problematicas que afrontan, las diferentes personas que no tienen un conocimiento adecuado sobre la salud y su bienestar. Por eso comenzamos con el desarrollo de este proyecto, para que los médicos puedan darnos información desde sus dispositivos tegnológicos y, que, las demás personas puedan tener acceso a el y aprender sobre ello.</p>
-            </div>
-        </div>
+      </section>
     </div>
     </main>
 
 
     <footer class="text-center">
-      <!-- Grid container -->
-      <div class="container pt-2">
-        <!-- Section: Social media -->
-        <section class="mb-2">
-          <!-- Facebook -->
-          <a
-            data-mdb-ripple-init
-            class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-
-          <!-- Google -->
-          <a
-            data-mdb-ripple-init
-            class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-google"></i
-          ></a>
-
-          <!-- Instagram -->
-          <a
-            data-mdb-ripple-init
-            class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </section>
-        <!-- Section: Social media -->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div
-        class="text-center p-3"
-        style="background-color: rgba(0, 0, 0, 0.05)"
-      >
-        © 2024 Copyright: SOSMissions.com
-      </div>
-      <!-- Copyright -->
+      
     </footer>
       <!-- Bootstrap JavaScript Libraries -->
       <script

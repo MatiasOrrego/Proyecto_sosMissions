@@ -83,6 +83,14 @@ canvas {
   text-decoration: none;
 }
 
+.logo img{
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover{
+  transform: scale(1.1);
+}
+
 .nav-item a:hover {
   color: white;
   transition: color 0.3s ease, background-color 0.3s ease;
@@ -136,6 +144,8 @@ header {
 header.sticky {
   padding: 5px 100px;
   background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 header.sticky .form-control {
@@ -151,6 +161,39 @@ header.sticky .btn,
 header.sticky #registerBtn {
   color: rgb(0, 0, 0);
   transition: 0.6s;
+}
+
+.dropdown-toggle{
+  color: white !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+  color: rgb(255, 255, 255) !important;
+}
+
+header.sticky .dropdown-toggle{
+  color: black !important;
+}
+
+header.sticky .dropdown-toggle:focus,
+header.sticky .dropdown-toggle:active{
+  color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+  color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-item{
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover{
+  color: black;
+  background-color: rgb(41, 0, 0);
 }
 
 /* Botones */

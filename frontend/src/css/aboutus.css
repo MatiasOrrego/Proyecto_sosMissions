@@ -20,10 +20,60 @@ canvas {
 }
 
 main{
-    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:110px;
     position: relative;
-    overflow: hidden;
-    height: 120vh;
+}
+
+
+main .info-primera{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.144);
+    border-radius: 20px;
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+    box-shadow: 5px 5px 15px 3px #000000ab;
+}
+
+main .blur-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-color: rgba(35, 35, 199, 0.137);
+    filter: blur(50px);
+    z-index: 1;
+}
+
+#texto, .logo-info{
+    position: relative;
+    z-index:2;
+}
+
+main #texto{
+    filter: blur(0px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 55%;
+    padding: 50px;
+}
+
+main .logo-info{
+    width: 100%; /* Ajusta el tamaño de la imagen para una mejor presentación */
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
 }
 
 .navbar {
@@ -49,6 +99,15 @@ main{
     font-weight: bold;
     text-decoration: none;
 }
+
+.logo img{
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover{
+    transform: scale(1.1);
+}
+
 
 .nav-item a:hover {
     color: white;
@@ -92,6 +151,8 @@ header.sticky #loginBtn a {
 header.sticky {
     padding: 5px 100px;
     background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 header.sticky .form-control {
@@ -185,6 +246,39 @@ header.sticky #logout{
     border-radius: 100px;
 }
 
+.dropdown-toggle{
+    color: white !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+    color: rgb(255, 255, 255) !important;
+}
+
+header.sticky .dropdown-toggle{
+    color: black !important;
+}
+
+header.sticky .dropdown-toggle:focus,
+header.sticky .dropdown-toggle:active{
+    color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+    color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-item{
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.dropdown-item:hover{
+    color: black;
+    background-color: rgb(41, 0, 0);
+}
+
 footer {
     background-color: #ffffff;
     color: #1a1717;
@@ -203,71 +297,18 @@ h1 {
     padding-bottom: 15px;
 }   
 
-/* Miembros del equipo */
-.team-member {
-    background-color: #fff;
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    padding: 30px;
-    margin: 0 auto 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.team-member:hover {
-    transform: scale(1.05);
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    border: 5px solid #2b6340;
-    transition: transform 0.3s ease-in-out;
-}
-
-.team-member:hover img {
-    transform: scale(1.1);
-}
-
-.team-member h3 {
-    color: #2c3e50;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.team-member p {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-.team-member p:first-of-type {
-    color: #2b6340;
-    font-weight: bold;
-}
-
-
-
 h2 {
     color: #ffffff;
+    font-weight: bold;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
 p {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1.1rem;
     line-height: 1.6;
-    font-weight: lighter;
+    font-weight: 400;
 }
 
 /* Responsive */
