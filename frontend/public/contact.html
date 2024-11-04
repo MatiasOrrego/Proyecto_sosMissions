@@ -4,33 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foro Médico - Contáctanos</title>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../src/css/contact.css">
+    <link rel="shortcut icon" href="../src/assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../src/assets/img/favicon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/368cdab837.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Foro Médico - Contáctanos</h1>
+  <header class="navbar navbar-expand-lg p-3 fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">SOSDoc</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="./aboutus.html">Sobre Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="./contact.html">Contactos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Categorías
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="seccion2.html">Maniobras de RCP</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="seccion3.html">Maniobra de Heimlich</a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="seccion1.html">Primeros auxilios</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" aria-label="Search">
+          <button class="btn btn-outline" type="submit">Buscar</button>
+        </form>
+        <div class="btn-login" id="btn-lr">
+          <button class="btn" id="loginBtn"><a href="./sesion.html">Iniciar Sesión</a></button>
+          <button class="btn" id="registerBtn"><a href="./registro.html">Registrarse</a></button>
         </div>
-
-        <div class="contact-form">
-            <!-- modify this form HTML and place wherever you want your form -->
-<form
-action="https://formspree.io/f/mdkoegnl"
-method="POST"
->
-<label>
-  Your email:
-  <input type="email" name="email">
-</label>
-<label>
-  Your message:
-  <textarea name="message"></textarea>
-</label>
-<!-- your other form fields go here -->
-<button type="submit">Send</button>
-</form>
-        </div>
+      </div>
     </div>
+  </header>
 
+  <main>
+    <canvas id="canvas" width="32" height="32"></canvas>
+    <div class="container">
+      <div class="header">
+          <h1>Foro Médico - Contáctanos</h1>
+      </div>
+
+      <div class="contact-form">
+          <!-- modify this form HTML and place wherever you want your form -->
+          <form
+              action="https://formspree.io/f/mdkoegnl"
+              method="POST"
+          >
+              <label>
+                  Tu correo electrónico:
+                  <input type="email" name="email" required>
+              </label>
+              <label>
+                  Tu mensaje:
+                  <textarea name="message" required></textarea>
+              </label>
+              <!-- your other form fields go here -->
+              <button type="submit">Enviar</button>
+          </form>
+      </div>
+    </div>
+  </main>
+    
+  <footer class="text-center">
+    <!-- Grid container -->
+    <div class="container pt-2">
+      <!-- Section: Social media -->
+      <section class="mb-2">
+        <!-- Facebook -->
+        <a
+          data-mdb-ripple-init
+          class="btn btn-link btn-floating btn-lg text-body m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+
+        <!-- Google -->
+        <a
+          data-mdb-ripple-init
+          class="btn btn-link btn-floating btn-lg text-body m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-google"></i
+        ></a>
+
+        <!-- Instagram -->
+        <a
+          data-mdb-ripple-init
+          class="btn btn-link btn-floating btn-lg text-body m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div
+      class="text-center p-3"
+      style="background-color: rgba(0, 0, 0, 0.05)"
+    >
+      © 2024 Copyright: SOSMissions.com
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="../src/js/fondo.js"></script>
 </body>
 </html>
