@@ -101,14 +101,19 @@
     </header>
 
     <main class="d-flex justify-content-center align-items-center">
-      <div class="container text-center">
+      <div class="container text-center" id="publicaciones-contenedor">
         <div class="container_titulo"><h3>Publicaciones</h3></div>
         <div id="publicaciones" class="card-group row mx-auto"></div>
       </div> 
 
-        <div class="container text-center">
+        <div class="container text-center" id="videos-contenedor">
           <div class="container_titulo"><h3>Videos</h3></div>
           <div id="videos" class="card-group row mx-auto"></div>
+        </div>
+
+        <div class="container text-center" id="cuestionarios-contenedor">
+          <div class="container_titulo"><h3>Cuestionarios</h3></div>
+          <div id="quiz" class="card-group row mx-auto"></div>
         </div>
 
       <div class="modal" id="comentariosModal" style="display: none;">
@@ -131,5 +136,6 @@
         <script src="../src/js/post.js"></script>
         <script src="../src/js/auth.js"></script>
         <script src="../src/js/showVideos.js"></script>
+        <script src="../src/js/showQuiz.js"></script>
     </body>
 </html>

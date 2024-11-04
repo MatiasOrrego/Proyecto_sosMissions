@@ -1,69 +1,76 @@
-import { createQuestions } from "../models/questions.js";
+import { createOptions, createQuestions, getAllOptions, getAllQuestions, getOptionsByQuestion, getQuestionByQuizId } from "../models/questions.model.js"
 
+export const getAllGeneralQuestionsCtrl = async (_req, res) => {
+  try {
+    const questions = await getAllQuestions();
+    const options = await getAllOptions();
 
-export const getAllQuizCtrl = async (req, res) => {
-  const userId = req.user.id;
-  const quiz = await getQuiz(userId);
-
-  res.status(200).json(quiz);
-};
-
-export const getAllGeneralQuiz = async (req, res) => {
-  const quiz = await getAllQuiz();
-
-  res.status(200).json(quiz)
+    res.status(200).json({ questions, options });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener preguntas y opciones' });
+  }
 }
 
-export const getQuizByIdCtrl = async (req, res) => {
-  const { id } = req.params;
-  const { user } = req;
-
-  const quiz = await getQuizById(id, user.id);
-
-  if (!quiz) {
-    return res.status(404).json({ message: 'Video no encontrado' });
-  }
-
-  res.status(200).json(quiz);
-};
-
-export const getQuizByCategoryCtrl = async (req, res) => {
+export const getAllOptionsByQuestionIdCtrl = async (req, res) => {
+  const { questionId } = req.params;
   try {
-    const categoryId = parseInt(req.params.categoryId);
-    if (isNaN(categoryId)) {
-      return res.status(400).json({ message: 'Categoría no válida' });
+    const options = await getOptionsByQuestion(questionId);
+
+    if (!options) {
+      return res.status(404).json({ message: 'Opcion no encontrada' })
     }
 
-    const quiz = await getQuizByCategory(categoryId);
-
-    res.status(200).json(quiz);
+    res.status(200).json(options);
   } catch (error) {
-    res.status(500).json({ message: 'Error al obtener los vídeos por categoría' });
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener las opciones' });
   }
-};
+}
 
-
-export const createQuestionsCtrl = async (req, res) => {
-  const { content, quizId } = req.body;
+export const getQuestionByQuizIdCtrl = async (req, res) => {
+  const { quizId } = req.params;
 
   try {
-    const newQuestion = await createQuestions(content, quizId);
-    
-    res.status(201).json(newQuestion);
+    const questions = await getQuestionByQuizId(quizId);
+    const questionsWithOptions = await Promise.all(
+      questions.map(async (question) => {
+        const options = await getOptionsByQuestion(question.id);
+        return { ...question, options };
+      })
+    );
+
+    if (!questionsWithOptions.length) {
+      return res.status(404).json({ message: 'Cuestionario no encontrado' });
+    }
+
+    res.status(200).json(questionsWithOptions);
   } catch (error) {
-    console.log(error)
-    return res.status(500).json({ message: 'Error al crear el cuestionario', error });
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener las preguntas', error });
   }
 };
 
-export const deleteQuizCtrl = async (req, res) => {
-  const { id } = req.params
-  const { user } = req;
 
-  const deleteQuiz = await deleteQuizById(id, user.id);
+// Controlador para crear preguntas y opciones en el backend
+export const createQuestionsWithOptionsCtrl = async (req, res) => {
+  const { questions, quizId } = req.body;
 
-  if (!deleteQuiz) {
-    return res.status(404).json({ message: 'video no encontrada' })
+  try {
+    for (const question of questions) {
+      // Crear la pregunta
+      const newQuestion = await createQuestions(question.content, quizId);
+
+      // Crear las opciones de la pregunta usando el ID de la nueva pregunta
+      for (const option of question.options) {
+        // Aquí pasas newQuestion.id como questionId
+        await createOptions(option.description, option.status, newQuestion.id);
+      }
+    }
+
+    res.status(201).json({ message: 'Preguntas y opciones creadas con éxito' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al crear preguntas y opciones', error });
   }
-  res.status(204).send();
 };
