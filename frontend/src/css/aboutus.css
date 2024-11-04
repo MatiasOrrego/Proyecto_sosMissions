@@ -116,6 +116,7 @@ main .logo-info{
 
 .nav-item {
     transition: background-color 0.3s ease;
+    border-radius: 100px;
 }
 
 .nav-item:hover {
@@ -145,8 +146,6 @@ header.sticky #loginBtn a {
 .navbar-brand:hover {
   color: rgba(255, 255, 255, 0.938); /* Color original antes del sticky */
 }
-
-
 
 header.sticky {
     padding: 5px 100px;
@@ -309,36 +308,4 @@ p {
     font-size: 1.1rem;
     line-height: 1.6;
     font-weight: 400;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    .team-member {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .team-member img {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .mission {
-        padding: 30px 15px;
-    }
-}
-
-.team-member {
-    margin-bottom: 30px;
-}
-.team-member img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
 }
