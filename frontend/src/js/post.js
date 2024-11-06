@@ -46,7 +46,7 @@ function crearNuevaPublicacion(titulo, descripcion, postId) {
 
   const nuevaImagen = document.createElement('img');
   nuevaImagen.classList.add('card-img-top', 'cardImg');
-  nuevaImagen.src = '../../assets/img/imh-maniobras-emergencia.png';
+  nuevaImagen.src = './imh-maniobras-emergencia.png';
 
   const cuerpoTarjeta = document.createElement('div');
   cuerpoTarjeta.classList.add('card-body');
