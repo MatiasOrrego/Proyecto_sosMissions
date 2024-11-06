@@ -93,3 +93,71 @@
     margin-left: 10px;
     flex: 1;
   }
+
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    color: #0d6efd;
+    margin-bottom: 1rem;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .input-group-text {
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .input-group .form-control {
+    margin-bottom: 0;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .form-check-input {
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .options-container {
+    margin-top: 1rem;
+  }
+  
+  .select-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .select-group .form-group {
+    flex: 1;
+  }
+  
+  .submit-quiz-btn {
+    background-color: #198754;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .submit-quiz-btn:hover {
+    background-color: #157347;
+  }
