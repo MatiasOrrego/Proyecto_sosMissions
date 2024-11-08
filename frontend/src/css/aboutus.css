@@ -20,9 +20,6 @@ canvas {
 }
 
 main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top:110px;
     position: relative;
 }
@@ -50,7 +47,7 @@ main .blur-background{
     background: inherit;
     background-color: rgba(35, 35, 199, 0.137);
     filter: blur(50px);
-    z-index: 1;
+    z-index: -1;
 }
 
 #texto, .logo-info{
@@ -74,6 +71,15 @@ main .logo-info{
     height: auto;
     object-fit: contain;
     border-radius: 15px;
+}
+
+.info-equipo{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    height: 90vh;
+    width: auto;
+    margin-top: 50px;
+    z-index: 9999999;
 }
 
 .navbar {
@@ -288,7 +294,7 @@ body{
 }
 
 /* Título principal */
-h1 {
+.info-primera h1 {
     font-size: 3rem;
     color: #ffffff;
     margin-bottom: 2rem;
@@ -296,14 +302,14 @@ h1 {
     padding-bottom: 15px;
 }   
 
-h2 {
+.info-primera h2{
     color: #ffffff;
     font-weight: bold;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-p {
+.info-primera p{
     color: rgb(255, 255, 255);
     font-size: 1.1rem;
     line-height: 1.6;

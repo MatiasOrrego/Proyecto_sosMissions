@@ -368,8 +368,7 @@ main{
 
 .seccion-tercera-medico{
   /* background: linear-gradient(180deg, white, rgb(255, 238, 238), rgb(255, 65, 65), rgb(167, 0, 0), rgb(138, 0, 0), rgb(34, 0, 0)); */
-  height: 70vh;
-  margin-top: -10vh;
+  height: 80vh;
   border-radius: 20px 20px 0px 0px;
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -411,7 +410,7 @@ main{
 .seccion-categorias{
   margin-top: -18px;
   border-radius: 20px;
-  height: 110vh;
+  height: 120vh;
   background: radial-gradient(circle, rgba(3,12,21,1) 27%, rgba(116,6,32,1) 73%, rgba(228,1,46,1) 93%, rgba(255,0,47,1) 99%);
 }
 
