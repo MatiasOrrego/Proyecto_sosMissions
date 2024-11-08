@@ -99,6 +99,32 @@
                     <p>Muy interesante el análisis sobre el impacto en el empleo. Sería bueno profundizar más en las nuevas oportunidades laborales que menciona.</p>
                 </li>
             </ul>
+        </section>
+
+        <section class="article-upload-section">
+            <h2>Subir Nuevo Artículo</h2>
+            <form class="article-form">
+                <label for="title">Título:</label>
+                <input type="text" name="title" required>
+                
+                <label for="author">Autor:</label>
+                <input type="text" name="author" required>
+                
+                <label for="date">Fecha:</label>
+                <input type="date" name="date" required>
+                
+                <label for="readingTime">Tiempo de Lectura (min):</label>
+                <input type="number" name="readingTime" required>
+                
+                <label for="content">Contenido:</label>
+                <textarea name="content" required></textarea>
+                
+                <label for="image">Imagen:</label>
+                <input type="file" name="image" accept="image/*" required>
+                
+                <button type="submit">Subir Artículo</button>
+            </form>
+        </section>
     </div>
     <script src="../src/js/pageExam.js"></script>
 </body>

@@ -48,6 +48,100 @@ label{
     border-radius: 20px;
 }
 
+/* Estilos para el header */
+.navbar {
+    background-color: transparent;
+}
+
+.navbar-brand{
+    margin-right: 220px;
+    transition: margin-right 0.6s ease;
+}
+
+.navbar-brand, 
+.nav-link, 
+.btn {
+    color: rgba(255, 255, 255, 0.938);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.nav-item{
+    border-radius: 100px;
+}
+
+#loginBtn a, 
+#registerBtn a {
+    color: rgba(0, 0, 0, 0.938);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#btn-reg{
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    color: rgb(180, 0, 0);
+    border: 2px solid rgb(37, 0, 0);
+    border-radius: 5px;
+    transition: 0.2s ease;
+}
+
+#btn-reg:hover{
+    background-color: rgb(180, 0, 0);
+    color: white;
+    border-radius: 30px;
+}
+
+.nav-item a:hover {
+    color: white;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .nav-item {
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+  }
+  
+  .nav-item:hover {
+    background-color: rgb(180, 0, 0);
+    width: fit-content;
+    border-radius: 100px;
+  }
+
+
+.navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.938); /* Color original antes del sticky */
+}
+
+/* Botones */
+#loginBtn, 
+#registerBtn {
+  border-radius: 100px;
+  background-color: white;
+  color: black;
+}
+
+#loginBtn{
+  margin-right: 8px;
+}
+
+
+#loginBtn:hover,
+#registerBtn:hover {
+  background-color: rgb(224, 224, 224); /* Fondo al pasar el cursor */
+  color: white; /* Color del texto al pasar el cursor */
+}
+
+header.sticky #loginBtn, 
+header.sticky #registerBtn {
+  background-color: rgb(184, 9, 9); /* Fondo cuando el header es sticky */
+  color: white; /* Color del texto cuando el header es sticky */
+  transition: 0.20s ease;
+}
+
+
+/* Estilos para el formulario */
 
 form input[type="email"],
 form textarea {
