@@ -8,6 +8,7 @@ import { authRouter } from './routes/auth.routes.js';
 import { postRouter } from './routes/post.routes.js';
 import { commentRouter } from './routes/comments.routes.js';
 import { medicRouter } from './routes/medic.routes.js';
+import { validateJwt } from './middlewares/validarJWT.js';
 
 const app = express();
 
@@ -15,31 +16,30 @@ const app = express();
 app.use(morgan('dev'));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "http://127.0.0.1:5500"],
     credentials: true,
   })
 );
-app.use(helmet())
-app.use(cookieParser())
+app.use(helmet());
+app.use(cookieParser());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 app.use(
   fileupload({
     useTempFiles: true,
     tempFileDir: './uploads',
-  }),
+  })
 );
 app.use((err, _req, res, _next) => {
   console.error(err);
-
   res.status(500).json({ message: 'Internal server error' });
 });
 
 // Rutas
 app.use('/auth', authRouter);
-app.use('/post', postRouter);
+app.use('/api/posts', validateJwt, postRouter); // Aplica el middleware de autenticación a las rutas de posts
 app.use(commentRouter);
-app.use('/medic', medicRouter)
+app.use('/medic', medicRouter);
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en el puerto 3000');
