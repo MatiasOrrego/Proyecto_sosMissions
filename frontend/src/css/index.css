@@ -278,12 +278,18 @@ main{
 }
 
 .seccion_usuario{
-  height: 60vh;
+  min-height: 100vh;
   border-radius: 20px;
-  background-color: rgb(255, 255, 255);
   padding-top: 20px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0;
+  border-radius: 20px; 
+  background-image: url('../assets/img/usuario.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
 }
 
 .descripcion-seccion-usuario{
@@ -291,11 +297,16 @@ main{
   font-weight: 300;
 }
 
-.imagen-seccion-primera-usuario{
+/* .imagen-seccion-primera-usuario{
   display:flex;
   justify-content: center;
-  align-items: center;
+  height:  75.23vh;
+  border-radius: 20px;
 }
+
+.imagen-seccion-primera-usuario img{
+  border-radius: 20px;
+} */
 
 .logo-titulo{
   height:80px;
@@ -340,7 +351,6 @@ main{
 }
 
 .imagen-seccion-primera-medico img{
-  width: 300px;
   height: 300px;
   display: flex;
   justify-content: center;
@@ -368,13 +378,14 @@ main{
 
 .seccion-tercera-medico{
   /* background: linear-gradient(180deg, white, rgb(255, 238, 238), rgb(255, 65, 65), rgb(167, 0, 0), rgb(138, 0, 0), rgb(34, 0, 0)); */
-  height: 80vh;
+  height: max-content;
   border-radius: 20px 20px 0px 0px;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 .contenido-seccion-tercera-medico{
@@ -407,6 +418,39 @@ main{
   align-items: center;
 }
 
+:root{
+  --duration: 10s;
+  --totalitems: 6;
+}
+
+.imagen-medico-scroll{
+  position: relative;
+  display: flex;
+  height: 15vw;
+  width: 80vw;
+  overflow: hidden;
+  mask-image: linear-gradient(to left, rgba(254,254,254,0 ), #000 20%, #000 80%, rgba(254,254,254,0))
+}
+
+.img-item{
+  position: absolute;
+  height: inherit;
+  width: 8vw;
+  left: 100%;
+  animation: scrollX var(--duration) linear infinite;
+  animation-delay: calc(var(--duration)/var(--totalitems) * (var(--totalitems) - var(--i)) * -1);
+}
+
+@keyframes scrollX{
+  to{
+    left: -8vw;
+  }
+}
+
+.img-item img{
+  height: inherit;
+}
+
 .seccion-categorias{
   margin-top: -18px;
   border-radius: 20px;
@@ -426,13 +470,14 @@ main{
   width: 250px;
   overflow: hidden;
   border-radius: 0px;
-  transition: border-radius 0.3s ease;
+  transition: transform 0.3s ease, border-radius 0.2s ease;  
   margin: 0 15%;
 }
 
 .tarjetas-seccion-categorias .card:hover{
   border-radius: 30px;
-  transition: border-radius 0.3s ease;
+  transform: scale(1.1);
+  transition: transform 0.3s ease, border-radius 0.2s ease;
 }
 
 
@@ -441,12 +486,13 @@ main{
   height: 250px;
   width: 250px;
   object-fit: cover;
-  transition: border-radius 0.3s ease;
+  transition: transform 0.3s ease, border-radius 0.2s ease;
 }
 
 .tarjetas-seccion-categorias .card:hover .card-img{
   border-radius: 30px;
-  transition: border-radius 0.3s ease;
+  transform: scale(1.0);
+  transition: transform 0.3s ease, border-radius 0.2s ease;
 }
 
 
@@ -456,7 +502,14 @@ main{
   color: rgb(0, 0, 0);
   margin-top: 82%;
   pointer-events: none;
-  
+}
+
+.tarjetas-seccion-categorias .card-title-otros{
+  font-weight: bolder;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  margin-top: 89%;
+  pointer-events: none;
 }
 
 .seccion-categorias h1{
