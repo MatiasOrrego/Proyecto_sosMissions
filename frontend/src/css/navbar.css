@@ -263,12 +263,20 @@ body {
   #logout {
     text-decoration: none;
     color: black;
-  }
-  
-  #logout:hover {
+    border-radius: 100px;
+    background-color: white;
+}
+
+#logout:hover {
     width: fit-content;
-    text-decoration: underline;
-  }
+    text-decoration: none;
+}
+
+header.sticky #logout{
+    color: white;
+    background-color: rgb(184, 9, 9);
+    border-radius: 100px;
+}
   
   /* Tarjetas */
   .card {

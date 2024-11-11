@@ -9,6 +9,7 @@ canvas {
   background-color: #202020;
   margin: 0;
   z-index: -1;
+  background-attachment: fixed;
 }
 
 .box{
@@ -82,6 +83,14 @@ canvas {
   text-decoration: none;
 }
 
+.logo img{
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover{
+  transform: scale(1.1);
+}
+
 .nav-item a:hover {
   color: white;
   transition: color 0.3s ease, background-color 0.3s ease;
@@ -135,6 +144,8 @@ header {
 header.sticky {
   padding: 5px 100px;
   background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 header.sticky .form-control {
@@ -150,6 +161,39 @@ header.sticky .btn,
 header.sticky #registerBtn {
   color: rgb(0, 0, 0);
   transition: 0.6s;
+}
+
+.dropdown-toggle{
+  color: white !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+  color: rgb(255, 255, 255) !important;
+}
+
+header.sticky .dropdown-toggle{
+  color: black !important;
+}
+
+header.sticky .dropdown-toggle:focus,
+header.sticky .dropdown-toggle:active{
+  color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+  color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-item{
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover{
+  color: black;
+  background-color: rgb(41, 0, 0);
 }
 
 /* Botones */
@@ -233,86 +277,242 @@ main{
   color: black;
 }
 
-.seccion-primera{
+.seccion_usuario{
+  min-height: 100vh;
+  border-radius: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  border-radius: 20px; 
+  background-image: url('../assets/img/usuario.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
+}
+
+.descripcion-seccion-usuario{
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+/* .imagen-seccion-primera-usuario{
+  display:flex;
+  justify-content: center;
+  height:  75.23vh;
+  border-radius: 20px;
+}
+
+.imagen-seccion-primera-usuario img{
+  border-radius: 20px;
+} */
+
+.logo-titulo{
+  height:80px;
+}
+
+.seccion-primera-medico{
   /* background: linear-gradient(180deg, white, rgb(255, 238, 238), rgb(255, 65, 65), rgb(167, 0, 0), rgb(138, 0, 0), rgb(34, 0, 0)); */
-  height: 150vh;
+  height: 60vh;
   border-radius: 20px 20px 0px 0px;
   background-color: rgb(255, 255, 255);
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.seccion-segunda{
+.contenido-seccion-medico{
+  display: flex;
+  flex-direction: row;
+}
+
+.texto-seccion-primera-medico{
+  width: 50%;
+  margin-top: 70px;
+  margin-left: 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column ;
+}
+
+.descripcion-secciones-medico{
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.imagen-seccion-primera-medico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  margin-top: 18px;
+}
+
+.imagen-seccion-primera-medico img{
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto-seccion-segunda-medico{
+  width: 50%;
+  margin-left: -50px;
+  margin-top: 70px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column ;
+}
+
+.seccion-segunda-medico{
+  /* background: linear-gradient(180deg, white, rgb(255, 238, 238), rgb(255, 65, 65), rgb(167, 0, 0), rgb(138, 0, 0), rgb(34, 0, 0)); */
+  height: 60vh;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.seccion-tercera-medico{
+  /* background: linear-gradient(180deg, white, rgb(255, 238, 238), rgb(255, 65, 65), rgb(167, 0, 0), rgb(138, 0, 0), rgb(34, 0, 0)); */
+  height: max-content;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.contenido-seccion-tercera-medico{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto-seccion-tercera-medico{
+  margin-top: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column ;
+}
+
+.imagen-seccion-tercera-medico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.imagen-seccion-tercera-medico img{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root{
+  --duration: 10s;
+  --totalitems: 6;
+}
+
+.imagen-medico-scroll{
+  position: relative;
+  display: flex;
+  height: 15vw;
+  width: 80vw;
+  overflow: hidden;
+  mask-image: linear-gradient(to left, rgba(254,254,254,0 ), #000 20%, #000 80%, rgba(254,254,254,0))
+}
+
+.img-item{
+  position: absolute;
+  height: inherit;
+  width: 8vw;
+  left: 100%;
+  animation: scrollX var(--duration) linear infinite;
+  animation-delay: calc(var(--duration)/var(--totalitems) * (var(--totalitems) - var(--i)) * -1);
+}
+
+@keyframes scrollX{
+  to{
+    left: -8vw;
+  }
+}
+
+.img-item img{
+  height: inherit;
+}
+
+.seccion-categorias{
   margin-top: -18px;
   border-radius: 20px;
-  height: 137vh;
+  height: 120vh;
   background: radial-gradient(circle, rgba(3,12,21,1) 27%, rgba(116,6,32,1) 73%, rgba(228,1,46,1) 93%, rgba(255,0,47,1) 99%);
 }
 
-
-.tarjetas{
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 20px
-}
-
-.seccion-primera .card{
-  border-radius: 30px;
-  /* background: linear-gradient(0deg, rgba(3,12,21,1) 10%, rgba(116,6,32,1) 40%, rgba(228,1,46,1) 93%, rgba(3,12,21,1) 99%); */
-  background-color: rgba(3,12,21,1);
-}
-
-.seccion-primera .card-img-top{
-  height: 500px;
-  width: auto;
-  border-radius: 30px;
-}
-
-.seccion-primera .card-body{
-  height: 200px;
-  border-radius: 0px 0px 30px 30px;
-}
-
-.seccion-primera .card-title{
-  font-weight: bolder;
-  font-size: 25px;
-  text-align: center;
-  color: rgb(255, 255, 255);
-}
-
-.seccion-primera .card-text{
-  text-align: center;
-  color:rgb(233, 233, 233);
-}
-
-.tarjetas-seccion-segunda{
+.tarjetas-seccion-categorias{
   display: flex;
   align-items: center;
-  padding: 80px;
+  justify-content: center;
+  padding: 60px;
 }
 
-.seccion-segunda .card{
+.tarjetas-seccion-categorias .card{
   height: 250px;
   width: 250px;
-  margin: 0 auto;
-  padding:0;
+  overflow: hidden;
   border-radius: 0px;
+  transition: transform 0.3s ease, border-radius 0.2s ease;  
+  margin: 0 15%;
 }
 
-.seccion-segunda .card-img{
+.tarjetas-seccion-categorias .card:hover{
+  border-radius: 30px;
+  transform: scale(1.1);
+  transition: transform 0.3s ease, border-radius 0.2s ease;
+}
+
+
+.tarjetas-seccion-categorias .card-img{
+  border-radius: 0px;
   height: 250px;
   width: 250px;
-  border-radius: 0px;
+  object-fit: cover;
+  transition: transform 0.3s ease, border-radius 0.2s ease;
+}
+
+.tarjetas-seccion-categorias .card:hover .card-img{
+  border-radius: 30px;
+  transform: scale(1.0);
+  transition: transform 0.3s ease, border-radius 0.2s ease;
 }
 
 
-.seccion-segunda .card-title{
+.tarjetas-seccion-categorias .card-title{
   font-weight: bolder;
   text-align: center;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   margin-top: 82%;
+  pointer-events: none;
 }
 
-.seccion-segunda h1{
+.tarjetas-seccion-categorias .card-title-otros{
+  font-weight: bolder;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  margin-top: 89%;
+  pointer-events: none;
+}
+
+.seccion-categorias h1{
   color: rgb(255, 255, 255);
   padding-top: 40px;
 }
@@ -339,12 +539,20 @@ footer {
 /* Logout */
 #logout {
   text-decoration: none;
-  color: white;
+  color: black;
+  border-radius: 100px;
+  background-color: white;
 }
 
 #logout:hover {
   width: fit-content;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+header.sticky #logout{
+  color: white;
+  background-color: rgb(184, 9, 9);
+  border-radius: 100px;
 }
 
 .title-container {
@@ -390,6 +598,7 @@ footer {
 }
 
 .floating-btn {
+  text-decoration: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -401,6 +610,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
 }
@@ -411,6 +621,7 @@ footer {
 
 .floating-btn i {
   font-size: 24px;
+  text-decoration: none;
 }
 
 /* Posiciones para cada botón */

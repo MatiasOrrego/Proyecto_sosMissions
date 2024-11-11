@@ -2,7 +2,7 @@
 const cargarPublicacionCompleta = async (postId) => {
   try {
     const response = await fetch(`http://localhost:3000/post/${postId}`, {
-      credentials: 'include'
+      credentials: "include"
     });
     
     if (!response.ok) {
@@ -65,7 +65,7 @@ function crearNuevaPublicacion(titulo, descripcion, postId) {
 
   const nuevaImagen = document.createElement('img');
   nuevaImagen.classList.add('card-img-top', 'cardImg');
-  nuevaImagen.src = '../../assets/img/imh-maniobras-emergencia.png';
+  nuevaImagen.src = './imh-maniobras-emergencia.png';
 
   const cuerpoTarjeta = document.createElement('div');
   cuerpoTarjeta.classList.add('card-body');

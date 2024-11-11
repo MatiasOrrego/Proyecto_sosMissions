@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Proyecto SOS Misions</title>
+    <title>SOSDoc</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -16,7 +16,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./src/css/index.css" />
-    <link rel="shortcut icon" href="./src/assets/img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="./src/assets/img/LOGO SIN LETRAS - COLOR.png" type="image/png">
     <script
       src="https://kit.fontawesome.com/368cdab837.js"
       crossorigin="anonymous"
@@ -26,7 +26,11 @@
   <body>
     <header class="navbar navbar-expand-lg p-3 fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">SOSDoc</a>
+            <div class="logo">
+              <a class="navbar-brand" href="index.html">
+                <img src="src/assets/img/LOGO SIN LETRAS.png" width="50">
+              </a>
+            </div>
           <button
             class="navbar-toggler"
             type="button"
@@ -108,14 +112,22 @@
             </div>
           </div>
         </div>
-    </header>
+    </header>    
 
     <canvas id="canvas" width="32" height="32"></canvas>
     
     <script type= "text/javascript">
       window.addEventListener("scroll",function(){
         var header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
+        var logo = document.querySelector(".navbar-brand img")
+        
+        if (window.scrollY > 0){
+          header.classList.add("sticky");
+          logo.src = "src/assets/img/LOGO SIN LETRAS - COLOR.png"
+        } else {
+          header.classList.remove("sticky");
+          logo.src = "src/assets/img/LOGO SIN LETRAS.png"
+        }
       })
     </script>
     
@@ -139,51 +151,77 @@
     </div>
 
     <main>  
-      <article class="seccion_pri">
-        <section class="seccion-primera">
-          <h3 class="text-center mt-5" style="font-weight: lighter; color: black;">COMO FUNCIONA SOSDoc</h3>
-          <h1 class="text-center" style="color: rgb(0, 0, 0)">Avalado por médicos, para los usuarios</h1>
+      <article class="seccion_usuario">
+        <section class="seccion-primera-usuario">
+          <h1 class="text-center mt-4" style="font-weight: 400; color: rgb(0, 0, 0);">Bienvenido a <img class="logo-titulo" src="src/assets/img/SOSDoc-1.png" alt=""></h1>
+          <div class="contenido-seccion-usuario">
+          <div class="texto-seccion-primera-usuario">
+          <p class="descripcion-seccion-usuario text-center">Informate sobre técnicas de emergencia, participa en cuestionarios para poner a prueba tus conocimientos, comenta y aprende con videos educativos</p>
+          </div>
+        </div>
+        </section>
+      </article>
 
-          <div class="tarjetas">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card">
-                <img src="./src/assets/img/si.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Videos e Imagenes</h5>
-                  <p class="card-text">Mira demostraciones en videos o imagenes para conocer mejor las técnicas.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="./src/assets/img/si.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Aprende técnicas de emergencia</h5>
-                  <p class="card-text">Descubre todo tipo de técnicas para situaciones de emergencia.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="./src/assets/img/si.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Comparte tu opinión</h5>
-                  <p class="card-text">Comenta y participa en las discusiones de técnicas y situaciones de emergencia.</p>
-                </div>
-              </div>
-            </div>
+      <article class="seccion_medico">
+        <section class="seccion-primera-medico">
+          <h1 class="text-center mt-5 mb-4" style="font-weight: 400; color: black;">Como un médico podras</h1>
+          <div class="contenido-seccion-medico">
+          <div class="texto-seccion-primera-medico">
+          <p class="descripcion-secciones-medico">Realizar la publicación de videos para compartir tu experiencia como médico profesional sobre técnicas de emergencia y primeros auxilios, ayudando a las personas a estar mejor preparadas</p>
+          </div>
+          <div class="imagen-seccion-primera-medico">
+            <img src="./src/assets/img/video.jpg" alt="">
           </div>
         </div>
         </section>
 
-        <section class="seccion-segunda">
+        <section class="seccion-segunda-medico">
+          <div class="contenido-seccion-medico">
+          <div class="imagen-seccion-primera-medico">
+            <img src="./src/assets/img/cuestionario.jpg" alt="">
+          </div>
+          <div class="texto-seccion-segunda-medico">
+            <p class="descripcion-secciones-medico">Desarrollar y gestionar cuestionarios interactivos diseñados para evaluar los conocimientos de los usuarios y educarlos de manera efectiva sobre diversos temas relacionados con la salud y técnicas de emergencia</p>
+            </div>
+        </div>
+        </section>
+
+        <section class="seccion-tercera-medico">
+          <div class="contenido-seccion-tercera-medico">
+          <div class="imagen-medico-scroll">
+            <div class="img-item" style = "--i:1">
+              <img src="./src/assets/img/cura.jpg" alt="">
+            </div>
+            <div class="img-item" style = "--i:2">
+              <img src="./src/assets/img/fuego-100.jpg" alt="">
+            </div>
+            <div class="img-item" style = "--i:3">
+              <img src="./src/assets/img/heimlich.jpg" alt="">
+            </div>
+            <div class="img-item" style = "--i:4">
+              <img src="./src/assets/img/heridas.jpg" alt="">
+            </div>
+            <div class="img-item" style = "--i:5">
+              <img src="./src/assets/img/otros.jpg" alt="">
+            </div>
+            <div class="img-item" style = "--i:6">
+              <img src="./src/assets/img/rcp.jpg" alt="">
+            </div>
+          </div>
+          <div class="texto-seccion-tercera-medico">
+            <p class="descripcion-secciones-medico text-center">Podrás escribir y compartir artículos en nuestras categorías, como primeros auxilios y maniobras de RCP, con sus respectivas imagenes.</p>
+            </div>
+        </div>
+        </section>
+        </article>
+
+        <section class="seccion-categorias">
           <h1 class="text-center">Algunas de nuestras categorías</h1>
-          <div class="tarjetas-seccion-segunda">
+          <div class="tarjetas-seccion-categorias">
           <div class="row row-cols-1 row-cols-md-3 g-5">
             <div class="col">
               <div class="card text-bg-dark h-100">
-                <img src="./src/assets/img/si.jpeg" class="card-img" alt="...">
+                <img src="./src/assets/img/heimlich.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                   <h5 class="card-title">Maniobras de Heimlich</h5>
                 </div>
@@ -191,7 +229,7 @@
             </div>
             <div class="col">
               <div class="card text-bg-dark h-100">
-                <img src="./src/assets/img/si.jpeg" class="card-img" alt="...">
+                <img src="./src/assets/img/rcp.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                   <h5 class="card-title">Maniobras de RCP</h5>
                 </div>
@@ -199,7 +237,7 @@
             </div>
             <div class="col">
               <div class="card text-bg-dark h-100">
-                <img src="./src/assets/img/si.jpeg" class="card-img" alt="...">
+                <img src="./src/assets/img/fuego-100.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                   <h5 class="card-title">Tratamiento de Quemaduras</h5>
                 </div>
@@ -207,7 +245,7 @@
             </div>
             <div class="col">
               <div class="card text-bg-dark h-100">
-                <img src="./src/assets/img/si.jpeg" class="card-img" alt="...">
+                <img src="./src/assets/img/heridas.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                   <h5 class="card-title">Control de Hemorragias</h5>
                 </div>
@@ -215,7 +253,7 @@
             </div>
             <div class="col">
               <div class="card text-bg-dark h-100">
-                <img src="./src/assets/img/si.jpeg" class="card-img" alt="...">
+                <img src="./src/assets/img/cura.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                   <h5 class="card-title">Tratamiento de Heridas</h5>
                 </div>
@@ -223,9 +261,9 @@
             </div>
             <div class="col">
               <div class="card text-bg-dark h-100">
-                <img src="./src/assets/img/si.jpeg" class="card-img" alt="...">
+                <img src="./src/assets/img/otros.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
-                  <h5 class="card-title">Respiración de Rescate</h5>
+                  <h5 class="card-title-otros">Otros</h5>
                 </div>
               </div>
             </div>

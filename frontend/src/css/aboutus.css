@@ -20,10 +20,66 @@ canvas {
 }
 
 main{
-    margin-top: 150px;
+    margin-top:110px;
     position: relative;
-    overflow: hidden;
-    height: 120vh;
+}
+
+
+main .info-primera{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.144);
+    border-radius: 20px;
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+    box-shadow: 5px 5px 15px 3px #000000ab;
+}
+
+main .blur-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-color: rgba(35, 35, 199, 0.137);
+    filter: blur(50px);
+    z-index: -1;
+}
+
+#texto, .logo-info{
+    position: relative;
+    z-index:2;
+}
+
+main #texto{
+    filter: blur(0px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 55%;
+    padding: 50px;
+}
+
+main .logo-info{
+    width: 100%; /* Ajusta el tamaño de la imagen para una mejor presentación */
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.info-equipo{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    height: 90vh;
+    width: auto;
+    margin-top: 50px;
+    z-index: 9999999;
 }
 
 .navbar {
@@ -50,6 +106,15 @@ main{
     text-decoration: none;
 }
 
+.logo img{
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover{
+    transform: scale(1.1);
+}
+
+
 .nav-item a:hover {
     color: white;
     transition: color 0.3s ease, background-color 0.3s ease;
@@ -57,6 +122,7 @@ main{
 
 .nav-item {
     transition: background-color 0.3s ease;
+    border-radius: 100px;
 }
 
 .nav-item:hover {
@@ -87,11 +153,11 @@ header.sticky #loginBtn a {
   color: rgba(255, 255, 255, 0.938); /* Color original antes del sticky */
 }
 
-
-
 header.sticky {
     padding: 5px 100px;
     background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 header.sticky .form-control {
@@ -167,6 +233,56 @@ header.sticky .form-control {
     cursor: auto;
 }
 
+#logout {
+    text-decoration: none;
+    color: black;
+    border-radius: 100px;
+    background-color: white;
+}
+
+#logout:hover {
+    width: fit-content;
+    text-decoration: none;
+}
+
+header.sticky #logout{
+    color: white;
+    background-color: rgb(184, 9, 9);
+    border-radius: 100px;
+}
+
+.dropdown-toggle{
+    color: white !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+    color: rgb(255, 255, 255) !important;
+}
+
+header.sticky .dropdown-toggle{
+    color: black !important;
+}
+
+header.sticky .dropdown-toggle:focus,
+header.sticky .dropdown-toggle:active{
+    color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+    color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-item{
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.dropdown-item:hover{
+    color: black;
+    background-color: rgb(41, 0, 0);
+}
 
 footer {
     background-color: #ffffff;
@@ -178,7 +294,7 @@ body{
 }
 
 /* Título principal */
-h1 {
+.info-primera h1 {
     font-size: 3rem;
     color: #ffffff;
     margin-bottom: 2rem;
@@ -186,101 +302,16 @@ h1 {
     padding-bottom: 15px;
 }   
 
-/* Miembros del equipo */
-.team-member {
-    background-color: #fff;
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    padding: 30px;
-    margin: 0 auto 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.team-member:hover {
-    transform: scale(1.05);
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    border: 5px solid #2b6340;
-    transition: transform 0.3s ease-in-out;
-}
-
-.team-member:hover img {
-    transform: scale(1.1);
-}
-
-.team-member h3 {
-    color: #2c3e50;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.team-member p {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-.team-member p:first-of-type {
-    color: #2b6340;
-    font-weight: bold;
-}
-
-
-
-h2 {
+.info-primera h2{
     color: #ffffff;
+    font-weight: bold;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-p {
-    color: white;
+.info-primera p{
+    color: rgb(255, 255, 255);
     font-size: 1.1rem;
     line-height: 1.6;
-    font-weight: lighter;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    .team-member {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .team-member img {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .mission {
-        padding: 30px 15px;
-    }
-}
-
-.team-member {
-    margin-bottom: 30px;
-}
-.team-member img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 15px;
+    font-weight: 400;
 }
