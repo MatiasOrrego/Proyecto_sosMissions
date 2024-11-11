@@ -14,7 +14,7 @@ const postRouter = Router();
 
 postRouter.get('/general', getAllGeneralPost)
 postRouter.get('/', validateJwt, getAllPostsCtrl);
-postRouter.get('/:id', validateJwt, getPostByIdCtrl);
+postRouter.get('/:id', getPostByIdCtrl);
 postRouter.get('/category/:categoryId', getPostByCategoryCtrl)
 postRouter.post('/', validateJwt, createPostCtrl);
 postRouter.delete('/:id', validateJwt, deletePostCtrl);

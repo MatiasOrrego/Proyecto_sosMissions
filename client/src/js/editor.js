@@ -6,7 +6,6 @@ let quill = new Quill('#editor-container', {
           ['bold', 'italic', 'underline'],
           [{ 'list': 'ordered' }, { 'list': 'bullet' }],
           [{ 'align': [] }],
-          ['image']
       ]
   }
 });
@@ -17,7 +16,7 @@ form.addEventListener('submit',async (e) => {
   e.preventDefault();
 
   const title = document.getElementById('titulo').value;
-  const description = document.getElementById('descripcion').value;
+  const description = document.querySelector('#editor-container .ql-editor').innerHTML;
 
   const category = document.getElementById('categories').value;
   console.log(category)

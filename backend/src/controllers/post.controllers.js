@@ -15,9 +15,8 @@ export const getAllGeneralPost = async (req, res) => {
 
 export const getPostByIdCtrl = async (req, res) => {
   const { id } = req.params;
-  const { user } = req;
 
-  const post = await getPostById(id, user.id);
+  const post = await getPostById(id);
 
   if (!post) {
     return res.status(404).json({ message: 'Publicación no encontrada' });

@@ -15,8 +15,8 @@ export const getPosts = async (userId) => {
   return result
 };
 
-export const getPostById = async (id, userId) => {
-  const [result] = await conn.query(`SELECT * FROM post WHERE id = ? AND userId = ?`, [id, userId])
+export const getPostById = async (id) => {
+  const [result] = await conn.query(`SELECT * FROM post WHERE id = ?`, [id])
   return result[0] || null;
 };
 
