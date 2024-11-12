@@ -6,7 +6,7 @@ const videoRouter = Router();
 
 videoRouter.get('/general', getAllGeneralVideos)
 videoRouter.get('/', validateJwt, getAllVideoCtrl);
-videoRouter.get('/:id', validateJwt, getVideoByIdCtrl);
+videoRouter.get('/:id', getVideoByIdCtrl);
 videoRouter.get('/category/:categoryId', getVideoByCategoryCtrl)
 videoRouter.post('/', validateJwt, createVideoCtrl);
 videoRouter.delete('/:id', validateJwt, deleteVideoCtrl);

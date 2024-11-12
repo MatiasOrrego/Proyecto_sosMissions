@@ -16,9 +16,8 @@ export const getAllGeneralVideos = async (req, res) => {
 
 export const getVideoByIdCtrl = async (req, res) => {
   const { id } = req.params;
-  const { user } = req;
 
-  const video = await getVideoById(id, user.id);
+  const video = await getVideoById(id);
 
   if (!video) {
     return res.status(404).json({ message: 'Video no encontrado' });
