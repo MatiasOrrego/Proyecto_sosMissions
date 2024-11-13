@@ -32,8 +32,82 @@ document.addEventListener('DOMContentLoaded', async () => {
         addVideoButton.style.display = 'none';
       }
 
-      // Mostrar el botón de cerrar sesión si el usuario está autenticado
-      btnLoginRegister.innerHTML = `<button class="btn" id="logout">Cerrar Sesión</button>`;
+      // Mostrar el icono de perfil con menú desplegable
+      btnLoginRegister.innerHTML = `
+        <div class="profile-menu">
+          <button class="profile-button" onclick="window.location.href='profile.html'">
+            <i class="fas fa-user-circle fa-lg"></i>
+          </button>
+          <div class="profile-dropdown">
+            <a href="profile.html" class="dropdown-item">
+              <i class="fas fa-user"></i>
+              Mi Perfil
+            </a>
+            <button id="logout" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>
+              Cerrar Sesión
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Agregar estilos dinámicamente
+      const style = document.createElement('style');
+      style.textContent = `
+        .profile-menu {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .profile-button {
+          background: none;
+          border: none;
+          color: #fff;
+          cursor: pointer;
+          padding: 8px;
+          transition: color 0.3s ease;
+        }
+        
+        .profile-button:hover {
+          color: #e0e0e0;
+        }
+        
+        .profile-dropdown {
+          display: none;
+          position: absolute;
+          right: 0;
+          top: 100%;
+          background-color: white;
+          min-width: 160px;
+          box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+          border-radius: 8px;
+          padding: 8px 0;
+          z-index: 1000;
+        }
+        
+        .profile-menu:hover .profile-dropdown {
+          display: block;
+        }
+        
+        .dropdown-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 100%;
+          padding: 8px 16px;
+          border: none;
+          background: none;
+          color: #333;
+          text-decoration: none;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+          background-color: #f5f5f5;
+        }
+      `;
+      document.head.appendChild(style);
 
       // Agrega el evento para cerrar sesión
       document
@@ -50,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           );
 
           if (logoutResponse.ok) {
-            window.location.reload(); // Recargar la página para actualizar el estado de autenticación
+            window.location.reload();
           } else {
             console.error('Error al cerrar sesión');
           }
@@ -61,7 +135,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <button class="btn" id="loginBtn"><a href="sesion.html">Iniciar Sesión</a></button>
         <button class="btn" id="registerBtn"><a href="registro.html">Registrarse</a></button>
       `;
-      addPostButton.style.display = 'none'; // Asegurarse de que el botón esté oculto si no está autenticado
+      addPostButton.style.display = 'none';
     }
   } catch (error) {
     // Si hay un error o el usuario no está autenticado, ocultar el botón de añadir publicación

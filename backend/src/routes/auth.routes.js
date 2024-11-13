@@ -4,6 +4,7 @@ import {
   getMeCtrl,
   signUpCtrl,
   signOutCtrl,
+  getUserByIdCtrl
 } from '../controllers/auth.controller.js';
 import { validateJwt } from '../middlewares/validarJWT.js';
 
@@ -17,5 +18,6 @@ authRouter.post("/sign-out", validateJwt, signOutCtrl);
 
 authRouter.get("/me", validateJwt, getMeCtrl);
 
+authRouter.get("/:id", getUserByIdCtrl);
 
 export { authRouter }

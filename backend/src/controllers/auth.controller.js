@@ -1,5 +1,5 @@
 import { createJwt } from '../helpers/createJwt.js';
-import { getUserByCredentials, createUser } from '../models/user.model.js';
+import { getUserByCredentials, createUser, getUserById } from '../models/user.model.js';
 
 export const signInCtrl = async (req, res) => {
   try {
@@ -49,5 +49,22 @@ export const getMeCtrl = (req, res) => {
     res.status(200).json(req.user);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+export const getUserByIdCtrl = async (req, res) => {
+  const id = parseInt(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({ message: 'ID inválido' });
+  }
+
+  try {
+    const user = await getUserById(id);
+
+    res.status(201).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error interno del servidor" });
   }
 };

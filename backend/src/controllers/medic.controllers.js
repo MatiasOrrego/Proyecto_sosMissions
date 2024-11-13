@@ -1,5 +1,5 @@
 import { createJwt } from "../helpers/createJwt.js";
-import { createMedicUser } from "../models/medic.models.js";
+import { createMedicUser, getMedicUserById } from "../models/medic.models.js";
 
 export const signUpMedicCtrl = async (req, res) => {
     try {
@@ -16,3 +16,16 @@ export const signUpMedicCtrl = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+export const getUserMedicCtrl = async (req,res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    const userMedic = await getMedicUserById(id);
+
+    return res.status(201).json(userMedic)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Error interno del sistema' });
+  };
+}

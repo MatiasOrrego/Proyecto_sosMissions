@@ -16,7 +16,7 @@ export const getVideo = async (userId) => {
   return result
 };
 
-export const getVideoById = async (id, userId) => {
+export const getVideoById = async (id) => {
   const [result] = await conn.query(`SELECT * FROM videos WHERE id = ?`, [id]);
   return result[0] || null;
 };

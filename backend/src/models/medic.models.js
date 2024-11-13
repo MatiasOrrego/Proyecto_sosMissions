@@ -14,6 +14,8 @@ export const createMedicUser = async (user) => {
 };
 
 export const getMedicUserById = async (id) => {
-  const [result] = await conn.query(`SELECT * FROM medics WHERE id = ?`, [id])
+  const [result] = await conn.query(`SELECT * FROM medics WHERE id = ?`, [id]);
+  console.log(result);
+  
   return result[0] || null;
 };
