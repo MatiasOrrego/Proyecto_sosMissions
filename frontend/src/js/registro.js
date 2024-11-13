@@ -12,16 +12,12 @@ registerForm.addEventListener('submit', async (e) => {
 
     const entries = Object.fromEntries(formData.entries())
 
-    const name = document.getElementById('name').value
-
-    const lastname = document.getElementById('lastname').value
-
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const contrasenia = document.getElementById('password').value;
     const confircon = document.getElementById('passwordConfirm').value;
 
-    if (!name || !lastname || !username || !email || !contrasenia || !confircon) {
+    if (!username || !email || !contrasenia || !confircon) {
         showAlert('Todos los campos son obligatorios', 'danger');
         return;
     }
