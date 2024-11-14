@@ -35,14 +35,20 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Mostrar el icono de perfil con menú desplegable
       btnLoginRegister.innerHTML = `
         <div class="profile-menu">
-          <button class="profile-button" onclick="window.location.href='profile.html'">
-            <i class="fas fa-user-circle fa-lg"></i>
+          <button class="profile-button">
+            <i class="fas fa-user-circle fa-2x"></i>
           </button>
           <div class="profile-dropdown">
             <a href="profile.html" class="dropdown-item">
               <i class="fas fa-user"></i>
               Mi Perfil
             </a>
+            ${data.roleId === 2 ? `
+            <a href="medic-publications.html" class="dropdown-item">
+              <i class="fas fa-folder-open"></i>
+              Mis Publicaciones
+            </a>
+            ` : ''}
             <button id="logout" class="dropdown-item">
               <i class="fas fa-sign-out-alt"></i>
               Cerrar Sesión
@@ -78,11 +84,12 @@ document.addEventListener('DOMContentLoaded', async () => {
           right: 0;
           top: 100%;
           background-color: white;
-          min-width: 160px;
+          min-width: 180px;
           box-shadow: 0 8px 16px rgba(0,0,0,0.1);
           border-radius: 8px;
           padding: 8px 0;
           z-index: 1000;
+          margin-top: 8px;
         }
         
         .profile-menu:hover .profile-dropdown {
@@ -92,19 +99,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         .dropdown-item {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 12px;
           width: 100%;
-          padding: 8px 16px;
+          padding: 12px 16px;
           border: none;
           background: none;
           color: #333;
           text-decoration: none;
           cursor: pointer;
           transition: background-color 0.3s ease;
+          font-size: 14px;
         }
         
         .dropdown-item:hover {
           background-color: #f5f5f5;
+        }
+
+        .dropdown-item i {
+          width: 16px;
+          text-align: center;
         }
       `;
       document.head.appendChild(style);
