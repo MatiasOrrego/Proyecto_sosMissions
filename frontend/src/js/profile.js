@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const errorMessage = document.getElementById('errorMessage');
 
     try {
-        // Primero obtenemos la información del usuario actual
+        // Obtenemos la información del usuario autenticado
         const authResponse = await fetch('http://localhost:3000/auth/me', {
             method: 'GET',
             credentials: 'include',
@@ -15,14 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const userData = await authResponse.json();
         const userId = userData.id;
-        const roleId = userData.roleId;
 
-        // Dependiendo del rol, hacemos la petición correspondiente
-        const profileUrl = roleId === 2 
-            ? `http://localhost:3000/medic/${userId}`
-            : `http://localhost:3000/auth/${userId}`;
-
-        const profileResponse = await fetch(profileUrl, {
+        // Hacemos la petición para obtener los datos del perfil del usuario
+        const profileResponse = await fetch(`http://localhost:3000/auth/${userId}`, {
             method: 'GET',
             credentials: 'include',
         });
@@ -33,58 +28,45 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const profileData = await profileResponse.json();
 
-        // Renderizamos la información según el rol
-        if (roleId === 2) {
-            // Perfil de médico
-            profileInfo.innerHTML = `
-                <div class="info-item">
-                    <i class="fas fa-user"></i>
-                    <div class="info-content">
-                        <div class="info-label">Nombre</div>
-                        <div class="info-value">${profileData.nombre}</div>
-                    </div>
+        // Renderizamos la información según si el usuario es médico o no
+        profileInfo.innerHTML = `
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div class="info-content">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">${profileData.email}</div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-user"></i>
-                    <div class="info-content">
-                        <div class="info-label">Apellido</div>
-                        <div class="info-value">${profileData.apellido}</div>
-                    </div>
+            </div>
+            ${profileData.isMedic ? `
+            <div class="info-item">
+                <i class="fas fa-id-card"></i>
+                <div class="info-content">
+                    <div class="info-label">Nombre</div>
+                    <div class="info-value">${profileData.name}</div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <div class="info-content">
-                        <div class="info-label">Email</div>
-                        <div class="info-value">${profileData.email}</div>
-                    </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-id-card-alt"></i>
+                <div class="info-content">
+                    <div class="info-label">Apellido</div>
+                    <div class="info-value">${profileData.lastname}</div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <div class="info-content">
-                        <div class="info-label">Teléfono</div>
-                        <div class="info-value">${profileData.telefono}</div>
-                    </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-stethoscope"></i>
+                <div class="info-content">
+                    <div class="info-label">Especialidad</div>
+                    <div class="info-value">${profileData.especialidad}</div>
                 </div>
-            `;
-        } else {
-            // Perfil de usuario normal
-            profileInfo.innerHTML = `
-                <div class="info-item">
-                    <i class="fas fa-user"></i>
-                    <div class="info-content">
-                        <div class="info-label">Nombre de usuario</div>
-                        <div class="info-value">${profileData.username}</div>
-                    </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div class="info-content">
+                    <div class="info-label">Teléfono</div>
+                    <div class="info-value">${profileData.telefono}</div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <div class="info-content">
-                        <div class="info-label">Email</div>
-                        <div class="info-value">${profileData.email}</div>
-                    </div>
-                </div>
-            `;
-        }
+            </div>` : ''}
+        `;
     } catch (error) {
         console.error('Error:', error);
         errorMessage.style.display = 'block';
