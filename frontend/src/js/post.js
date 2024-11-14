@@ -31,7 +31,7 @@ const cargarPublicacionCompleta = async (postId) => {
     
     // Crear botón de volver
     const backButton = document.createElement('button');
-    backButton.classList.add('btn', 'btn-primary', 'mt-4');
+    backButton.classList.add('btn', 'btn-primary', 'mt-4', 'btn-back');
     backButton.textContent = 'Volver';
     backButton.addEventListener('click', () => {
       location.reload(); // Recargar la página para volver a la vista de tarjetas

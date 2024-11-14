@@ -602,7 +602,7 @@ header.sticky #logout{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #007bff;
+  background-color: #ff0000;
   color: white;
   border-radius: 50%;
   width: 60px;

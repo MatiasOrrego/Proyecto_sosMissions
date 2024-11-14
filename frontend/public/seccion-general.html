@@ -104,7 +104,15 @@
     <script type= "text/javascript">
       window.addEventListener("scroll",function(){
         var header = document.querySelector("header");
-        header.classList.toggle("sticky", window.scrollY > 0);
+        var logo = document.querySelector(".navbar-brand img")
+        
+        if (window.scrollY > 0){
+          header.classList.add("sticky");
+          logo.src = "src/assets/img/LOGO SIN LETRAS - COLOR.png"
+        } else {
+          header.classList.remove("sticky");
+          logo.src = "src/assets/img/LOGO SIN LETRAS.png"
+        }
       })
     </script>
 

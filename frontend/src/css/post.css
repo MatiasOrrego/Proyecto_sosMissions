@@ -1,4 +1,5 @@
 body{
+  background-image: url(../assets/img/magicpattern-gradient-1729797625052.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-attachment: fixed;
@@ -303,6 +304,7 @@ main .contenedor {
 
 .container_titulo {
   margin-bottom: 30px; /* Espacio entre el título y las publicaciones */
+  color: white;
 }
 
 #tus-publicaciones {
@@ -528,12 +530,16 @@ main .card-group {
 .post-detail-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 100px rgb(216, 10, 10);
+  margin-bottom: 80px;
 }
 
 .post-detail-container h1 {
   font-size: 2.5rem;
-  color: #333;
+  color: #444;
   margin-bottom: 30px;
 }
 
@@ -556,16 +562,34 @@ main .card-group {
   margin-bottom: 1em;
 }
 
+.btn-back{
+  background-color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  transition: border-radius 0.3s ease;
+  align-items: center;
+}
+
+.btn-back:hover{
+  border-radius: 20px;
+  transition: border-radius 0.3s ease;
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+}
+
 /* Videos Styles */
 .video-detail-container {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+  background-color: white;
+  border-radius: 20px;
 }
 
 .video-detail-container h1 {
   font-size: 2.5rem;
-  color: #333;
+  color: #000000;
   margin-bottom: 30px;
 }
 
@@ -583,6 +607,7 @@ main .card-group {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 20px;
 }
 
 .description-container {
@@ -609,6 +634,7 @@ main .card-group {
   margin: 2rem auto;
   padding: 2rem;
 }
+
 
 .pregunta-card {
   background: white;
@@ -670,10 +696,11 @@ main .card-group {
 .fin-quiz {
   text-align: center;
   padding: 2rem;
+  color: white;
 }
 
 .btn-volver {
-  background: #007bff;
+  background: red;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -748,3 +775,4 @@ main .card-group {
 .pregunta-card {
   position: relative;
 }
+
