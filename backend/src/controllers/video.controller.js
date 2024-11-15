@@ -78,7 +78,7 @@ export const deleteVideoCtrl = async (req, res) => {
   const deletePost = await deleteVideoById(id, user.id);
 
   if (!deletePost) {
-    return res.status(404).json({ message: 'video no encontrada' })
+    return res.status(404).json({ message: 'video no encontrado' })
   }
   res.status(204).send()
 };

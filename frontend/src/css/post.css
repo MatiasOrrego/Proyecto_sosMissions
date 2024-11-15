@@ -776,3 +776,33 @@ main .card-group {
   position: relative;
 }
 
+.botones-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 0.5rem; /* Ajusta la distancia desde la parte inferior */
+  right: 0.5rem; /* Ajusta la distancia desde la parte derecha */
+  background-color: transparent;
+  z-index: 10;
+}
+
+.card-publi {
+  height: 450px;
+  position: relative;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card-publi:hover .botones-container {
+  opacity: 1;
+}
+
+.botones-container {
+  opacity: 0; /* Inicialmente ocultos */
+  transition: opacity 0.3s ease; /* Suavidad al mostrar */
+}
+
+.card-publi:hover .botones-container {
+  opacity: 1; /* Se muestran al hacer hover */
+}
