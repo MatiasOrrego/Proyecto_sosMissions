@@ -1,5 +1,4 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -9,11 +8,234 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background-color: #f4f4f9;
+    margin: 0;
   }
+
+  canvas {
+    width: 100%;
+    height: 100vh;
+    background-color: #202020;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  /* Estilos generales */
+.navbar {
+  background-color: transparent;
+}
+
+.navbar-brand{
+  margin-right: 220px;
+  transition: margin-right 0.6s ease;
+}
+
+.navbar-brand, 
+.nav-link, 
+.btn {
+
+  color: rgba(255, 255, 255, 0.938);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn, 
+.nav-item {
+  border-radius: 100px;
+}
+
+#loginBtn a, 
+#registerBtn a {
+  color: rgba(0, 0, 0, 0.938);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  color: white;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-item {
+  transition: background-color 0.3s ease;
+  border-radius: 100px;
+}
+
+.nav-item:hover {
+  background-color: rgb(180, 0, 0);
+  width: fit-content;
+  border-radius: 100px;
+}
+
+
+header.sticky .nav-item a:hover {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+header.sticky .navbar-brand{
+  margin-right: 115px;
+}
+
+header.sticky .nav-link:hover,
+header.sticky .btn:hover,
+header.sticky #registerBtn a,
+header.sticky #loginBtn a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Navbar-brand hover */
+.navbar-brand:hover {
+  color: rgba(255, 255, 255, 0.938); /* Color original antes del sticky */
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+  z-index: 100000;
+  border-radius: 35px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+header.sticky {
+  padding: 5px 100px;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo img{
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover{
+  transform: scale(1.1);
+}
+
+
+header.sticky .form-control {
+  background-color: white;
+  border: 1px solid rgb(90, 90, 90);
+  transition: 0.6s;
+  pointer-events: all; /* Habilitar eventos del puntero cuando el header es sticky */
+}
+
+header.sticky .navbar-brand,
+header.sticky .nav-link,
+header.sticky .btn,
+header.sticky #registerBtn {
+  color: rgb(0, 0, 0);
+  transition: 0.6s;
+}
+
+/* Botones */
+#loginBtn, 
+#registerBtn {
+  border-radius: 100px;
+  background-color: white;
+  color: black;
+}
+
+#loginBtn{
+  margin-right: 8px;
+}
+
+
+#loginBtn:hover,
+#registerBtn:hover {
+  background-color: rgb(224, 224, 224); /* Fondo al pasar el cursor */
+  color: white; /* Color del texto al pasar el cursor */
+}
+
+header.sticky #loginBtn, 
+header.sticky #registerBtn {
+  background-color: rgb(184, 9, 9); /* Fondo cuando el header es sticky */
+  color: white; /* Color del texto cuando el header es sticky */
+  transition: 0.20s ease;
+}
+
+header.sticky #loginBtn:hover,
+header.sticky #registerBtn:hover {
+  background-color: rgb(228, 3, 3); /* Fondo al pasar el cursor cuando el header es sticky */
+  color: white; /* Color del texto al pasar el cursor cuando el header es sticky */
+}
+
+header.sticky .btn{
+  pointer-events: all;
+}
+
+header.sticky .form-control {
+  background-color: white;
+  border-radius: 100px;
+  color: black;
+  cursor: auto;
+}
+
+.dropdown-toggle{
+  color: white !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+  color: rgb(255, 255, 255) !important;
+}
+
+header.sticky .dropdown-toggle{
+  color: black !important;
+}
+
+header.sticky .dropdown-toggle:focus,
+header.sticky .dropdown-toggle:active{
+  color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active{
+  color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-item{
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover{
+  color: black;
+  background-color: rgb(41, 0, 0);
+}
+
+#logout {
+  text-decoration: none;
+  color: black;
+  border-radius: 100px;
+  background-color: white;
+}
+
+#logout:hover {
+  width: fit-content;
+  text-decoration: none;
+}
+
+header.sticky #logout{
+  color: white;
+  background-color: rgb(184, 9, 9);
+  border-radius: 100px;
+}
+
   
   .quiz-container {
+    position: relative;
+    z-index: 1;
     min-width: 450px;
     padding: 2rem;
     background-color: #ffffff;
@@ -22,8 +244,7 @@
   }
 
   main{
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 90px;
   }
   
   h2 {
