@@ -260,7 +260,7 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
 
   const nuevaImagen = document.createElement('img');
   nuevaImagen.classList.add('card-img-top', 'cardImg');
-  nuevaImagen.src = '../../assets/img/imh-maniobras-emergencia.png';
+  nuevaImagen.src = '../src/assets/img/otros.jpg';
 
   const cuerpoTarjeta = document.createElement('div');
   cuerpoTarjeta.classList.add('card-body');
@@ -268,6 +268,10 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
   const nuevoTitulo = document.createElement('h5');
   nuevoTitulo.classList.add('card-title-publi');
   nuevoTitulo.textContent = titulo;
+
+  const nuevaDescripcion = document.createElement('p');
+  nuevaDescripcion.classList.add('card-text');
+  nuevaDescripcion.textContent = descripcion;
 
   const contenedorEstrellas = document.createElement('div');
   contenedorEstrellas.classList.add('star-rating');
@@ -285,6 +289,7 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
 
   // Añadir todo al cuerpo de la tarjeta
   cuerpoTarjeta.appendChild(nuevoTitulo);
+  cuerpoTarjeta.appendChild(nuevaDescripcion)
   cuerpoTarjeta.appendChild(contenedorEstrellas);
 
   nuevaTarjeta.appendChild(nuevaImagen);

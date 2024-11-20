@@ -77,6 +77,11 @@ export const deleteCommentsByVideoId = async (videoId) => {
   return result.affectedRows > 0; // Devuelve true si se eliminaron comentarios
 };
 
+export const deleteRatingBYId = async(videoId) => {
+  const [result] = await conn.query(`DELETE FROM user_rating_video WHERE videoId = ?`, [videoId]);
+  return result.affectedRows > 0; // Devuelve true si se eliminaron los ratings
+}
+
 export const deleteVideoById = async (id, userId) => {
   const [result] = await conn.query(`DELETE FROM videos WHERE id = ? AND userId = ?`, [id, userId]);
   return result.affectedRows > 0; // Devuelve true si se eliminó la publicación
@@ -89,6 +94,7 @@ export const deleteVideoCtrl = async (req, res) => {
   try {
     // Eliminar los comentarios relacionados con la publicación
     await deleteCommentsByVideoId(id);
+    await deleteRatingBYId(id)
 
     // Eliminar la publicación
     const deleteVideo = await deleteVideoById(id, user.id);
