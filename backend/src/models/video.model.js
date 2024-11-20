@@ -27,6 +27,16 @@ export const getVideoByCategory = async (categoryId) => {
   return result
 }
 
+export const updateVideo = async (id, title, description, categoryId, video, userId) => {
+  const [result] = await conn.query(
+    `UPDATE post 
+     SET title = ?, description = ?, categoryId = ?, video = ? 
+     WHERE id = ? AND userId = ?`,
+    [title, description, categoryId, video, id, userId]
+  );
+  return result.affectedRows > 0; // Devuelve true si se actualizó correctamente
+};
+
 export const deleteVideoById = async (id, userId) => {
   const [result] = await conn.query(`DELETE FROM videos WHERE id = ? AND userId = ?`, [id, userId]);
   return result.affectedRows > 0

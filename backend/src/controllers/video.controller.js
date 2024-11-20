@@ -72,6 +72,24 @@ export const createVideoCtrl = async (req, res) => {
   }
 };
 
+export const updatePostCtrl =  async (req, res) => {
+  const { id } = req.params;
+  const { title, description, categoryId } = req.body;
+  const userId = req.user.id;
+
+  try {
+    const success = await updatePost(id, title, description, categoryId, userId);
+    if (success) {
+      res.status(200).json({ message: 'Post actualizado exitosamente' });
+    } else {
+      res.status(404).json({ message: 'Post no encontrado o no autorizado' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Error al actualizar el post'});
+  }
+};
+
 export const deleteCommentsByVideoId = async (videoId) => {
   const [result] = await conn.query(`DELETE FROM comment_video WHERE videoId = ?`, [videoId]);
   return result.affectedRows > 0; // Devuelve true si se eliminaron comentarios
