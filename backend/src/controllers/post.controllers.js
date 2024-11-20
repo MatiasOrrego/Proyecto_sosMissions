@@ -1,4 +1,5 @@
-import { createPost, deletePostById, getAllPost, getPostByCategory, getPostById, getPosts } from '../models/post.model.js';
+import { conn } from '../database/db.js';
+import { createPost, getAllPost, getPostByCategory, getPostById, getPosts, updatePost } from '../models/post.model.js';
 
 export const getAllPostsCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -50,34 +51,53 @@ export const createPostCtrl = async (req, res) => {
   res.status(201).json(post);
 };
 
-export const deletePostCtrl = async (req, res) => {
-  const { id } = req.params
-  const { user } = req;
+export const updatePostCtrl =  async (req, res) => {
+  const { id } = req.params;
+  const { title, description, categoryId } = req.body;
+  const userId = req.user.id;
 
-  const deletePost = await deletePostById(id, user.id);
-
-  if (!deletePost) {
-    return res.status(404).json({ message: 'Publicación no encontrada' })
+  try {
+    const success = await updatePost(id, title, description, categoryId, userId);
+    if (success) {
+      res.status(200).json({ message: 'Post actualizado exitosamente' });
+    } else {
+      res.status(404).json({ message: 'Post no encontrado o no autorizado' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Error al actualizar el post'});
   }
-  res.status(204).send()
 };
 
-// let image = null;
-// let video = null
+export const deleteCommentsByPostId = async (postId) => {
+  const [result] = await conn.query(`DELETE FROM comments_post WHERE postId = ?`, [postId]);
+  return result.affectedRows > 0; // Devuelve true si se eliminaron comentarios
+};
 
-// if (req.files?.image) {
-//     try {
-//         // Sube la imagen usando la ruta temporal proporcionada por `express-fileupload`
-//         image = await uploadImage(req.files.image.tempFilePath);
-//     } catch (error) {
-//         return res.status(500).json({ message: 'Error al subir la imagen a Cloudinary' });
-//     }
-// }
+export const deletePostById = async (id, userId) => {
+  const [result] = await conn.query(`DELETE FROM post WHERE id = ? AND userId = ?`, [id, userId]);
+  return result.affectedRows > 0; // Devuelve true si se eliminó la publicación
+};
 
-// if (req.files?.video) {
-//     try {
-//         video = await uploadVideo(req.files.video.tempFilePath);
-//     } catch (error) {
-//         return res.status(500).json({ message: 'Error al subir el video a Cloudinary' });
-//     }
-// }
+export const deletePostCtrl = async (req, res) => {
+  const { id } = req.params; // ID de la publicación
+  const { user } = req; // Usuario autenticado
+
+  try {
+    // Eliminar los comentarios relacionados con la publicación
+    await deleteCommentsByPostId(id);
+
+    // Eliminar la publicación
+    const deletePost = await deletePostById(id, user.id);
+
+    // Verificar si la publicación fue eliminada
+    if (!deletePost) {
+      return res.status(404).json({ message: 'Publicación no encontrada' });
+    }
+
+    res.status(204).send(); // Respuesta exitosa sin contenido
+  } catch (error) {
+    console.error('Error al eliminar la publicación:', error);
+    res.status(500).json({ message: 'Error al eliminar la publicación' });
+  }
+};

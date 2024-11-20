@@ -1,4 +1,5 @@
-import { createQuiz, deleteQuizById, getAllQuiz, getQuiz, getQuizByCategory, getQuizById } from "../models/quiz.model.js";
+import { conn } from "../database/db.js";
+import { createQuiz, deleteOptionsByQuestionID, deleteQuestionBYquizID, deleteQuizById, getAllQuiz, getQuiz, getQuizByCategory, getQuizById } from "../models/quiz.model.js";
 
 export const getAllQuizCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -56,14 +57,34 @@ export const createQuizCtrl = async (req, res) => {
   }
 };
 
+// Ajuste en deleteQuizCtrl
 export const deleteQuizCtrl = async (req, res) => {
-  const { id } = req.params
-  const { user } = req;
+  const { id } = req.params; // ID del quiz
+  const { user } = req; // Usuario autenticado
 
-  const deleteQuiz = await deleteQuizById(id, user.id);
+  try {
+    // Obtener las preguntas relacionadas con el cuestionario
+    const [questions] = await conn.query(`SELECT id FROM questions WHERE quizId = ?`, [id]);
 
-  if (!deleteQuiz) {
-    return res.status(404).json({ message: 'video no encontrada' })
+    // Iterar sobre las preguntas y eliminar sus opciones
+    for (const question of questions) {
+      await deleteOptionsByQuestionID(question.id);
+    }
+
+    // Eliminar las preguntas relacionadas con el cuestionario
+    await deleteQuestionBYquizID(id);
+
+    // Eliminar el cuestionario
+    const deleteQuiz = await deleteQuizById(id, user.id);
+
+    // Verificar si el cuestionario fue eliminado
+    if (!deleteQuiz) {
+      return res.status(404).json({ message: 'Cuestionario no encontrado' });
+    }
+
+    res.status(204).send(); // Respuesta exitosa sin contenido
+  } catch (error) {
+    console.error('Error al eliminar el cuestionario:', error);
+    res.status(500).json({ message: 'Error al eliminar el cuestionario' });
   }
-  res.status(204).send();
 };

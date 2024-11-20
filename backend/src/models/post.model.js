@@ -26,6 +26,17 @@ export const getPostByCategory = async (categoryId) => {
   return result
 }
 
+export const updatePost = async (id, title, description, categoryId, userId) => {
+  const [result] = await conn.query(
+    `UPDATE post 
+     SET title = ?, description = ?, categoryId = ? 
+     WHERE id = ? AND userId = ?`,
+    [title, description, categoryId, id, userId]
+  );
+  return result.affectedRows > 0; // Devuelve true si se actualizó correctamente
+};
+
+
 export const deletePostById = async (id, userId) => {
   const [result] = await conn.query(`DELETE FROM post WHERE id = ? AND userId = ?`, [id, userId]);
   return result.affectedRows > 0

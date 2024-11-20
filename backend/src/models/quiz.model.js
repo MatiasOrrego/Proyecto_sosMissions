@@ -26,6 +26,16 @@ export const getQuizByCategory = async (categoryId) => {
   return result
 }
 
+export const deleteOptionsByQuestionID = async (questionId) => {;
+  const [result] = await conn.query(`DELETE FROM options WHERE questionId = ?`, [questionId]);
+  return result
+}
+
+export const deleteQuestionBYquizID = async (quizId) => {
+  const [result] = await conn.query(`DELETE FROM questions WHERE quizId = ?`, [quizId]);
+  return result;
+}
+
 export const deleteQuizById = async (id, userId) => {
   const [result] = await conn.query(`DELETE FROM quiz WHERE id = ? AND userId = ?`, [id, userId]);
   return result.affectedRows > 0

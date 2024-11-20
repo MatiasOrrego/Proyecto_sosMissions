@@ -38,6 +38,105 @@ const cargarVideoCompleto = async (videoId) => {
     const descriptionContainer = document.createElement('div');
     descriptionContainer.classList.add('description-container', 'mt-4');
     descriptionContainer.innerHTML = video.description;
+
+    // Crear sección de comentarios
+    const commentsSection = document.createElement('div');
+    commentsSection.classList.add('comments-section', 'mt-5');
+
+    // Crear formulario para nuevo comentario
+    const commentForm = document.createElement('form');
+    commentForm.classList.add('comment-form', 'mb-4');
+    commentForm.innerHTML = `
+      <div class="mb-3">
+        <label for="newComment" class="form-label">Agregar un comentario</label>
+        <textarea class="form-control" id="newComment" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Publicar comentario</button>
+    `;
+
+    // Manejar el envío del comentario
+    commentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const commentText = document.getElementById('newComment').value;
+      
+      try {
+        const response = await fetch(`http://localhost:3000/video/${videoId}/comment`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify({ text: commentText })
+        });
+
+        if (!response.ok) throw new Error('Error al publicar el comentario');
+
+        // Limpiar el textarea
+        document.getElementById('newComment').value = '';
+        
+        // Recargar los comentarios
+        await loadComments();
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error al publicar el comentario');
+      }
+    });
+
+    // Contenedor para la lista de comentarios
+    const commentsList = document.createElement('div');
+    commentsList.classList.add('comments-list', 'mt-4');
+    commentsList.innerHTML = '<h4 class="mb-3">Comentarios</h4>';
+
+    // Función para cargar los comentarios
+    const loadComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/video/${videoId}/comment`, {
+          credentials: 'include',
+        });
+    
+        if (!response.ok) throw new Error('Error al cargar los comentarios');
+    
+        const comments = await response.json();
+    
+        // Limpiar la lista de comentarios existente
+        const commentsContainer = commentsList.querySelector('.comments-container') || document.createElement('div');
+        commentsContainer.className = 'comments-container';
+        commentsContainer.innerHTML = '';
+    
+        if (comments.length === 0) {
+          commentsContainer.innerHTML = '<p class="text-muted">No hay comentarios aún.</p>';
+        } else {
+          comments.forEach((comment) => {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment', 'card', 'mb-3');
+            commentElement.innerHTML = `
+              <div class="card-body">
+                <h6 class="card-title font-weight-bold">${comment.username}</h6>
+                <p class="card-text">${comment.text}</p>
+                <small class="text-muted">
+                  ${new Date(comment.fecha_comentario).toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </small>
+              </div>
+            `;
+            commentsContainer.appendChild(commentElement);
+          });
+        }
+    
+        // Si el contenedor de comentarios no está en el DOM, agregarlo
+        if (!commentsList.querySelector('.comments-container')) {
+          commentsList.appendChild(commentsContainer);
+        }
+      } catch (error) {
+        console.error('Error al cargar los comentarios:', error);
+        commentsList.innerHTML += '<p class="text-danger">Error al cargar los comentarios.</p>';
+      }
+    };
+
+    await loadComments();
     
     // Crear botón de volver
     const backButton = document.createElement('button');
@@ -52,6 +151,9 @@ const cargarVideoCompleto = async (videoId) => {
     videoContainer.appendChild(titleElement);
     videoContainer.appendChild(videoPlayerContainer);
     videoContainer.appendChild(descriptionContainer);
+    commentsSection.appendChild(commentForm);
+    commentsSection.appendChild(commentsList);
+    videoContainer.appendChild(commentsSection);
     videoContainer.appendChild(backButton);
     
     // Agregar el contenedor al main

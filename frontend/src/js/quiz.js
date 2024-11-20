@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
 
                   alert('Cuestionario creado con éxito!');
-                  window.location.href = 'seccion-general.html';
+                  window.location.href = 'medic-publications.html';
 
               } catch (error) {
                   alert('Hubo un error al crear el cuestionario');

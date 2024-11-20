@@ -37,7 +37,7 @@ form.addEventListener('submit',async (e) => {
     if(!response.ok) {
         throw new Error('Error al crear la publicacion')
     } else {
-      window.location.href = 'seccion-general.html'
+      window.location.href = 'medic-publications.html'
     }
   } catch (error) {
     alert('Hubo un error al crear la publicacion')
