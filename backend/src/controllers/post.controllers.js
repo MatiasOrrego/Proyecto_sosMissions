@@ -79,6 +79,11 @@ export const deletePostById = async (id, userId) => {
   return result.affectedRows > 0; // Devuelve true si se eliminó la publicación
 };
 
+export const deleteRatingBYId = async(postId) => {
+  const [result] = await conn.query(`DELETE FROM user_ratings WHERE postId = ?`, [postId]);
+  return result.affectedRows > 0; // Devuelve true si se eliminaron los ratings
+}
+
 export const deletePostCtrl = async (req, res) => {
   const { id } = req.params; // ID de la publicación
   const { user } = req; // Usuario autenticado
@@ -86,6 +91,7 @@ export const deletePostCtrl = async (req, res) => {
   try {
     // Eliminar los comentarios relacionados con la publicación
     await deleteCommentsByPostId(id);
+    await deleteRatingBYId(id)
 
     // Eliminar la publicación
     const deletePost = await deletePostById(id, user.id);
