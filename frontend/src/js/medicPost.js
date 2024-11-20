@@ -29,87 +29,6 @@ const cargarPublicacionCompleta = async (postId) => {
     descriptionContainer.classList.add('description-container', 'mt-4');
     descriptionContainer.innerHTML = post.description;
 
-    // Crear el contenedor para el sistema de rating
-    const ratingContainer = document.createElement('div');
-    ratingContainer.classList.add('rating-container', 'my-4', 'text-center');
-
-    // Crear las estrellas
-    const starsContainer = document.createElement('div');
-    starsContainer.classList.add('stars-container', 'd-flex', 'justify-content-center', 'gap-2');
-
-    for (let i = 1; i <= 5; i++) {
-      const star = document.createElement('span');
-      star.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="cursor: pointer">
-          <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-        </svg>
-      `;
-      star.classList.add('star');
-      
-      // Añadir evento hover
-      star.addEventListener('mouseover', () => {
-        // Rellenar esta estrella y todas las anteriores
-        const stars = starsContainer.children;
-        for (let j = 0; j < stars.length; j++) {
-          if (j <= i - 1) {
-            stars[j].querySelector('svg').classList.add('text-warning');
-          } else {
-            stars[j].querySelector('svg').classList.remove('text-warning');
-          }
-        }
-      });
-
-      // Añadir evento click
-      star.addEventListener('click', async () => {
-        try {
-          const response = await fetch(`http://localhost:3000/rating/${postId}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({ rating: i }),
-          });
-
-          if (response.ok) {
-            // Mantener las estrellas seleccionadas
-            const stars = starsContainer.children;
-            for (let j = 0; j < stars.length; j++) {
-              if (j <= i - 1) {
-                stars[j].querySelector('svg').classList.add('text-warning');
-                stars[j].style.pointerEvents = 'none'; // Deshabilitar interacción
-              }
-            }
-          }
-            // Mostrar mensaje de éxito
-            const successMessage = document.createElement('div');
-            successMessage.textContent = '¡Gracias por tu valoración!';
-            successMessage.classList.add('text-success', 'mt-2');
-            ratingContainer.appendChild(successMessage);
-            
-            // Deshabilitar el contenedor de estrellas
-            starsContainer.style.pointerEvents = 'none';
-        } catch (error) {
-          console.error('Error al enviar la valoración:', error);
-        }
-      });
-
-      starsContainer.appendChild(star);
-    }
-
-    // Añadir evento mouseleave al contenedor de estrellas
-    starsContainer.addEventListener('mouseleave', () => {
-      // Si no hay valoración seleccionada, quitar todas las estrellas
-      if (!starsContainer.style.pointerEvents) {
-        const stars = starsContainer.children;
-        for (let star of stars) {
-          star.querySelector('svg').classList.remove('text-warning');
-        }
-      }
-    });
-
-    ratingContainer.appendChild(starsContainer);
-
     // Crear sección de comentarios
     const commentsSection = document.createElement('div');
     commentsSection.classList.add('comments-section', 'mt-5');
@@ -224,7 +143,6 @@ const cargarPublicacionCompleta = async (postId) => {
     postContainer.appendChild(descriptionContainer);
     commentsSection.appendChild(commentForm);
     commentsSection.appendChild(commentsList);
-    postContainer.appendChild(starsContainer);
     postContainer.appendChild(commentsSection);
     postContainer.appendChild(backButton);
     
@@ -488,9 +406,9 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
   for (let i = 1; i <= 5; i++) {
     const estrella = document.createElement('span');
     estrella.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
-            </svg>`;
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+      </svg>`;
     estrella.classList.add('star');
     contenedorEstrellas.appendChild(estrella);
   }
@@ -505,7 +423,7 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
   botonEditar.innerHTML = '<i class="fas fa-edit me-1"></i>Editar';
   botonEditar.addEventListener('click', (e) => {
     e.stopPropagation();
-    editarPublicacion(videoId);
+    editarVideo(videoId);
   });
 
   // Botón de eliminar
@@ -514,7 +432,7 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
   botonEliminar.innerHTML = '<i class="fas fa-trash me-1"></i>Eliminar';
   botonEliminar.addEventListener('click', (e) => {
     e.stopPropagation();
-    eliminarPublicacion(videoId, nuevaTarjeta);
+    eliminarVideo(videoId, nuevaTarjeta);
   });
 
   botonesContainer.appendChild(botonEditar);
@@ -536,6 +454,7 @@ function crearNuevoVideo(titulo, descripcion, videoId) {
 
   contenedorPublicaciones.appendChild(nuevaTarjeta);
 }
+
 
 
 // Obtener videos y generar tarjetas

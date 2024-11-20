@@ -12,6 +12,7 @@ import { videoRouter } from './routes/video.routes.js';
 import { quizRouter } from './routes/quiz.routes.js';
 import { questionRouter } from './routes/question.routes.js';
 import { ratingRouter } from './routes/user.rating.routes.js';
+import { ratingVideoRouter } from './routes/video.rating.routes.js';
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use('/video', videoRouter);
 app.use('/quiz', quizRouter);
 app.use('/question', questionRouter);
 app.use('/rating', ratingRouter);
+app.use('/rating/video', ratingVideoRouter);
 
 app.listen(3000, () => {
   console.log('Servidor iniciado en el puerto 3000');

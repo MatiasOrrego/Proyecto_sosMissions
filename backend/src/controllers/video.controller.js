@@ -1,5 +1,6 @@
-import { getAllVideo, getVideo, getVideoById, getVideoByCategory, createVideo, deleteVideoById } from "../models/video.model.js";
+import { getAllVideo, getVideo, getVideoById, getVideoByCategory, createVideo } from "../models/video.model.js";
 import { uploadVideo } from "../utils/cludinary.js";
+import { conn } from '../database/db.js';
 
 export const getAllVideoCtrl = async (req, res) => {
   const userId = req.user.id;
@@ -71,14 +72,35 @@ export const createVideoCtrl = async (req, res) => {
   }
 };
 
+export const deleteCommentsByVideoId = async (videoId) => {
+  const [result] = await conn.query(`DELETE FROM comment_video WHERE videoId = ?`, [videoId]);
+  return result.affectedRows > 0; // Devuelve true si se eliminaron comentarios
+};
+
+export const deleteVideoById = async (id, userId) => {
+  const [result] = await conn.query(`DELETE FROM videos WHERE id = ? AND userId = ?`, [id, userId]);
+  return result.affectedRows > 0; // Devuelve true si se eliminó la publicación
+};
+
 export const deleteVideoCtrl = async (req, res) => {
-  const { id } = req.params
-  const { user } = req;
+  const { id } = req.params; // ID de la publicación
+  const { user } = req; // Usuario autenticado
 
-  const deletePost = await deleteVideoById(id, user.id);
+  try {
+    // Eliminar los comentarios relacionados con la publicación
+    await deleteCommentsByVideoId(id);
 
-  if (!deletePost) {
-    return res.status(404).json({ message: 'video no encontrado' })
+    // Eliminar la publicación
+    const deleteVideo = await deleteVideoById(id, user.id);
+
+    // Verificar si la publicación fue eliminada
+    if (!deleteVideo) {
+      return res.status(404).json({ message: 'Publicación no encontrada' });
+    }
+
+    res.status(204).send(); // Respuesta exitosa sin contenido
+  } catch (error) {
+    console.error('Error al eliminar el video:', error);
+    res.status(500).json({ message: 'Error al eliminar la publicación' });
   }
-  res.status(204).send()
 };
