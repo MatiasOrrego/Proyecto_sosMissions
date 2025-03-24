@@ -13,8 +13,11 @@ import { quizRouter } from './routes/quiz.routes.js';
 import { questionRouter } from './routes/question.routes.js';
 import { ratingRouter } from './routes/user.rating.routes.js';
 import { ratingVideoRouter } from './routes/video.rating.routes.js';
+import { createDatabaseAndTables } from '../config/create-database.js';
 
 const app = express();
+
+createDatabaseAndTables();
 
 // Middlewares
 app.use(morgan('dev'));

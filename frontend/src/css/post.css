@@ -1,4 +1,8 @@
-body{
+html, body {
+  width: 100%;
+}
+
+body {
   background-image: url(../assets/img/magicpattern-gradient-1729797625052.png);
   background-repeat: no-repeat;
   background-size: auto;
@@ -10,26 +14,25 @@ body{
   background-color: transparent;
 }
 
-.navbar-brand{
+.navbar-brand {
   margin-right: 220px;
   transition: margin-right 0.6s ease;
 }
 
-.navbar-brand, 
-.nav-link, 
+.navbar-brand,
+.nav-link,
 .btn {
-
   color: rgba(255, 255, 255, 0.938);
   font-weight: bold;
   text-decoration: none;
 }
 
-.btn, 
+.btn,
 .nav-item {
   border-radius: 100px;
 }
 
-#loginBtn a, 
+#loginBtn a,
 #registerBtn a {
   color: rgba(0, 0, 0, 0.938);
   font-weight: bold;
@@ -52,13 +55,12 @@ body{
   border-radius: 100px;
 }
 
-
 header.sticky .nav-item a:hover {
   color: white;
   transition: color 0.3s ease;
 }
 
-header.sticky .navbar-brand{
+header.sticky .navbar-brand {
   margin-right: 115px;
 }
 
@@ -95,14 +97,13 @@ header.sticky {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo img{
+.logo img {
   transition: transform 0.3s ease;
 }
 
-.logo img:hover{
+.logo img:hover {
   transform: scale(1.1);
 }
-
 
 header.sticky .form-control {
   background-color: white;
@@ -120,17 +121,16 @@ header.sticky #registerBtn {
 }
 
 /* Botones */
-#loginBtn, 
+#loginBtn,
 #registerBtn {
   border-radius: 100px;
   background-color: white;
   color: black;
 }
 
-#loginBtn{
+#loginBtn {
   margin-right: 8px;
 }
-
 
 #loginBtn:hover,
 #registerBtn:hover {
@@ -138,16 +138,20 @@ header.sticky #registerBtn {
   color: white; /* Color del texto al pasar el cursor */
 }
 
-header.sticky #loginBtn, 
+header.sticky #loginBtn,
 header.sticky #registerBtn {
   background-color: rgb(184, 9, 9); /* Fondo cuando el header es sticky */
   color: white; /* Color del texto cuando el header es sticky */
-  transition: 0.20s ease;
+  transition: 0.2s ease;
 }
 
 header.sticky #loginBtn:hover,
 header.sticky #registerBtn:hover {
-  background-color: rgb(228, 3, 3); /* Fondo al pasar el cursor cuando el header es sticky */
+  background-color: rgb(
+    228,
+    3,
+    3
+  ); /* Fondo al pasar el cursor cuando el header es sticky */
   color: white; /* Color del texto al pasar el cursor cuando el header es sticky */
 }
 
@@ -165,7 +169,7 @@ header.sticky #registerBtn:hover {
   margin-right: 4px;
 }
 
-header.sticky .btn{
+header.sticky .btn {
   pointer-events: all;
 }
 
@@ -176,35 +180,35 @@ header.sticky .form-control {
   cursor: auto;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
   color: white !important;
 }
 
 .dropdown-toggle:focus,
-.dropdown-toggle:active{
+.dropdown-toggle:active {
   color: rgb(255, 255, 255) !important;
 }
 
-header.sticky .dropdown-toggle{
+header.sticky .dropdown-toggle {
   color: black !important;
 }
 
 header.sticky .dropdown-toggle:focus,
-header.sticky .dropdown-toggle:active{
+header.sticky .dropdown-toggle:active {
   color: rgb(0, 0, 0) !important;
 }
 
 .dropdown-toggle:focus,
-.dropdown-toggle:active{
+.dropdown-toggle:active {
   color: rgb(255, 255, 255) !important;
 }
 
-.dropdown-item{
+.dropdown-item {
   color: black;
   transition: color 0.3s ease;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   color: black;
   background-color: rgb(41, 0, 0);
 }
@@ -221,166 +225,168 @@ header.sticky .dropdown-toggle:active{
   text-decoration: none;
 }
 
-header.sticky #logout{
+header.sticky #logout {
   color: white;
   background-color: rgb(184, 9, 9);
   border-radius: 100px;
 }
 
-
-
 main .contenedor {
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  main  .form-group {
-    margin-bottom: 16px;
-  }
-  
-  main .form-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  main .form-control {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s;
-  }
-  
-  main .form-control:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  /* Botón de enviar */
-  main .btn-submit {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  main .btn-submit:hover {
-    background-color: #0056b3;
-  }
-  
-  
-  /* Responsivo */
-  @media (max-width: 768px) {
-    .contenedor {
-      padding: 15px;
-    }
-  
-    .btn-submit {
-      width: 100%;
-      padding: 12px;
-    }
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+main .form-group {
+  margin-bottom: 16px;
+}
+
+main .form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+main .form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+main .form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón de enviar */
+main .btn-submit {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+main .btn-submit:hover {
+  background-color: #0056b3;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .contenedor {
+    padding: 15px;
   }
 
-  main {
-    margin-top: 100px; /* Asegura que esté debajo del header */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Esto evita que se centre verticalmente */
-    align-items: center;
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+main {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .container_titulo {
-  margin-bottom: 30px; /* Espacio entre el título y las publicaciones */
+  margin-bottom: 30px;
   color: white;
 }
 
 #tus-publicaciones {
-  width: 100%; /* Para asegurarte de que las publicaciones ocupen el ancho disponible */
+  width: 100%;
 }
 
-  .Titulo-publi {
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: #1a1717;
-    margin-top: 50px;
-  }
-  
-  .Titulo-categorias {
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: #1a1717;
-    margin-top: 50px;
-  }
+.Titulo-publi {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1a1717;
+  margin-top: 50px;
+}
 
-  h3{
-    font-size: 50px;
-  }
-  
+.Titulo-categorias {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1a1717;
+  margin-top: 50px;
+}
+
+h3 {
+  font-size: 50px;
+}
+
 main .card-group {
-    margin-top: 50px;
-    gap: 20px;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .card-categoria {
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0 auto;
-  }
+  margin-top: 50px;
+  gap: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  main .card-publi {
-    border-radius: 30px;
-    background-color: white;
-    background-size: cover;
-    transition: 0.3s ease;
-    max-width: 400px;
-    box-shadow: 0 0 22px 10px rgba(34, 0, 0, 0.3);
-    margin-bottom: 80px;
-  }
-  
-  main .card-publi img {
-    border-radius: 10px 10px 0px 0px;
-    margin-top: 10px;
-    height: 300px;
-  }
-  main a{
-    text-decoration: none;
-  }
-  
-  .card-title-publi{
-    margin-top: 0px;
-  }
-  
-  main .card-publi:hover {
-    box-shadow: rgb(245, 0, 0) 0 0 50px 10px;
-  }
-  
-  .title {
-    cursor: default;
-    color: white;
-    font-size: 3.7rem;
-    padding: 20px;
-    font-weight: bold;
-  }
+.card-categoria {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+main .card-publi {
+  border-radius: 30px;
+  background-color: white;
+  background-size: cover;
+  transition: 0.3s ease;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 22px 10px rgba(34, 0, 0, 0.3);
+  margin-bottom: 80px;
+}
+
+main .card-publi img {
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 10px;
+  height: 300px;
+}
+main a {
+  text-decoration: none;
+}
+
+.card-title-publi {
+  margin-top: 0px;
+}
+
+main .card-publi:hover {
+  box-shadow: rgb(245, 0, 0) 0 0 50px 10px;
+}
+
+.title {
+  cursor: default;
+  color: white;
+  font-size: 3.7rem;
+  padding: 20px;
+  font-weight: bold;
+}
 
 /* Contenedor de comentarios */
 .comments-section {
@@ -489,7 +495,7 @@ main .card-group {
   margin-bottom: 1em;
 }
 
-.btn-back{
+.btn-back {
   background-color: red;
   border: 2px solid red;
   border-radius: 5px;
@@ -497,7 +503,7 @@ main .card-group {
   align-items: center;
 }
 
-.btn-back:hover{
+.btn-back:hover {
   border-radius: 20px;
   transition: border-radius 0.3s ease;
   background-color: white;
@@ -549,7 +555,7 @@ main .card-group {
   .video-detail-container {
     padding: 10px;
   }
-  
+
   .video-detail-container h1 {
     font-size: 2rem;
   }
@@ -561,7 +567,6 @@ main .card-group {
   margin: 2rem auto;
   padding: 2rem;
 }
-
 
 .pregunta-card {
   background: white;
